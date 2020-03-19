@@ -14,7 +14,7 @@
 # define CUB3D_H
 
 # include "libft/libft.h"
-# include <mlx.h>
+# include "mlx.h"
 # include <math.h>
 # include <stdlib.h>
 # define CHECKER 255
