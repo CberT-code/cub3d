@@ -43,8 +43,6 @@ void		move_fb(t_data *d)
 	{
 		
 		r.alpha = d->p->alpha + d->p->move;
-		printf("%f\n", d->p->alpha);
-		printf("%f\n", r.alpha);
 		init_radar(&r, d);
 		if (d->p->alpha == M_PI_2)
 			r.y = r.y - sin(r.alpha);
@@ -56,8 +54,8 @@ void		move_fb(t_data *d)
 		if (d->map->tab_map[(int)r.y / d->mini->t_case]
 		[(int)r.x / d->mini->t_case] != '1')
 		{
-			d->mini->vector->y = r.y + 0.5;
-			d->mini->vector->x = r.x + 0.5;
+			d->mini->vector->y = r.y;
+			d->mini->vector->x = r.x;
 		}
 	}
 }
