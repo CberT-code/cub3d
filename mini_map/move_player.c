@@ -45,7 +45,7 @@ void		move_fb(t_data *d)
 		r.alpha = d->p->alpha + d->p->move;
 		init_radar(&r, d);
 		if (d->p->alpha == M_PI_2)
-			r.y = r.y - sin(r.alpha);
+			r.y = r.y - sin(d->p->alpha);
 		else
 		{
 			r.x = r.x + cos(r.alpha);
