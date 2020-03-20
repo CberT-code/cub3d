@@ -55,11 +55,8 @@ int			fill_int_rgb(int bit, char *str, unsigned int *rgb, short *bit_texture)
 			str++;
 	}
 	tab[0] = (int)pow(256, 2) * tab[0];
-	printf("tab0 = %d\n ", tab[0]);
 	tab[1] = 256 * tab[1];
-	printf("tab1 = %d\n ", tab[1]);
 	*rgb = tab[0] + tab[1] + tab[2];
-	printf("tab2 = %d\n ", rgb);
 	*bit_texture = *bit_texture | (1 << bit);
 	return (i);
 }
