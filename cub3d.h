@@ -27,6 +27,33 @@
 ** 6 = int *c
 */
 
+#  define K_ESC			53
+#  define K_COMM		12
+#  define K_NUM_MULT	67
+#  define K_NUM_DIV		75
+#  define K_NUM_PLUS	69
+#  define K_NUM_MINUS	78
+#  define K_NUM_ENTER	76
+#  define K_NUM_0		82
+#  define K_UP			126
+#  define K_DOWN		125
+#  define K_LEFT		123
+#  define K_RIGHT		124
+#  define K_DIGIT_0		29
+#  define K_DIGIT_1		18
+#  define K_DIGIT_7		26
+#  define K_DIGIT_8		28
+#  define K_DIGIT_9		25
+#  define K_A			0
+#  define K_S			1
+#  define K_D			2
+#  define K_W			13
+#  define K_E			14
+#  define K_L			37
+#  define K_Q			259
+#  define K_MINUS		27
+#  define K_PLUS		24
+
 # define ERROR_NOT_OPEN "Error\nPROGRAM COULD NOT OPEN THE FILE\n"
 # define ERROR_MAP_N_WALL "Error\nThe wall is open on the north side\n"
 # define ERROR_MAP_W_WALL "Error\nThe wall is open on the west side\n"

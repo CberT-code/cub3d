@@ -62,7 +62,32 @@
 // 	}
 // 	return (0);
 // }
-
+int	key_press(int key, t_data *d)
+{
+	printf("key = %d\n", key);
+	if (key == K_Q)
+		d->m->move_up = 1;
+	if (key == K_A)
+		d->m->move_left = 1;
+	if (key == K_S)
+		d->m->move_down = 1;
+	if (key == K_D)
+		d->m->move_right = 1;
+	if (key == K_RIGHT)
+		d->m->watch_right = 1;
+	if (key == K_LEFT)
+		d->m->watch_left = 1;
+	if (key == 46)					//je sais pas ce que cest celui la
+	{
+		d->mini->display = !d->mini->display;
+		if (d->mini->display == 1)
+			mlx_destroy_image(d->ptr, d->p->img->image);
+	}
+	if (key == 53)
+		destroy(d);
+	move(d);
+	return (0);
+}
 // int	key_press(int key, t_data *d)
 // {
 // 	printf("key = %d\n", key);
