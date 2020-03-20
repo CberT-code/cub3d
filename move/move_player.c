@@ -13,9 +13,32 @@
 #include "../cub3d.h"
 
 
-void		move_fb(t_data *d)
+void		move_fb(t_data *d, int i)
 {
-    t_vector vec;
+    t_vector    vec;
+        vec.x = d->p->vector->x;
+        vec.y = d->p->vector->y;
 
-    
+        vec.x += cos(d->p->alpha) * i * d->p->vitesse; 
+        vec.y -= sin(d->p->alpha) * i * d->p->vitesse;
+        if (d->map->tab_map[(int)vec.y][(int)vec.x] != '1')
+        {
+            d->p->vector->x = vec.x;
+            d->p->vector->y = vec.y;
+        }
+}
+
+void		move_lr(t_data *d, int i)
+{
+    t_vector    vec;
+        vec.x = d->p->vector->x;
+        vec.y = d->p->vector->y;
+
+        vec.x += cos(d->p->alpha + M_PI_2) * i * d->p->vitesse; 
+        vec.y -= sin(d->p->alpha + M_PI_2) * i * d->p->vitesse;
+        if (d->map->tab_map[(int)vec.y][(int)vec.x] != '1')
+        {
+            d->p->vector->x = vec.x;
+            d->p->vector->y = vec.y;
+        }
 }

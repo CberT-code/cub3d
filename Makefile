@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+         #
+#    By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 12:20:26 by cbertola          #+#    #+#              #
-#    Updated: 2020/03/19 18:32:00 by cyrillebe        ###   ########.fr        #
+#    Updated: 2020/03/20 13:50:41 by cyrillebert      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ SRCS		= main.c \
 			parsing/parsing_elem.c \
 			parsing/full_map.c \
 			parsing/error_free.c \
-			parsing/init_structures.c
+			parsing/init_structures.c \
+			move/move_player.c \
+			Bonus/mini_map.c
 
 LIBFT		= libft/libft.a
 

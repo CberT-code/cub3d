@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/02/19 19:28:37 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/03/20 13:46:58 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@
 #  define K_W			13
 #  define K_E			14
 #  define K_L			37
+#  define K_M			46
 #  define K_Q			259
 #  define K_MINUS		27
 #  define K_PLUS		24
@@ -67,8 +68,6 @@
 # define ERROR_NO_FILE "Error\nNO FILE FOUND\n"
 # define ERROR_TEXTURE "Error\ntextureENT IS MISSING\n"
 # define ERROR_CALLOC "Error\ncalloc didn't go well\n"
-# define VITESSE 0.4
-# define VITESSEROTATION 0.05
 
 typedef struct			s_key
 {
@@ -146,7 +145,7 @@ typedef struct			s_texture
 typedef struct			s_mini
 {
 	t_image				*img;
-	int					t_case;
+	int					size;
 	int					display;
 }						t_mini;
 
@@ -198,4 +197,9 @@ void					*check_map(t_data *d);
 void					check_map2(t_data *d, int j);
 void					full_map(t_map *map);
 void					parsing(char *doc_map, t_data *d);
+void					move_fb(t_data *d, int i);
+void					move_lr(t_data *d, int i);
+void					map_color_case(t_data *d);
+void					color_square(t_vector pos, int size, int color, t_image *img);
+void      				display_mini(t_data *d);
 #endif

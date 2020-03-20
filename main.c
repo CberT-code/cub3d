@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 17:24:01 by cbertola          #+#    #+#             */
-/*   Updated: 2020/02/27 17:16:13 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/03/20 13:50:55 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,47 +37,30 @@ int	key_press(int key, t_data *d)
 {
 	printf("key = %d\n", key);
 	if (key == K_W)
-		d->m->move_up = 1;				//ici il faudra faire une fonction move_straight
+		move_fb(d, 1);
 	if (key == K_A)
-		d->m->move_left = 1;
+		move_lr(d, 1);
 	if (key == K_S)
-		d->m->move_down = 1;			//move_straight
+		move_fb(d, -1);
 	if (key == K_D)
-		d->m->move_right = 1;			//move_side
+		move_lr(d, -1);			//move_side
 	if (key == K_RIGHT)
-		d->m->watch_right += VITESSEROTATION;			//d->p->alpha += d->p->vit_rot
+		d->p->alpha += d->p->vitesse_rot;
 	if (key == K_LEFT)
-		d->m->watch_left -= VITESSEROTATION;			//d->p->alpha += d->p->vit_rot
-	if (key == 46)					//je sais pas ce que cest celui la (je lai pas dans ma liste)
-	{
-		d->mini->display = !d->mini->display;
-		if (d->mini->display == 1)
-			mlx_destroy_image(d->ptr, d->p->img->image);
-	}
+		d->p->alpha -= d->p->vitesse_rot;
+	// if (key == K_M)					//je sais pas ce que cest celui la (je lai pas dans ma liste)
+	// {
+	// 	d->mini->display = !d->mini->display;
+	// 	if (d->mini->display == 1)
+	// 		mlx_destroy_image(d->ptr, d->p->img->image);
+	// }
 	if (key == K_ESC)
 	 	destroy(d);
-	printf("player position : x %f, y %f, alpha %f\n", d.p->vector->x, d.p->vector->y, d.p->alpha);
-	// move(d);							//ici ca sera update_game
+	printf("player position : x %f, y %f, alpha %f\n", d->p->vector->x, d->p->vector->y, d->p->alpha);
+	display_mini(d);//ici ca sera update_game
 	return (0);
 }
-int		key_release(int key, t_data *d)
-{
-	if (key == K_W)
-		d->m->move_up = 0;
-	if (key == K_A)
-		d->m->move_left = 0;
-	if (key == K_S)
-		d->m->move_down = 0;
-	if (key == K_D)
-		d->m->move_right = 0;
-	if (key == K_RIGHT)
-		d->m->watch_right = 0;
-	if (key == K_LEFT)
-		d->m->watch_left = 0;
-	if (key == K_ESC)
-		destroy(d);
-	return (0);
-}
+
 int		loop_game(t_data *d)
 {
 	mlx_hook(d->win, 17, 0, destroy, d);
