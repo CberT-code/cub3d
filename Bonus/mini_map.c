@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 12:46:15 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/20 17:35:32 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/20 17:45:02 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ void		draw_square(t_vector pos, int size, int color, t_image *img)
         x = 0;
 		while (x < size)
         {
-			image_set_pixel(img, x + (pos.x * size), y + (pos.y * size), color);
+            if (x == 0 || y == 0)
+                image_set_pixel(img, x + (pos.x * size), y + (pos.y * size), (int)0x000000);
+            else
+			    image_set_pixel(img, x + (pos.x * size), y + (pos.y * size), color);
             x++;
         }
         y++;
