@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/20 20:18:00 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/20 20:21:29 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void		radar(t_data *d)
             image_set_pixel(d->mini->img, vec_x.x * d->mini->size + 2, vec_x.y * d->mini->size + 2, 0x00FF00);
             printf("calc distance vec_y = %f\n", calc_dst_vector(d->p->vector, vec_y.x, vec_y.y));
             printf("calc distance vec_x = %f\n", calc_dst_vector(d->p->vector, vec_x.x, vec_x.y));
-            if (calc_dst_vector(d->p->vector, vec_y.x, vec_y.y) > calc_dst_vector(d->p->vector, vec_x.x, vec_x.y))
+            if (calc_dst_vector(d->p->vector, vec_y.x, vec_y.y) < calc_dst_vector(d->p->vector, vec_x.x, vec_x.y))
             {
                 r.x = vec_y.x;
                 r.y = vec_y.y;
