@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 17:24:01 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/20 18:40:05 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/20 19:42:25 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ int main(int argc, char **argv)
 	d.win = mlx_new_window(d.ptr, d.r[0], d.r[1], "CUB3D");
 	d.mini->img = new_image(&d, d.map->x_max * d.mini->size, d.map->y_max * d.mini->size);
 	refresh_img(&d);
-	radar(&d);
 	mlx_loop_hook(d.ptr, loop_game, &d);
 	mlx_loop(d.ptr);
 }
