@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/20 20:46:03 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/20 20:48:31 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,40 +35,15 @@ void		radar(t_data *d)
 	t_vector vec_y;
     t_vector hit;
 
-	r.alpha = d->p->alpha; // + M_PI / 6;
-	//while (r.alpha > d->p->alpha - M_PI / 6)
-	//{
+	r.alpha = d->p->alpha + M_PI / 6;
+	while (r.alpha > d->p->alpha - M_PI / 6)
+	{
 		init_radar(&r, d);
         hit = next_block(r.x, r.y, d->p->vector);
 		while (d->map->tab_map[(int)hit.y][(int)hit.x] != '1')
 		{
             vec_y = calc_next_y(r);
-             printf("vec Y.x = %f\n",vec_y.x);
-             printf("vec Y.y = %f\n",vec_y.y);
-            image_set_pixel(d->mini->img, vec_y.x * d->mini->size, vec_y.y * d->mini->size, 0xFF0000);
-            image_set_pixel(d->mini->img, vec_y.x * d->mini->size, vec_y.y * d->mini->size + 1, 0xFF0000);
-            image_set_pixel(d->mini->img, vec_y.x * d->mini->size, vec_y.y * d->mini->size + 2, 0xFF0000);
-            image_set_pixel(d->mini->img, vec_y.x * d->mini->size + 1, vec_y.y * d->mini->size, 0xFF0000);
-            image_set_pixel(d->mini->img, vec_y.x * d->mini->size + 1, vec_y.y * d->mini->size + 1, 0xFF0000);
-            image_set_pixel(d->mini->img, vec_y.x * d->mini->size + 1, vec_y.y * d->mini->size + 2, 0xFF0000);
-            image_set_pixel(d->mini->img, vec_y.x * d->mini->size + 2, vec_y.y * d->mini->size, 0xFF0000);
-            image_set_pixel(d->mini->img, vec_y.x * d->mini->size + 2, vec_y.y * d->mini->size + 1, 0xFF0000);
-            image_set_pixel(d->mini->img, vec_y.x * d->mini->size + 2, vec_y.y * d->mini->size + 2, 0xFF0000);
             vec_x = calc_next_x(r);
-             printf("vec X.x = %f\n",vec_x.x);
-             printf("vec X.y = %f\n",vec_x.y);
-            image_set_pixel(d->mini->img, vec_x.x * d->mini->size, vec_x.y * d->mini->size, 0x00FF00);
-            image_set_pixel(d->mini->img, vec_x.x * d->mini->size, vec_x.y * d->mini->size, 0x00FF00);
-            image_set_pixel(d->mini->img, vec_x.x * d->mini->size, vec_x.y * d->mini->size + 1, 0x00FF00);
-            image_set_pixel(d->mini->img, vec_x.x * d->mini->size, vec_x.y * d->mini->size + 2, 0x00FF00);
-            image_set_pixel(d->mini->img, vec_x.x * d->mini->size + 1, vec_x.y * d->mini->size, 0x00FF00);
-            image_set_pixel(d->mini->img, vec_x.x * d->mini->size + 1, vec_x.y * d->mini->size + 1, 0x00FF00);
-            image_set_pixel(d->mini->img, vec_x.x * d->mini->size + 1, vec_x.y * d->mini->size + 2, 0x00FF00);
-            image_set_pixel(d->mini->img, vec_x.x * d->mini->size + 2, vec_x.y * d->mini->size, 0x00FF00);
-            image_set_pixel(d->mini->img, vec_x.x * d->mini->size + 2, vec_x.y * d->mini->size + 1, 0x00FF00);
-            image_set_pixel(d->mini->img, vec_x.x * d->mini->size + 2, vec_x.y * d->mini->size + 2, 0x00FF00);
-            printf("calc distance vec_y = %f\n", calc_dst_vector(d->p->vector, vec_y.x, vec_y.y));
-            printf("calc distance vec_x = %f\n", calc_dst_vector(d->p->vector, vec_x.x, vec_x.y));
             if (calc_dst_vector(d->p->vector, vec_y.x, vec_y.y) < calc_dst_vector(d->p->vector, vec_x.x, vec_x.y))
             {
                 r.x = vec_y.x;
@@ -95,8 +70,8 @@ void		radar(t_data *d)
         }
         r.dist = calc_dst_vector(d->p->vector, r.x, r.y);
         printf("dist = %f\n", r.dist);
-	//	r.alpha -= M_PI / 3 / d->texture->r[0];
-//	}
+		r.alpha -= M_PI / 3 / d->texture->r[0];
+	}
 }
 
 t_vector       calc_next_y(t_radar r)
