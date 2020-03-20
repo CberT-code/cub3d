@@ -38,7 +38,6 @@ int			fill_int_rgb(int bit, char *str, unsigned int *rgb, short *bit_texture)
 {
 	int		tab[3];
 	int		i;
-	printf("bit = %d\n ", bit);
 
 	i = -1;
 	while (i++ < 2)

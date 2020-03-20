@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 17:24:01 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/20 17:09:19 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/20 18:40:05 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int		destroy(t_data *d)
 {
 // 	mlx_destroy_image(d->ptr, d->img->image);
 // 	mlx_destroy_image(d->ptr, d->p->img->image);
+if (d->mini->display == 0)
 	display_mini(d);
  	return (0);
 }
 
 int	key_press(int key, t_data *d)
 {
-	printf("key = %d\n", key);
 	if (key == K_W)
 		move_fb(d, 1);
 	if (key == K_A)
@@ -47,12 +47,8 @@ int	key_press(int key, t_data *d)
 		d->p->alpha += d->p->vitesse_rot;
 	if (key == K_LEFT)
 		d->p->alpha -= d->p->vitesse_rot;
-	// if (key == K_M)					//je sais pas ce que cest celui la (je lai pas dans ma liste)
-	// {
-	// 	d->mini->display = !d->mini->display;
-	// 	if (d->mini->display == 1)
-	// 		mlx_destroy_image(d->ptr, d->p->img->image);
-	// }
+	if (key == K_M)					//je sais pas ce que cest celui la (je lai pas dans ma liste)
+		d->mini->display = !d->mini->display;
 	if (key == K_ESC)
 	 	destroy(d);
 	printf("player position : x %f, y %f, alpha %f\n", d->p->vector->x, d->p->vector->y, d->p->alpha);
@@ -80,7 +76,8 @@ int main(int argc, char **argv)
 	d.ptr = mlx_init();
 	d.win = mlx_new_window(d.ptr, d.r[0], d.r[1], "CUB3D");
 	d.mini->img = new_image(&d, d.map->x_max * d.mini->size, d.map->y_max * d.mini->size);
-	display_mini(&d);
+	refresh_img(&d);
+	radar(&d);
 	mlx_loop_hook(d.ptr, loop_game, &d);
 	mlx_loop(d.ptr);
 }

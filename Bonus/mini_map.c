@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 12:46:15 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/20 17:45:02 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/20 18:04:08 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void        display_mini(t_data *d)
     pos.x = d->p->vector->x * d->mini->size;
     pos.y = d->p->vector->y * d->mini->size;
     draw_mini(d);
-    draw_circle(COLOR_PLAYER, d->mini->img, pos, d->mini->size/2);
+    draw_circle(COLOR_PLAYER, d->mini->img, pos, d->mini->size/3);
     mlx_put_image_to_window(d->ptr, d->win, d->mini->img->image, 0, 0);
 }
 
