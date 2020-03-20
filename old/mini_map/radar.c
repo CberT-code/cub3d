@@ -44,7 +44,7 @@ void		radar(t_data *d)
 			else
 				r.width = 0;
 		}
-		r.alpha -= M_PI / 3 / d->elem->r[0];
+		r.alpha -= M_PI / 3 / d->texture->r[0];
 	}
 }
 
@@ -111,7 +111,7 @@ void		radar(t_data *d)
 // 				display_raycast(d, r.dist, i, color);
 // 			}
 // 		}
-// 		r.alpha -= M_PI / 3 / d->elem->r[0];
+// 		r.alpha -= M_PI / 3 / d->texture->r[0];
 // 		i++;
 // 	}
 // 		printf("nombre de rayons %d\n", i);

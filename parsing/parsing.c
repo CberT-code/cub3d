@@ -12,6 +12,15 @@
 
 #include "../cub3d.h"
 
+static int	ft_strcmp(const char *s1, const char *s2)
+{
+	int	i;
+	i = 0;
+	while (s1[i] && s2[i] && (s1[i] == s2[i]))
+		i++;
+	return (s1[i] - s2[i]);
+}
+
 int			num_p2(t_data *d, int j, int h)
 {
 	if (d->map->tab_map[j][h] == 'N' || d->map->tab_map[j][h] == 'S' ||
@@ -59,14 +68,14 @@ int			num_p(t_data *d, t_map *map)
 	return (i);
 }
 
-int			check_elem(char *str, t_elem *elem, t_data *d)
+int			check_texture(char *str, t_texture *texture, t_data *d)
 {
 	int		i;
 
 	i = 0;
-	if (elem->bit_elem < 255)
+	if (texture->bit_texture < 255)
 	{
-		parsing_elem(str, elem);
+		parsing_texture(str, d);
 		return (1);
 	}
 	if (*str == '1')
@@ -85,21 +94,20 @@ void		parsing(char *doc_map, t_data *d)
 	char		*line;
 	int			fd;
 
-	if (!doc_map)
+	if (!doc_map || ft_strlen(doc_map) < 4 || ft_strcmp(doc_map + ft_strlen(doc_map) - 4, ".cub"))
 		ft_error(ERROR_NO_FILE, NULL);
-	d->elem = calloc(sizeof(t_elem), 1);
-	d->m = calloc(sizeof(t_move), 1);
 	init_struct(d);
-	fd = open(doc_map, O_RDONLY);
+	if (!(fd = open(doc_map, O_RDONLY)))
+		ft_error(ERROR_NOT_OPEN, NULL);
 	while (get_next_line(fd, &line) != 0)
 	{
-		check_elem(line, d->elem, d);
+		check_texture(line, d->texture, d);
 		free(line);
 	}
-	check_elem(line, d->elem, d);
+	check_texture(line, d->texture, d);
 	free(line);
-	if (d->elem->bit_elem < 255)
-		ft_error(ERROR_ELEM, d);
+	if (d->texture->bit_texture < 255)
+		ft_error(ERROR_TEXTURE, d);
 	full_map(d->map);
 	check_map(d);
 	num_p(d, d->map);

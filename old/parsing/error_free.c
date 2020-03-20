@@ -12,20 +12,20 @@
 
 #include "../cub3d.h"
 
-void		free_elem(t_data *d)
+void		free_texture(t_data *d)
 {
 	int i;
 
 	i = 0;
 	while (i < 5)
 	{
-		if (d->elem->bit_elem & (1 << i++))
-			free(d->elem->texture[i - 1]);
+		if (d->texture->bit_texture & (1 << i++))
+			free(d->texture->texture[i - 1]);
 	}
-	free(d->elem->texture);
+	free(d->texture->texture);
 	free(d->map);
 	free(d->p);
-	free(d->elem);
+	free(d->texture);
 }
 
 void		*ft_error_map(char *str, t_data *d, int i)
@@ -39,15 +39,15 @@ void		*ft_error_map(char *str, t_data *d, int i)
 		while (d->map->tab_map[j])
 			free(d->map->tab_map[j++]);
 	}
-	free_elem(d);
+	free_texture(d);
 	exit(0);
 }
 
 void		*ft_error(char *str, t_data *d)
 {
 	ft_printf(str);
-	if (d->elem != NULL)
-		free_elem(d);
+	if (d->texture != NULL)
+		free_texture(d);
 	exit(0);
 }
 
@@ -59,7 +59,7 @@ void		init_struct(t_data *d)
 
 	map = ft_calloc(sizeof(t_map), 1);
 	p = ft_calloc(sizeof(t_p), 1);
-	d->elem->texture = (char **)malloc(sizeof(char *) * 5);
+	d->texture->texture = (char **)malloc(sizeof(char *) * 5);
 	d->map = map;
 	d->p = p;
 }

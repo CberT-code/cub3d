@@ -14,7 +14,7 @@ SRCS_MINI	=	mini_map/display_map.c mini_map/color_map.c mini_map/radar.c \
 				 mini_map/player_draw.c mini_map/move_player.c
 
 SRCS		= main.c  parsing/parsing.c \
-			  parsing/parsing_elem.c parsing/error_free.c parsing/full_map.c \
+			  parsing/parsing_texture.c parsing/error_free.c parsing/full_map.c \
 			    ray_casting.c $(SRCS_MINI)
 
 LIBFT		= libft/libft.a

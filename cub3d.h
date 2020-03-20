@@ -21,7 +21,7 @@
 
 /*
 ** | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-** |ind| r | c | f | S | EA| WE| SO| NO|
+** |ind| r | c ls| f | S | EA| WE| SO| NO|
 ** 0 -> 4 = char **check
 ** 5 = int *f
 ** 6 = int *c
@@ -36,7 +36,8 @@
 # define ERROR_P_NO_POS "Error\nNO p POSITION FOUND\n"
 # define ERROR_P_EX_POS "Error\nTOO MANY p POSITION FOUND\n"
 # define ERROR_NO_FILE "Error\nNO FILE FOUND\n"
-# define ERROR_ELEM "Error\nELEMENT IS MISSING\n"
+# define ERROR_TEXTURE "Error\ntextureENT IS MISSING\n"
+# define ERROR_CALLOC "Error\ncalloc didn't go well\n"
 # define VITESSE 0.4
 # define VITESSEROTATION 0.05
 
@@ -63,13 +64,6 @@ typedef struct			s_vector
 	double				dist;
 }						t_vector;
 
-typedef struct			s_lmap
-{
-	int					size;
-	char				*str;
-	struct s_lmap		*next;
-}						t_lmap;
-
 typedef struct			s_image
 {
 	void				*image;
@@ -80,6 +74,13 @@ typedef struct			s_image
 	int					endian;
 	int					*buffer;
 }						t_image;
+
+typedef struct			s_lmap
+{
+	int					size;
+	char				*str;
+	struct s_lmap		*next;
+}						t_lmap;
 
 typedef struct			s_map
 {
@@ -97,31 +98,35 @@ typedef struct			s_player
 	t_image				*img;
 	double				alpha;
 	double				move;
+	double 				vitesse;
+	double				vitesse_rot;
 }						t_p;
 
-typedef struct			s_elem
+typedef struct			s_texture
 {
-	short				bit_elem;
-	char				**texture;
-	int					r[2];
+	short				bit_texture;
+	t_image				*no_tex;
+	t_image				*so_tex;
+	t_image				*we_tex;
+	t_image				*ea_tex;
+	t_image				*sp_tex;
 	int					f[3];
 	int					c[3];
-}						t_elem;
+}						t_texture;
 
 typedef struct			s_mini
 {
 	t_image				*img;
 	int					t_case;
-	int					ligne;
 	int					display;
-	t_vector				*vector;
 }						t_mini;
 
 typedef struct			s_data
 {
 	void				*ptr;
 	void				*win;
-	t_elem				*elem;
+	int					r[2];
+	t_texture			*texture;
 	t_image				*img;
 	t_mini				*mini;
 	t_map				*map;
@@ -141,13 +146,6 @@ typedef struct			s_radar
 	int					inc;
 }						t_radar;
 
-typedef struct			s_column
-{
-	int					top;
-	int					wall;
-	int					bottom;
-}						t_column;
-
 /* 
 ** Position :
 ** 1 = N , 2 = E , 4 = S , 8 = W
@@ -155,17 +153,13 @@ typedef struct			s_column
 
 int						num_p(t_data *d, t_map *map);
 int						num_p2(t_data *d, int j, int h);
-int						fill_int(int bit, char *str, int *tab, short *bit_elem);
-int						fill_int_rgb(int bit, char *str, int *tab,
-						short *bit_elem);
-int						check_elem(char *str, t_elem *elem, t_data *d);
-int						calc_dst_vector(t_vector *vector, int actual_x,
-						int actual_y);
+int						fill_int(int bit, char *str, int *tab, short *bit_texture);
+int						check_texture(char *str, t_texture *texture, t_data *d);
 void					full_map(t_map *map);
-void					fill_str(int bit, char *str, t_elem *elem);
-void					parsing_elem(char *str, t_elem *elem);
+void					fill_str(int bit, char *str, t_texture *texture);
+void					parsing_texture(char *str, t_data *d);
 void					init_struct(t_data *d);
-void					free_elem(t_data *d);
+void					free_texture(t_data *d);
 void					*ft_error_map(char *str, t_data *d, int i);
 void					*ft_error(char *str, t_data *d);
 void					*check_map(t_data *d);
@@ -174,19 +168,4 @@ void					*check_map(t_data *d);
 void					check_map2(t_data *d, int j);
 void					full_map(t_map *map);
 void					parsing(char *doc_map, t_data *d);
-void					mini_map(t_data *d, t_elem *elem);
-void					init_mini(t_data *d, t_elem *elem, t_mini *mini);
-void					calcul_vector(t_p *p, t_mini *mini, int t_case);
-void					display_map(t_data *d, t_map *map, int t_case);
-void					map_color_case(t_data *d, int y, int x, int t_case);
-void					color_square(int i, t_mini *mini, int color, int mult);
-void					draw_circle(int ligne, t_image *img, t_data *d,
-						int radius);
-void					display_p(t_data *d, t_map *map, int t_case);
-void					vision(t_data *d);
-void					init_radar(t_radar *r, t_data *d);
-void					radar(t_data *d);
-void					browse_column(t_data *d);
-void					display_raycast(t_data *d, double vec, int i, unsigned int color);
-void					move_fb(t_data *d);
 #endif

@@ -126,8 +126,8 @@ int main(int argc, char **argv)
 		return (ft_printf("cc\n"));
 	parsing(argv[1], &d);
 	d.ptr = mlx_init();
-	d.win = mlx_new_window(d.ptr, d.elem->r[0], d.elem->r[1], "CUB3D");
-	mini_map(&d, d.elem);
+	d.win = mlx_new_window(d.ptr, d.texture->r[0], d.texture->r[1], "CUB3D");
+	mini_map(&d, d.texture);
 	browse_column(&d);
 	display_p(&d, d.map, d.mini->t_case);
 	mlx_loop_hook(d.ptr, loop_game, &d);

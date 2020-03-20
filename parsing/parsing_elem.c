@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_elem.c                                     :+:      :+:    :+:   */
+/*   parsing_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../cub3d.h"
 
-int			fill_int(int bit, char *str, int *tab, short *bit_elem)
+int			fill_int(int bit, char *str, int *tab, short *bit_texture)
 {
 	int		i;
 
@@ -30,11 +30,11 @@ int			fill_int(int bit, char *str, int *tab, short *bit_elem)
 		if (*str == ',')
 			str++;
 	}
-	*bit_elem = *bit_elem | (1 << bit);
+	*bit_texture = *bit_texture | (1 << bit);
 	return (i);
 }
 
-int			fill_int_rgb(int bit, char *str, int *tab, short *bit_elem)
+int			fill_int_rgb(int bit, char *str, int *tab, short *bit_texture)
 {
 	int		i;
 
@@ -56,11 +56,11 @@ int			fill_int_rgb(int bit, char *str, int *tab, short *bit_elem)
 		if (*str == ',')
 			str++;
 	}
-	*bit_elem = *bit_elem | (1 << bit);
+	*bit_texture = *bit_texture | (1 << bit);
 	return (i);
 }
 
-void		fill_str(int bit, char *str, t_elem *elem)
+void		fill_str(int bit, char *str, t_texture *texture)
 {
 	int		i;
 	int		j;
@@ -72,36 +72,26 @@ void		fill_str(int bit, char *str, t_elem *elem)
 		i++;
 	temp = str + i;
 	j = ft_strlen(temp);
-	if (!(elem->texture[bit] = malloc((sizeof(char) * j) + 1)))
-		return ;
-	elem->bit_elem = elem->bit_elem | (1 << bit);
-	j = 0;
-	while (temp[j])
-	{
-		elem->texture[bit][j] = temp[j];
-		j++;
-	}
-	elem->texture[bit][j] = '\0';
 }
 
-void		parsing_elem(char *str, t_elem *elem)
+void		parsing_texture(char *str, t_data *d)
 {
 	while (*str == ' ')
 		str++;
 	if (ft_start_str("NO ", str) > 0)
-		fill_str(0, str + 3, elem);
+		fill_str(0, str + 3, d->texture);
 	if (ft_start_str("SO ", str) > 0)
-		fill_str(1, str + 3, elem);
+		fill_str(1, str + 3, d->texture);
 	if (ft_start_str("WE ", str) > 0)
-		fill_str(2, str + 3, elem);
+		fill_str(2, str + 3, d->texture);
 	if (ft_start_str("EA ", str) > 0)
-		fill_str(3, str + 3, elem);
+		fill_str(3, str + 3, d->texture);
 	if (ft_start_str("S ", str) > 0)
-		fill_str(4, str + 2, elem);
+		fill_str(4, str + 2, d->texture);
 	if (ft_start_str("F ", str) > 0)
-		fill_int_rgb(5, str + 2, elem->f, &(elem->bit_elem));
+		fill_int_rgb(5, str + 2, d->texture->f, &(d->texture->bit_texture));
 	if (ft_start_str("C ", str) > 0)
-		fill_int_rgb(6, str + 2, elem->c, &(elem->bit_elem));
+		fill_int_rgb(6, str + 2, d->texture->c, &(d->texture->bit_texture));
 	if (ft_start_str("R ", str) > 0)
-		fill_int(7, str + 2, elem->r, &(elem->bit_elem));
+		fill_int(7, str + 2, d->r, &(d->texture->bit_texture));
 }

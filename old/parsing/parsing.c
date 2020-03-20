@@ -59,14 +59,14 @@ int			num_p(t_data *d, t_map *map)
 	return (i);
 }
 
-int			check_elem(char *str, t_elem *elem, t_data *d)
+int			check_texture(char *str, t_texture *texture, t_data *d)
 {
 	int		i;
 
 	i = 0;
-	if (elem->bit_elem < 255)
+	if (texture->bit_texture < 255)
 	{
-		parsing_elem(str, elem);
+		parsing_texture(str, texture);
 		return (1);
 	}
 	if (*str == '1')
@@ -87,19 +87,19 @@ void		parsing(char *doc_map, t_data *d)
 
 	if (!doc_map)
 		ft_error(ERROR_NO_FILE, NULL);
-	d->elem = calloc(sizeof(t_elem), 1);
+	d->texture = calloc(sizeof(t_texture), 1);
 	d->m = calloc(sizeof(t_move), 1);
 	init_struct(d);
 	fd = open(doc_map, O_RDONLY);
 	while (get_next_line(fd, &line) != 0)
 	{
-		check_elem(line, d->elem, d);
+		check_texture(line, d->texture, d);
 		free(line);
 	}
-	check_elem(line, d->elem, d);
+	check_texture(line, d->texture, d);
 	free(line);
-	if (d->elem->bit_elem < 255)
-		ft_error(ERROR_ELEM, d);
+	if (d->texture->bit_texture < 255)
+		ft_error(ERROR_texture, d);
 	full_map(d->map);
 	check_map(d);
 	num_p(d, d->map);

@@ -43,9 +43,9 @@ int main(int argc, char **argv)
 	if (!(D.mlx_win = mlx_new_window(D.mlx_ptr, 1000, 500, "CUB3D")))
 		return (EXIT_FAILURE);
 	//mlx_mouse_hook(D.mlx_win, click_mouse, NULL);
-	//mlx_hook(D.mlx_win, 17, 0, destroy, elem);
+	//mlx_hook(D.mlx_win, 17, 0, destroy, texture);
 	//mlx_hook(D.mlx_win, 2, 0, handle_key, NULL);
-	//display_map(&D, elem);
+	//display_map(&D, texture);
 	img->image = mlx_new_image(D.mlx_ptr, 1000, 500);
 	img->buffer = (int *)mlx_get_data_addr(img->image, &img->bpp, &img->size_l, &img->endian);
 	img->buffer[0] = (int)0xFF0000;

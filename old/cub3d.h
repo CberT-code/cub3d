@@ -36,7 +36,7 @@
 # define ERROR_P_NO_POS "Error\nNO p POSITION FOUND\n"
 # define ERROR_P_EX_POS "Error\nTOO MANY p POSITION FOUND\n"
 # define ERROR_NO_FILE "Error\nNO FILE FOUND\n"
-# define ERROR_ELEM "Error\nELEMENT IS MISSING\n"
+# define ERROR_texture "Error\ntextureENT IS MISSING\n"
 # define VITESSE 0.4
 # define VITESSEROTATION 0.05
 
@@ -99,14 +99,14 @@ typedef struct			s_player
 	double				move;
 }						t_p;
 
-typedef struct			s_elem
+typedef struct			s_texture
 {
-	short				bit_elem;
+	short				bit_texture;
 	char				**texture;
 	int					r[2];
 	int					f[3];
 	int					c[3];
-}						t_elem;
+}						t_texture;
 
 typedef struct			s_mini
 {
@@ -121,7 +121,7 @@ typedef struct			s_data
 {
 	void				*ptr;
 	void				*win;
-	t_elem				*elem;
+	t_texture				*texture;
 	t_image				*img;
 	t_mini				*mini;
 	t_map				*map;
@@ -155,17 +155,17 @@ typedef struct			s_column
 
 int						num_p(t_data *d, t_map *map);
 int						num_p2(t_data *d, int j, int h);
-int						fill_int(int bit, char *str, int *tab, short *bit_elem);
+int						fill_int(int bit, char *str, int *tab, short *bit_texture);
 int						fill_int_rgb(int bit, char *str, int *tab,
-						short *bit_elem);
-int						check_elem(char *str, t_elem *elem, t_data *d);
+						short *bit_texture);
+int						check_texture(char *str, t_texture *texture, t_data *d);
 int						calc_dst_vector(t_vector *vector, int actual_x,
 						int actual_y);
 void					full_map(t_map *map);
-void					fill_str(int bit, char *str, t_elem *elem);
-void					parsing_elem(char *str, t_elem *elem);
+void					fill_str(int bit, char *str, t_texture *texture);
+void					parsing_texture(char *str, t_texture *texture);
 void					init_struct(t_data *d);
-void					free_elem(t_data *d);
+void					free_texture(t_data *d);
 void					*ft_error_map(char *str, t_data *d, int i);
 void					*ft_error(char *str, t_data *d);
 void					*check_map(t_data *d);
@@ -174,8 +174,8 @@ void					*check_map(t_data *d);
 void					check_map2(t_data *d, int j);
 void					full_map(t_map *map);
 void					parsing(char *doc_map, t_data *d);
-void					mini_map(t_data *d, t_elem *elem);
-void					init_mini(t_data *d, t_elem *elem, t_mini *mini);
+void					mini_map(t_data *d, t_texture *texture);
+void					init_mini(t_data *d, t_texture *texture, t_mini *mini);
 void					calcul_vector(t_p *p, t_mini *mini, int t_case);
 void					display_map(t_data *d, t_map *map, int t_case);
 void					map_color_case(t_data *d, int y, int x, int t_case);

@@ -1,46 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_free.c                                       :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/21 19:46:22 by cbertola          #+#    #+#             */
-/*   Updated: 2020/02/19 01:03:38 by cbertola         ###   ########.fr       */
+/*   Created: 2020/01/21 19:39:31 by cbertola          #+#    #+#             */
+/*   Updated: 2020/02/19 01:30:50 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void		free_texture(t_data *d)
+void		init_struct(t_data *d)
 {
-	int i;
-
-	i = 0;
-	free(d->map);
-	free(d->p);
-	free(d->texture);
-}
-
-void		*ft_error_map(char *str, t_data *d, int i)
-{
-	int j;
-
-	j = 0;
-	ft_printf(str);
-	if (i >= 3)
-	{
-		while (d->map->tab_map[j])
-			free(d->map->tab_map[j++]);
-	}
-	free_texture(d);
-	exit(0);
-}
-
-void		*ft_error(char *str, t_data *d)
-{
-	ft_printf(str);
-	if (d->texture != NULL)
-		free_texture(d);
-	exit(0);
+	if (!(d->texture = calloc(sizeof(t_texture), 1)))
+		ft_error(ERROR_CALLOC, NULL);
+	if (!(d->m = calloc(sizeof(t_move), 1)))
+		ft_error(ERROR_CALLOC, NULL);
+	if (!(d->map = ft_calloc(sizeof(t_map), 1)))
+		ft_error(ERROR_CALLOC, NULL);
+	if (!(d->p = ft_calloc(sizeof(t_p), 1)))
+		ft_error(ERROR_CALLOC, NULL);
+    d->p->vitesse = 0.2;
+    d->p->vitesse_rot = 5;
 }

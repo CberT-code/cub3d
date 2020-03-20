@@ -19,21 +19,21 @@ void		display_raycast(t_data *d, double vec, int i, unsigned int color)
 
 	ind = 0;
 	col.wall = fabs(vec * sin(30) * 20);
-	col.top = (d->elem->r[1] - col.wall) / 2;
+	col.top = (d->texture->r[1] - col.wall) / 2;
 	col.bottom = col.top;
 	while (col.top > ind)
 	{
-		d->img->buffer[ind * d->elem->r[0] + i] = d->elem->c;
+		d->img->buffer[ind * d->texture->r[0] + i] = d->texture->c;
 		ind++;
 	}
 	while ((col.wall + col.top) > ind)
 	{
-		d->img->buffer[ind * d->elem->r[0] + i] = color;
+		d->img->buffer[ind * d->texture->r[0] + i] = color;
 		ind++;
 	}
 	while ((col.wall + col.top + col.bottom) > ind)
 	{
-		d->img->buffer[ind * d->elem->r[0] + i] = d->elem->f;
+		d->img->buffer[ind * d->texture->r[0] + i] = d->texture->f;
 		ind++;
 	}
 
@@ -46,7 +46,7 @@ void		init_radar_r(t_radar *r, t_data *d)
 	r->x = (double)d->p->vector->x + 0.5;
 	r->t = (double)tan(r->alpha);
 	r->b = r->y - r->t * r->x;
-	r->width = d->elem->r[1];
+	r->width = d->texture->r[1];
 }
 
 double			calc_vector_x(t_radar *r, t_data *d)
@@ -112,7 +112,7 @@ void		init_img_ray(t_data *d)
 {
 	if (!(d->img = ft_calloc(sizeof(t_image), 1)))
 		return ;
-	d->img->image = mlx_new_image(d->ptr, d->elem->r[0], d->elem->r[1]);
+	d->img->image = mlx_new_image(d->ptr, d->texture->r[0], d->texture->r[1]);
 	d->img->buffer = (int *)mlx_get_data_addr(d->img->image, &d->img->bpp,
 	&d->img->size_l, &d->img->endian);
 }
@@ -130,7 +130,7 @@ void		browse_column(t_data *d)
 	//{
 		display_column(&r, d, i);
 	// 	i++;
-	//	r.alpha -= M_PI / 3 / d->elem->r[0];
+	//	r.alpha -= M_PI / 3 / d->texture->r[0];
 	//}
 
 	mlx_put_image_to_window(d->ptr, d->win, d->img->image, 0, 0);

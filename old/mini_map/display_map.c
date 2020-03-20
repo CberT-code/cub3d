@@ -45,26 +45,26 @@ void		calcul_vector(t_p *p, t_mini *mini, int t_case)
 	mini->vector->y = (p->vector->y * t_case) + (t_case / 2);
 }
 
-void		init_mini(t_data *d, t_elem *elem, t_mini *mini)
+void		init_mini(t_data *d, t_texture *texture, t_mini *mini)
 {
 	if (!(d->mini = ft_calloc(sizeof(t_mini), 1)))
 		return ;
 	mini = d->mini;
 	if (!(mini->img = ft_calloc(sizeof(t_image), 1)))
 		return ;
-	mini->t_case = elem->r[0] / 3 / d->map->x_max;
-	while ((mini->t_case * d->map->y_max) > (elem->r[0] / 3) ||
-		(mini->t_case * d->map->x_max) > (elem->r[1] / 2))
+	mini->t_case = texture->r[0] / 3 / d->map->x_max;
+	while ((mini->t_case * d->map->y_max) > (texture->r[0] / 3) ||
+		(mini->t_case * d->map->x_max) > (texture->r[1] / 2))
 		mini->t_case--;
 	d->mini->ligne = mini->t_case * d->map->x_max;
 }
 
-void		mini_map(t_data *d, t_elem *elem)
+void		mini_map(t_data *d, t_texture *texture)
 {
 	t_mini *mini;
 
 	if (!d->mini)
-		init_mini(d, elem, mini);
+		init_mini(d, texture, mini);
 	mini = d->mini;
 	if (mini->t_case < 10)
 		printf("Map too big to be displayed %d\n", mini->t_case);

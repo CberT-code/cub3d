@@ -7,7 +7,8 @@ inoremap <expr> <Plug>vim_completes_me_backward VimCompletesMe#vim_completes_me(
 inoremap <expr> <Plug>vim_completes_me_forward VimCompletesMe#vim_completes_me(0)
 inoremap <silent> <C-Tab> =UltiSnips#ListSnippets()
 snoremap <silent>  c
-xnoremap <silent> 	 :call UltiSnips#SaveLastVisualSelection()gvs
+xnoremap <silent> 	 :call UltiSnips#SaveLastVisualSelection()
+gvs
 snoremap <silent> 	 :call UltiSnips#ExpandSnippetOrJump()
 map  :NERDTreeToggle
 snoremap  "_c
@@ -384,7 +385,7 @@ normal! zt
 57
 normal! 042|
 wincmd w
-argglobal
+argglobaltexturetexturetexture
 if bufexists("parsing_elem.c") | buffer parsing_elem.c | else | edit parsing_elem.c | endif
 setlocal keymap=
 setlocal noarabic
@@ -799,7 +800,7 @@ exe 'vert 5resize ' . ((&columns * 90 + 182) / 364)
 tabnext 1
 badd +1 ../cub3d.h
 badd +22 full_map.c
-badd +1 parsing.c
+badd +1 parsing.texture
 badd +1 parsing_elem.c
 badd +1 error_free.c
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0

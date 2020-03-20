@@ -83,7 +83,7 @@
 <SNR>112_:	minilibx/recherche.vim	/^nnoremap <SNR>112_: :=v:count ? v:count : ''$/;"	m
 <SNR>114_:	parsing/!parsing.vim	/^nnoremap <SNR>114_: :=v:count ? v:count : ''$/;"	m
 BUFFER_SIZE	libft/get_next_line.c	/^#define BUFFER_SIZE /;"	d	file:
-C	cub3d.h	/^	int					C[3];$/;"	m	struct:s_elem
+C	cub3d.h	/^	int					C[3];$/;"	m	struct:s_texture
 CC	libft/makefile	/^CC		= gcc$/;"	m
 CC	makefile	/^CC			= gcc$/;"	m
 CFLAGS	libft/makefile	/^CFLAGS	= -Wall -Wextra -Werror$/;"	m
@@ -95,7 +95,7 @@ DEPB	libft/makefile	/^DEPB	:= $(SRCB:%.c=$(DEP_DIR)\/%.d)$/;"	m
 DEP_DIR	libft/makefile	/^DEP_DIR	= dep$/;"	m
 DFLAGS	libft/makefile	/^DFLAGS	= -MP -MMD -MF $(DEP_DIR)\/$*.d -MT '$@'$/;"	m
 DIR	libft/makefile	/^DIR		= $(DEP_DIR) $(OBJ_DIR)$/;"	m
-ERROR_ELEM	cub3d.h	/^# define ERROR_ELEM /;"	d
+ERROR_texture	cub3d.h	/^# define ERROR_texture /;"	d
 ERROR_MAP	cub3d.h	/^# define ERROR_MAP /;"	d
 ERROR_MAP_E_WALL	cub3d.h	/^# define ERROR_MAP_E_WALL /;"	d
 ERROR_MAP_NO	cub3d.h	/^# define ERROR_MAP_NO /;"	d
@@ -117,7 +117,7 @@ ERR_STRUCT_INCIMPL	minilibx/mlx_png.c	/^#define	ERR_STRUCT_INCIMPL /;"	d	file:
 ERR_STRUCT_INCOMPLETE	minilibx/mlx_png.c	/^#define	ERR_STRUCT_INCOMPLETE	/;"	d	file:
 ERR_STRUCT_MISSCHK	minilibx/mlx_png.c	/^#define	ERR_STRUCT_MISSCHK	/;"	d	file:
 ERR_ZLIB	minilibx/mlx_png.c	/^#define	ERR_ZLIB	/;"	d	file:
-F	cub3d.h	/^	int					F[3];$/;"	m	struct:s_elem
+F	cub3d.h	/^	int					F[3];$/;"	m	struct:s_texture
 FONT_HEIGHT	minilibx/mlx_int.h	/^#define	FONT_HEIGHT	/;"	d
 FONT_WIDTH	minilibx/mlx_int.h	/^#define FONT_WIDTH	/;"	d
 FT_PRINTF_H	libft/ft_printf.h	/^# define FT_PRINTF_H$/;"	d
@@ -141,13 +141,13 @@ OBJ_DIR	libft/makefile	/^OBJ_DIR	= obj$/;"	m
 PNG_HDR_SIZE	minilibx/mlx_png.c	/^#define PNG_HDR_SIZE	/;"	d	file:
 PNG_MAGIC_SIZE	minilibx/mlx_png.c	/^#define	PNG_MAGIC_SIZE	/;"	d	file:
 POINT	libft/ft_printf.h	/^# define POINT /;"	d
-R	cub3d.h	/^	int					R[2];$/;"	m	struct:s_elem
+R	cub3d.h	/^	int					R[2];$/;"	m	struct:s_texture
 RETURN	minilibx/mlx_xpm.c	/^#define	RETURN	/;"	d	file:
 RM	makefile	/^RM			= rm -f$/;"	m
 SRC	libft/makefile	/^SRC		= ft_strlen.c ft_strlcpy.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_strlcat.c \\$/;"	m
 SRC	minilibx/Makefile	/^SRC= mlx_shaders.c mlx_new_window.m mlx_init_loop.m mlx_new_image.m mlx_xpm.c mlx_int_str_to_wordtab.c$/;"	m
 SRCB	libft/makefile	/^SRCB	=$/;"	m
-SRCS	makefile	/^SRCS		= main_test.c parsing\/parsing.c parsing\/parsing_elem.c parsing\/error_free.c parsing\/full_map.c$/;"	m
+SRCS	makefile	/^SRCS		= main_test.c parsing\/parsing.c parsing\/parsing_texture.c parsing\/error_free.c parsing\/full_map.c$/;"	m
 SessionLoad	minilibx/recherche.vim	/^let SessionLoad = 1$/;"	v
 SessionLoad	parsing/!parsing.vim	/^let SessionLoad = 1$/;"	v
 SessionLoad	parsing/parsing.vim	/^let SessionLoad = 1$/;"	v
@@ -169,16 +169,16 @@ Z_CHUNK	minilibx/mlx_png.c	/^#define	Z_CHUNK	/;"	d	file:
 alpha	cub3d.h	/^	double				alpha;$/;"	m	struct:s_P
 appid	minilibx/mlx_int.h	/^  void			*appid;$/;"	m	struct:mlx_ptr_s
 arg	libft/ft_printf.h	/^	char		arg;$/;"	m	struct:s_flags
-bit_elem	cub3d.h	/^	short				bit_elem;$/;"	m	struct:s_elem
+bit_texture	cub3d.h	/^	short				bit_texture;$/;"	m	struct:s_texture
 bpp	minilibx/mlx_png.c	/^  int		bpp;$/;"	m	struct:png_info_s	file:
 buff	libft/libft.h	/^	char				*buff;$/;"	m	struct:s_list_gnl
 buffer	cub3d.h	/^  char			*buffer;$/;"	m	struct:mlx_img_list_s
 buffer	main_test.c	/^	char	*buffer;$/;"	m	struct:s_image	file:
 buffer	minilibx/mlx_int.h	/^  char			*buffer;$/;"	m	struct:mlx_img_list_s
 bytes_per_pixel	minilibx/font.c	/^  unsigned int 	 bytes_per_pixel; \/* 2:RGB16, 3:RGB, 4:RGBA *\/ $/;"	m	struct:__anon1	file:
-check_elem	parsing/parsing.c	/^int			check_elem(char *str, t_elem *elem)$/;"	f
-check_map	parsing/full_map.c	/^void		*check_map(t_elem *elem)$/;"	f
-check_map2	parsing/full_map.c	/^void		check_map2(t_elem *elem, int j)$/;"	f
+check_texture	parsing/parsing.c	/^int			check_texture(char *str, t_texture *texture)$/;"	f
+check_map	parsing/full_map.c	/^void		*check_map(t_texture *texture)$/;"	f
+check_map2	parsing/full_map.c	/^void		check_map2(t_texture *texture, int j)$/;"	f
 click_mouse	main_test.c	/^int		click_mouse(int key)$/;"	f
 col	minilibx/mlx_xpm.c	/^  int           col;$/;"	m	struct:s_xpm_col	file:
 color	minilibx/mlx_png.c	/^  int		color;$/;"	m	struct:png_info_s	file:
@@ -190,19 +190,19 @@ data_s	minilibx/main_test.c	/^typedef struct    data_s$/;"	s	file:
 data_t	cub3d.h	/^}						data_t;$/;"	t	typeref:struct:data_s
 data_t	minilibx/main_test.c	/^}                 data_t;$/;"	t	typeref:struct:data_s	file:
 depth	minilibx/mlx_png.c	/^  int		depth;$/;"	m	struct:png_info_s	file:
-destroy	main_test.c	/^int	destroy(t_elem *elem)$/;"	f
+destroy	main_test.c	/^int	destroy(t_texture *texture)$/;"	f
 display_log	minilibx/mlx_shaders.c	/^void display_log(GLuint object, void (*param_func)(), void (*getlog_func)())$/;"	f
 f_l	libft/ft_split.c	/^static int		f_l(char *s, char c, int i)$/;"	f	file:
 fd	libft/libft.h	/^	int					fd;$/;"	m	struct:s_list_gnl
-fill_int	parsing/parsing_elem.c	/^int			fill_int(int bit, char *str, int *tab, short *bit_elem)$/;"	f
-fill_int_rgb	parsing/parsing_elem.c	/^int			fill_int_rgb(int bit, char *str, int *tab, short *bit_elem)$/;"	f
-fill_str	parsing/parsing_elem.c	/^void		fill_str(int bit, char *str, t_elem *elem)$/;"	f
+fill_int	parsing/parsing_texture.c	/^int			fill_int(int bit, char *str, int *tab, short *bit_texture)$/;"	f
+fill_int_rgb	parsing/parsing_texture.c	/^int			fill_int_rgb(int bit, char *str, int *tab, short *bit_texture)$/;"	f
+fill_str	parsing/parsing_texture.c	/^void		fill_str(int bit, char *str, t_texture *texture)$/;"	f
 font	minilibx/mlx_int.h	/^  mlx_img_list_t	*font;$/;"	m	struct:mlx_ptr_s
 font_atlas	minilibx/font.c	/^} font_atlas = {$/;"	v	typeref:struct:__anon1	file:
 font_fshader	minilibx/mlx_int.h	/^  GLuint	font_fshader;$/;"	m	struct:glsl_info_s
 font_program	minilibx/mlx_int.h	/^  GLuint	font_program;$/;"	m	struct:glsl_info_s
 font_vshader	minilibx/mlx_int.h	/^  GLuint	font_vshader;$/;"	m	struct:glsl_info_s
-free_elem	parsing/error_free.c	/^void		free_elem(t_elem *elem)$/;"	f
+free_texture	parsing/error_free.c	/^void		free_texture(t_texture *texture)$/;"	f
 ft_atoi	libft/ft_atoi.c	/^int		ft_atoi(const char *str)$/;"	f
 ft_atoi_pos	libft/ft_atoi_pos.c	/^int		ft_atoi_pos(const char *str)$/;"	f
 ft_before_char	libft/get_next_line_utils.c	/^char		*ft_before_char(char *str, char stop)$/;"	f
@@ -216,8 +216,8 @@ ft_count_char_int	libft/ft_count_char_int.c	/^int			ft_count_char_int(long int n
 ft_count_char_int	libft/ft_flags.c	/^int			ft_count_char_int(long int nb, int base)$/;"	f
 ft_del	libft/get_next_line.c	/^void		ft_del(t_list_gnl **lst_one)$/;"	f
 ft_display_before	libft/ft_fct.c	/^int				ft_display_before(t_flags *flags, long int nb)$/;"	f
-ft_error	parsing/error_free.c	/^void		*ft_error(char *str, t_elem *elem)$/;"	f
-ft_error_map	parsing/error_free.c	/^void		*ft_error_map(char *str, t_elem *elem, int i)$/;"	f
+ft_error	parsing/error_free.c	/^void		*ft_error(char *str, t_texture *texture)$/;"	f
+ft_error_map	parsing/error_free.c	/^void		*ft_error_map(char *str, t_texture *texture, int i)$/;"	f
 ft_exist	libft/get_next_line.c	/^int			ft_exist(t_list_gnl **lst, char **line)$/;"	f
 ft_find	libft/get_next_line_utils.c	/^int			ft_find(char *str, char stop)$/;"	f
 ft_find_c	libft/ft_split.c	/^static int		ft_find_c(char letter, char c)$/;"	f	file:
@@ -321,7 +321,7 @@ image_vshader	minilibx/mlx_int.h	/^  GLuint	image_vshader;$/;"	m	struct:glsl_inf
 img	minilibx/mlx_int.h	/^  mlx_img_list_t	*img;$/;"	m	struct:mlx_img_ctx_s
 img_list	minilibx/mlx_int.h	/^  mlx_img_ctx_t		*img_list;$/;"	m	struct:mlx_win_list_s
 img_list	minilibx/mlx_int.h	/^  mlx_img_list_t	*img_list;$/;"	m	struct:mlx_ptr_s
-init_struct	parsing/error_free.c	/^void		init_struct(t_elem *elem)$/;"	f
+init_struct	parsing/error_free.c	/^void		init_struct(t_texture *texture)$/;"	f
 interlace	minilibx/mlx_png.c	/^  int		interlace;$/;"	m	struct:png_info_s	file:
 is_tab_full	libft/is_tab_full.c	/^int		is_tab_full(char *tab, char c)$/;"	f
 line	cub3d.h	/^	t_lmap				*line;$/;"	m	struct:s_map
@@ -348,7 +348,7 @@ magic	minilibx/mlx_png.c	/^unsigned char magic[PNG_MAGIC_SIZE] = {137, 80, 78, 7
 main	main_test.c	/^int main(int argc, char **argv)$/;"	f
 main	minilibx/main_test.c	/^int main(void)$/;"	f
 main_loop_active	minilibx/mlx_int.h	/^  int			main_loop_active;$/;"	m	struct:mlx_ptr_s
-map	cub3d.h	/^	t_map				*map;$/;"	m	struct:s_elem
+map	cub3d.h	/^	t_map				*map;$/;"	m	struct:s_texture
 map_str	parsing/full_map.c	/^void		map_str(char *str, t_map *map)$/;"	f
 mipng_crc	minilibx/mlx_png.c	/^int	mipng_crc(unsigned char *ptr, int len)$/;"	f
 mipng_data	minilibx/mlx_png.c	/^int	mipng_data(mlx_img_list_t *img, unsigned char *dat, png_info_t *pi)$/;"	f
@@ -407,16 +407,16 @@ next	libft/libft.h	/^	struct s_list_gnl	*next;$/;"	m	struct:s_list_gnl	typeref:s
 next	minilibx/mlx_int.h	/^  struct mlx_img_ctx_s	*next;$/;"	m	struct:mlx_img_ctx_s	typeref:struct:mlx_img_ctx_s::mlx_img_ctx_s
 next	minilibx/mlx_int.h	/^  struct mlx_img_list_s	*next;$/;"	m	struct:mlx_img_list_s	typeref:struct:mlx_img_list_s::mlx_img_list_s
 next	minilibx/mlx_int.h	/^  struct mlx_win_list_s	*next;$/;"	m	struct:mlx_win_list_s	typeref:struct:mlx_win_list_s::mlx_win_list_s
-num_P	parsing/parsing.c	/^int			num_P(t_elem *elem, t_map *map)$/;"	f
-num_P2	parsing/parsing.c	/^int			num_P2(t_elem *elem, int j, int h)$/;"	f
-parsing	parsing/parsing.c	/^t_elem		*parsing(char *doc_map)$/;"	f
-parsing_elem	parsing/parsing_elem.c	/^void		parsing_elem(char *str, t_elem *elem)$/;"	f
+num_P	parsing/parsing.c	/^int			num_P(t_texture *texture, t_map *map)$/;"	f
+num_P2	parsing/parsing.c	/^int			num_P2(t_texture *texture, int j, int h)$/;"	f
+parsing	parsing/parsing.c	/^t_texture		*parsing(char *doc_map)$/;"	f
+parsing_texture	parsing/parsing_texture.c	/^void		parsing_texture(char *str, t_texture *texture)$/;"	f
 pixel_data	minilibx/font.c	/^  unsigned char	 pixel_data[1140 * 20 * 4 + 1];$/;"	m	struct:__anon1	file:
 pixel_fshader	minilibx/mlx_int.h	/^  GLuint	pixel_fshader;$/;"	m	struct:glsl_info_s
 pixel_program	minilibx/mlx_int.h	/^  GLuint	pixel_program;$/;"	m	struct:glsl_info_s
 pixel_vshader	minilibx/mlx_int.h	/^  GLuint	pixel_vshader;$/;"	m	struct:glsl_info_s
 pixmgt	minilibx/mlx_int.h	/^  int			pixmgt;$/;"	m	struct:mlx_win_list_s
-P	cub3d.h	/^	t_player			*P;$/;"	m	struct:s_elem
+P	cub3d.h	/^	t_player			*P;$/;"	m	struct:s_texture
 png_info_s	minilibx/mlx_png.c	/^typedef struct png_info_s$/;"	s	file:
 png_info_t	minilibx/mlx_png.c	/^} png_info_t;$/;"	t	typeref:struct:png_info_s	file:
 pos_x	cub3d.h	/^	double				pos_x;$/;"	m	struct:s_P
@@ -447,7 +447,7 @@ s:wipebuf	minilibx/recherche.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
 s:wipebuf	parsing/!parsing.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
 s:wipebuf	parsing/parsing.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
 s_col_name	minilibx/mlx_xpm.c	/^struct  s_col_name$/;"	s	file:
-s_elem	cub3d.h	/^typedef struct			s_elem$/;"	s
+s_texture	cub3d.h	/^typedef struct			s_texture$/;"	s
 s_flags	libft/ft_printf.h	/^typedef struct	s_flags$/;"	s
 s_image	main_test.c	/^typedef struct	s_image$/;"	s	file:
 s_list	libft/libft.h	/^typedef struct			s_list$/;"	s
@@ -460,7 +460,7 @@ search_fd	libft/get_next_line.c	/^int			search_fd(t_list_gnl **lst_one, int fd)$
 size	cub3d.h	/^	int					size;$/;"	m	struct:s_lmap
 str	cub3d.h	/^	char				*str;$/;"	m	struct:s_lmap
 str	libft/libft.h	/^	char				*str;$/;"	m	struct:s_list_gnl
-t_elem	cub3d.h	/^}						t_elem;$/;"	t	typeref:struct:s_elem
+t_texture	cub3d.h	/^}						t_texture;$/;"	t	typeref:struct:s_texture
 t_flags	libft/ft_printf.h	/^}				t_flags;$/;"	t	typeref:struct:s_flags
 t_image	main_test.c	/^}				t_image;$/;"	t	typeref:struct:s_image	file:
 t_list	libft/libft.h	/^}						t_list;$/;"	t	typeref:struct:s_list
@@ -471,7 +471,7 @@ t_player	cub3d.h	/^}						t_player;$/;"	t	typeref:struct:s_P
 t_xpm_col	minilibx/mlx_xpm.c	/^} t_xpm_col;$/;"	t	typeref:struct:s_xpm_col	file:
 tab_line	cub3d.h	/^	int					tab_line;$/;"	m	struct:s_map
 tab_map	cub3d.h	/^	char				**tab_map;$/;"	m	struct:s_map
-texture	cub3d.h	/^	char				**texture;$/;"	m	struct:s_elem
+texture	cub3d.h	/^	char				**texture;$/;"	m	struct:s_texture
 texture	minilibx/mlx_int.h	/^  GLuint		texture;$/;"	m	struct:mlx_img_ctx_s
 vbuffer	minilibx/mlx_int.h	/^  GLuint		vbuffer;$/;"	m	struct:mlx_img_ctx_s
 vertexes	minilibx/mlx_int.h	/^  GLfloat		vertexes[8];$/;"	m	struct:mlx_img_list_s
