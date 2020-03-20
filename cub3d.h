@@ -27,12 +27,13 @@
 ** 6 = int *c
 */
 
+# define ERROR_NOT_OPEN "Error\nPROGRAM COULD NOT OPEN THE FILE\n"
 # define ERROR_MAP_N_WALL "Error\nThe wall is open on the north side\n"
 # define ERROR_MAP_W_WALL "Error\nThe wall is open on the west side\n"
 # define ERROR_MAP_E_WALL "Error\nThe wall is open on the east side\n"
 # define ERROR_MAP_S_WALL "Error\nThe wall is open on the south side\n"
 # define ERROR_MAP_NO "Error\nNO MAP FOUND\n"
-# define ERROR_COLOR "Error\nCOLOR DOESNT WORK\n"
+# define ERROR_COLOR "Error\nCOLOR DOESNT\n"
 # define ERROR_MAP "Error\n MAP\n"
 # define ERROR_P_NO_POS "Error\nNO p POSITION FOUND\n"
 # define ERROR_P_EX_POS "Error\nTOO MANY p POSITION FOUND\n"
@@ -154,7 +155,8 @@ typedef struct			s_radar
 
 int						num_p(t_data *d, t_map *map);
 int						num_p2(t_data *d, int j, int h);
-int						fill_int(int bit, char *str, int rgb, short *bit_texture);
+int						fill_int(int bit, char *str, int *tab, short *bit_texture);
+int						fill_int_rgb(int bit, char *str, int rgb, short *bit_texture);
 int						check_elem(char *str, t_texture *texture, t_data *d);
 void					full_map(t_map *map);
 void					fill_str(int bit, char *str, t_texture *texture, t_image *tex);

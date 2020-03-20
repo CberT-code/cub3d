@@ -36,7 +36,7 @@ int			fill_int(int bit, char *str, int *tab, short *bit_texture)
 
 int			fill_int_rgb(int bit, char *str, int rgb, short *bit_texture)
 {
-	int		tab[2];
+	int		tab[3];
 	int		i;
 
 	i = -1;
@@ -71,11 +71,11 @@ void		fill_str(int bit, char *str, t_texture *texture, t_image *text)
 	while (str[i] == ' ')
 		i++;
 	temp = str + i;
-	text->image = ;
+	//text->image = ;
 	texture->bit_texture = texture->bit_texture | (1 << bit);
 }
 
-void		parsing_texture(char *str, t_data *d)
+void		parsing_elem(char *str, t_data *d)
 {
 	while (*str == ' ')
 		str++;

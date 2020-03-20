@@ -104,7 +104,7 @@ void		parsing(char *doc_map, t_data *d)
 		check_elem(line, d->texture, d);
 		free(line);
 	}
-	check_texture(line, d->texture, d);
+	check_elem(line, d->texture, d);
 	free(line);
 	if (d->texture->bit_texture < 255)
 		ft_error(ERROR_TEXTURE, d);
