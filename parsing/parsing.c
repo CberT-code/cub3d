@@ -68,14 +68,14 @@ int			num_p(t_data *d, t_map *map)
 	return (i);
 }
 
-int			check_texture(char *str, t_texture *texture, t_data *d)
+int			check_elem(char *str, t_texture *texture, t_data *d)
 {
 	int		i;
 
 	i = 0;
 	if (texture->bit_texture < 255)
 	{
-		parsing_texture(str, d);
+		parsing_elem(str, d);
 		return (1);
 	}
 	if (*str == '1')
@@ -101,7 +101,7 @@ void		parsing(char *doc_map, t_data *d)
 		ft_error(ERROR_NOT_OPEN, NULL);
 	while (get_next_line(fd, &line) != 0)
 	{
-		check_texture(line, d->texture, d);
+		check_elem(line, d->texture, d);
 		free(line);
 	}
 	check_texture(line, d->texture, d);

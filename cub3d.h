@@ -154,10 +154,10 @@ typedef struct			s_radar
 int						num_p(t_data *d, t_map *map);
 int						num_p2(t_data *d, int j, int h);
 int						fill_int(int bit, char *str, int *tab, short *bit_texture);
-int						check_texture(char *str, t_texture *texture, t_data *d);
+int						check_elem(char *str, t_texture *texture, t_data *d);
 void					full_map(t_map *map);
 void					fill_str(int bit, char *str, t_texture *texture);
-void					parsing_texture(char *str, t_data *d);
+void					parsing_elem(char *str, t_data *d);
 void					init_struct(t_data *d);
 void					free_texture(t_data *d);
 void					*ft_error_map(char *str, t_data *d, int i);
