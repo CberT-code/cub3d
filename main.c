@@ -124,6 +124,13 @@ int main(int argc, char **argv)
 	if (argc < 2)
 		return (ft_printf("Error Missing Map\n"));
 	parsing(argv[1], &d);
+	printf("ceiling color : %d\n ", d.texture->f);
+	printf("floor color : %d\n ", d.texture->c);
+	printf("player position : x %f, y %f, alpha %f\n", d.p->vector->x, d.p->vector->y, d.p->alpha);
+	int i;
+	i = 0;
+	while (d.map->tab_map[i])
+		printf("tab map = %s\n", d.map->tab_map[i++]);
 	// d.ptr = mlx_init();
 	// d.win = mlx_new_window(d.ptr, d.r[0], d.r[1], "CUB3D");
 	// mlx_loop_hook(d.ptr, loop_game, &d);

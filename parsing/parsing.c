@@ -27,8 +27,8 @@ int			num_p2(t_data *d, int j, int h)
 			d->map->tab_map[j][h] == 'E' || d->map->tab_map[j][h] == 'W')
 	{
 		d->p->vector = ft_calloc(sizeof(t_vector), 1);
-		d->p->vector->y = j;
-		d->p->vector->x = h;
+		d->p->vector->y = j + 0.5;
+		d->p->vector->x = h + 0.5;
 		if (d->map->tab_map[j][h] == 'N')
 			d->p->alpha = M_PI_2;
 		if (d->map->tab_map[j][h] == 'S')
@@ -111,9 +111,5 @@ void		parsing(char *doc_map, t_data *d)
 	full_map(d->map);
 	check_map(d);
 	num_p(d, d->map);
-	int i;
-	i = 0;
-	while (d->map->tab_map[i])
-		printf("tab map = %s\n", d->map->tab_map[i++]);
-
 }
+
