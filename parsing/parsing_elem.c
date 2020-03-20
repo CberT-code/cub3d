@@ -34,8 +34,9 @@ int			fill_int(int bit, char *str, int *tab, short *bit_texture)
 	return (i);
 }
 
-int			fill_int_rgb(int bit, char *str, int *tab, short *bit_texture)
+int			fill_int_rgb(int bit, char *str, int rgb, short *bit_texture)
 {
+	int		tab[2];
 	int		i;
 
 	i = -1;
@@ -43,19 +44,18 @@ int			fill_int_rgb(int bit, char *str, int *tab, short *bit_texture)
 	{
 		while (*str == ' ')
 			str++;
-		if (ft_isdigit(*str))
-		{
+		if (ft_isdigit(*str) <= 255 && ft_isdigit(*str) >= 0)
 			tab[i] = ft_atoi(str);
-			if ((tab[i] > 255) || (tab[i] < 0))
-				return (-1);
-		}
 		else
-			return (-1);
+			ft_error(ERROR_COLOR, NULL);
 		while (ft_isdigit(*str))
 			str++;
 		if (*str == ',')
 			str++;
 	}
+	tab[0] = (int)pow(256, 2) * tab[0];
+	tab[1] = 256 * tab[1];
+	rgb = tab[0] + tab[1] + tab[2];
 	*bit_texture = *bit_texture | (1 << bit);
 	return (i);
 }

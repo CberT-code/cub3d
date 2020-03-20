@@ -32,6 +32,7 @@
 # define ERROR_MAP_E_WALL "Error\nThe wall is open on the east side\n"
 # define ERROR_MAP_S_WALL "Error\nThe wall is open on the south side\n"
 # define ERROR_MAP_NO "Error\nNO MAP FOUND\n"
+# define ERROR_COLOR "Error\nCOLOR DOESNT WORK\n"
 # define ERROR_MAP "Error\n MAP\n"
 # define ERROR_P_NO_POS "Error\nNO p POSITION FOUND\n"
 # define ERROR_P_EX_POS "Error\nTOO MANY p POSITION FOUND\n"
