@@ -78,20 +78,20 @@ void		parsing_texture(char *str, t_data *d)
 {
 	while (*str == ' ')
 		str++;
-	if (ft_start_str("NO ", str) > 0)
+	if 	(ft_strncmp("NO ", str))
 		fill_str(0, str + 3, d->texture);
-	if (ft_start_str("SO ", str) > 0)
+	if (ft_strncmp("SO ", str))
 		fill_str(1, str + 3, d->texture);
-	if (ft_start_str("WE ", str) > 0)
+	if (ft_strncmp("WE ", str))
 		fill_str(2, str + 3, d->texture);
-	if (ft_start_str("EA ", str) > 0)
+	if (ft_strncmp("EA ", str))
 		fill_str(3, str + 3, d->texture);
-	if (ft_start_str("S ", str) > 0)
+	if (ft_strncmp("S ", str))
 		fill_str(4, str + 2, d->texture);
-	if (ft_start_str("F ", str) > 0)
+	if (ft_strncmp("F ", str))
 		fill_int_rgb(5, str + 2, d->texture->f, &(d->texture->bit_texture));
-	if (ft_start_str("C ", str) > 0)
+	if (ft_strncmp("C ", str))
 		fill_int_rgb(6, str + 2, d->texture->c, &(d->texture->bit_texture));
-	if (ft_start_str("R ", str) > 0)
+	if (ft_strncmp("R ", str))
 		fill_int(7, str + 2, d->r, &(d->texture->bit_texture));
 }
