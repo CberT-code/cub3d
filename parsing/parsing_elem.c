@@ -72,6 +72,7 @@ void		fill_str(int bit, char *str, t_texture *texture)
 		i++;
 	temp = str + i;
 	j = ft_strlen(temp);
+	*bit_texture = *bit_texture | (1 << bit);
 }
 
 void		parsing_texture(char *str, t_data *d)
