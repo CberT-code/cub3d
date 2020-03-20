@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 12:46:15 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/20 16:00:22 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/20 17:35:32 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,37 +16,34 @@ void        display_mini(t_data *d)
 {
     t_vector    pos;
 	
-    pos.x = 10;
-    pos.y = 0;
-
-    d->mini->img = new_image(d, d->map->x_max * d->mini->size, d->map->y_max * d->mini->size);
-    map_color_case(d);
-   //color_square(pos, 10, 0x00FF00, d->mini->img);
+    pos.x = d->p->vector->x * d->mini->size;
+    pos.y = d->p->vector->y * d->mini->size;
+    draw_mini(d);
+    draw_circle(COLOR_PLAYER, d->mini->img, pos, d->mini->size/2);
     mlx_put_image_to_window(d->ptr, d->win, d->mini->img->image, 0, 0);
 }
 
-void		map_color_case(t_data *d)
+void		draw_mini(t_data *d)
 {
     t_vector    pos;
 	
-    pos.x = 0;
     pos.y = 0;
-  
     while (pos.y < d->map->y_max)
     {
+        pos.x = 0;
         while (pos.x < d->map->x_max)
         {
 	       if (d->map->tab_map[(int)pos.y][(int)pos.x] == '1')
-		        color_square(pos, d->mini->size, (int)0xCBC9C8, d->mini->img);
+		        draw_square(pos, d->mini->size, (int)0xCBC9C8, d->mini->img);
 	       else
-		        color_square(pos, d->mini->size, (int)0xFFFFFF, d->mini->img);
+		        draw_square(pos, d->mini->size, (int)0xFFFFFF, d->mini->img);
             pos.x += 1;
         }
         pos.y += 1;
     }
 }
 
-void		color_square(t_vector pos, int size, int color, t_image *img)
+void		draw_square(t_vector pos, int size, int color, t_image *img)
 {
     int x;
     int y;
@@ -57,9 +54,41 @@ void		color_square(t_vector pos, int size, int color, t_image *img)
         x = 0;
 		while (x < size)
         {
-			image_set_pixel(img, x + (pos.x * size), y + (pos.y * size * img->width), color);
+			image_set_pixel(img, x + (pos.x * size), y + (pos.y * size), color);
             x++;
         }
         y++;
+	}
+}
+
+
+int			calc_dst_vector(t_vector *vector, int actual_x, int actual_y)
+{
+	int dst;
+
+	dst = sqrt(pow(vector->x - actual_x, 2) + pow(vector->y - actual_y, 2));
+	return (dst);
+}
+
+void		draw_circle(int color, t_image *img, t_vector pos, int radius)
+{
+	t_vector		target;
+	t_vector		actual;
+
+    pos.x = pos.x;
+    pos.y = pos.y;
+	target.x = pos.x + radius;
+	target.y = pos.y + radius;
+	actual.x = pos.x - radius;
+	while (actual.x <= target.x)
+	{
+		actual.y = pos.y - radius;
+		while (actual.y <= target.y)
+		{
+			if (calc_dst_vector(&pos, (int)actual.x, (int)actual.y) < radius)
+                image_set_pixel(img, actual.x, actual.y, color);
+			actual.y++;
+		}
+		actual.x++;
 	}
 }

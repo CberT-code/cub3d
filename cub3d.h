@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/20 15:18:32 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/20 17:21:34 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@
 # define ERROR_NO_FILE "Error\nNO FILE FOUND\n"
 # define ERROR_TEXTURE "Error\ntextureENT IS MISSING\n"
 # define ERROR_CALLOC "Error\ncalloc didn't go well\n"
+# define COLOR_PLAYER (int)0x318CE7
 
 typedef struct			s_key
 {
@@ -199,10 +200,14 @@ void					full_map(t_map *map);
 void					parsing(char *doc_map, t_data *d);
 void					move_fb(t_data *d, int i);
 void					move_lr(t_data *d, int i);
-void					map_color_case(t_data *d);
-void					color_square(t_vector pos, int size, int color, t_image *img);
+void					draw_mini(t_data *d);
+void					draw_square(t_vector pos, int size, int color, t_image *img);
 void      				display_mini(t_data *d);
 t_image					*del_image(t_data *d, t_image *img);
 t_image					*new_image(t_data *d, int w, int h);
 void					image_set_pixel(t_image *image, int x, int y, int color);
+void					draw_circle(int color, t_image *img, t_vector pos, int radius);
+int						calc_dst_vector(t_vector *vector, int actual_x, int actual_y);
+ int					refresh_img(t_data *d);
 #endif
+

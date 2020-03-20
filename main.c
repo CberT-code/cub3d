@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 17:24:01 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/20 15:28:22 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/20 17:09:19 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@ int		destroy(t_data *d)
 	ft_error_map("Exit\n", d, 3);
 	return (0);
 }
-// int		refresh_img(t_data *d)
-// {
+ int		refresh_img(t_data *d)
+{
 // 	mlx_destroy_image(d->ptr, d->img->image);
 // 	mlx_destroy_image(d->ptr, d->p->img->image);
-// 	browse_column(d);
-// 	display_p(d, d->map, d->mini->t_case);
-// 	return (0);
-// }
+	display_mini(d);
+ 	return (0);
+}
 
 int	key_press(int key, t_data *d)
 {
@@ -57,7 +56,7 @@ int	key_press(int key, t_data *d)
 	if (key == K_ESC)
 	 	destroy(d);
 	printf("player position : x %f, y %f, alpha %f\n", d->p->vector->x, d->p->vector->y, d->p->alpha);
-	//ici ca sera update_game
+	refresh_img(d);//ici ca sera update_game
 	return (0);
 }
 
@@ -80,6 +79,7 @@ int main(int argc, char **argv)
 	//	printf(“tab map = %s\n”, d.map->tab_map[i++]);
 	d.ptr = mlx_init();
 	d.win = mlx_new_window(d.ptr, d.r[0], d.r[1], "CUB3D");
+	d.mini->img = new_image(&d, d.map->x_max * d.mini->size, d.map->y_max * d.mini->size);
 	display_mini(&d);
 	mlx_loop_hook(d.ptr, loop_game, &d);
 	mlx_loop(d.ptr);
