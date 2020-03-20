@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 17:24:01 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/20 13:50:55 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/20 15:28:22 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	key_press(int key, t_data *d)
 	if (key == K_ESC)
 	 	destroy(d);
 	printf("player position : x %f, y %f, alpha %f\n", d->p->vector->x, d->p->vector->y, d->p->alpha);
-	display_mini(d);//ici ca sera update_game
+	//ici ca sera update_game
 	return (0);
 }
 
@@ -80,6 +80,7 @@ int main(int argc, char **argv)
 	//	printf(“tab map = %s\n”, d.map->tab_map[i++]);
 	d.ptr = mlx_init();
 	d.win = mlx_new_window(d.ptr, d.r[0], d.r[1], "CUB3D");
+	display_mini(&d);
 	mlx_loop_hook(d.ptr, loop_game, &d);
 	mlx_loop(d.ptr);
 }

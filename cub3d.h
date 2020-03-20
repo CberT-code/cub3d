@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/20 13:46:58 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/20 15:18:32 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,4 +202,7 @@ void					move_lr(t_data *d, int i);
 void					map_color_case(t_data *d);
 void					color_square(t_vector pos, int size, int color, t_image *img);
 void      				display_mini(t_data *d);
+t_image					*del_image(t_data *d, t_image *img);
+t_image					*new_image(t_data *d, int w, int h);
+void					image_set_pixel(t_image *image, int x, int y, int color);
 #endif
