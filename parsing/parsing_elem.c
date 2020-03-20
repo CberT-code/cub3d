@@ -34,10 +34,11 @@ int			fill_int(int bit, char *str, int *tab, short *bit_texture)
 	return (i);
 }
 
-int			fill_int_rgb(int bit, char *str, int rgb, short *bit_texture)
+int			fill_int_rgb(int bit, char *str, unsigned int *rgb, short *bit_texture)
 {
 	int		tab[3];
 	int		i;
+	printf("bit = %d\n ", bit);
 
 	i = -1;
 	while (i++ < 2)
@@ -54,8 +55,11 @@ int			fill_int_rgb(int bit, char *str, int rgb, short *bit_texture)
 			str++;
 	}
 	tab[0] = (int)pow(256, 2) * tab[0];
+	printf("tab0 = %d\n ", tab[0]);
 	tab[1] = 256 * tab[1];
-	rgb = tab[0] + tab[1] + tab[2];
+	printf("tab1 = %d\n ", tab[1]);
+	*rgb = tab[0] + tab[1] + tab[2];
+	printf("tab2 = %d\n ", rgb);
 	*bit_texture = *bit_texture | (1 << bit);
 	return (i);
 }
@@ -79,20 +83,20 @@ void		parsing_elem(char *str, t_data *d)
 {
 	while (*str == ' ')
 		str++;
-	if 	(ft_strncmp("NO ", str, 3))
+	if 	(!ft_strncmp("NO ", str, 3))
 		fill_str(0, str + 3, d->texture, d->texture->no);
-	if (ft_strncmp("SO ", str, 3))
+	if (!ft_strncmp("SO ", str, 3))
 		fill_str(1, str + 3, d->texture, d->texture->so);
-	if (ft_strncmp("WE ", str, 3))
+	if (!ft_strncmp("WE ", str, 3))
 		fill_str(2, str + 3, d->texture, d->texture->we);
-	if (ft_strncmp("EA ", str, 3))
+	if (!ft_strncmp("EA ", str, 3))
 		fill_str(3, str + 3, d->texture, d->texture->ea);
-	if (ft_strncmp("S ", str, 2))
+	if (!ft_strncmp("S ", str, 2))
 		fill_str(4, str + 2, d->texture, d->texture->sp);
-	if (ft_strncmp("F ", str, 2))
-		fill_int_rgb(5, str + 2, d->texture->f, &(d->texture->bit_texture));
-	if (ft_strncmp("C ", str, 2))
-		fill_int_rgb(6, str + 2, d->texture->c, &(d->texture->bit_texture));
-	if (ft_strncmp("R ", str, 2))
+	if (!ft_strncmp("F ", str, 2))
+		fill_int_rgb(5, str + 2, &d->texture->f, &(d->texture->bit_texture));
+	if (!ft_strncmp("C ", str, 2))
+		fill_int_rgb(6, str + 2, &d->texture->c, &(d->texture->bit_texture));
+	if (!ft_strncmp("R ", str, 2))
 		fill_int(7, str + 2, d->r, &(d->texture->bit_texture));
 }

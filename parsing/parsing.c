@@ -111,4 +111,6 @@ void		parsing(char *doc_map, t_data *d)
 	full_map(d->map);
 	check_map(d);
 	num_p(d, d->map);
+	printf("f = %d\n", d->texture->f);
+	printf("c = %d\n", d->texture->c);
 }

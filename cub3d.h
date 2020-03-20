@@ -112,8 +112,8 @@ typedef struct			s_texture
 	t_image				*we;
 	t_image				*ea;
 	t_image				*sp;
-	int					f;
-	int					c;
+	unsigned int		f;
+	unsigned int		c;
 }						t_texture;
 
 typedef struct			s_mini
@@ -156,7 +156,7 @@ typedef struct			s_radar
 int						num_p(t_data *d, t_map *map);
 int						num_p2(t_data *d, int j, int h);
 int						fill_int(int bit, char *str, int *tab, short *bit_texture);
-int						fill_int_rgb(int bit, char *str, int rgb, short *bit_texture);
+int						fill_int_rgb(int bit, char *str, unsigned int *rgb, short *bit_texture);
 int						check_elem(char *str, t_texture *texture, t_data *d);
 void					full_map(t_map *map);
 void					fill_str(int bit, char *str, t_texture *texture, t_image *tex);
