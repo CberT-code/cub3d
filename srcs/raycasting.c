@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/20 19:41:47 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/20 19:56:59 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void		radar(t_data *d)
 		//while (d->map->tab_map[(int)r.y][(int)r.x] != ‘1’)
 		//{
             vec_y = calc_next_y(r);
-             printf(“vec Y.x = %f\n”,vec_y.x);
-             printf(“vec Y.y = %f\n”,vec_y.y);
+             printf("vec Y.x = %f\n",vec_y.x);
+             printf("vec Y.y = %f\n",vec_y.y);
             image_set_pixel(d->mini->img, vec_y.x * d->mini->size, vec_y.y * d->mini->size, 0xFF0000);
             image_set_pixel(d->mini->img, vec_y.x * d->mini->size, vec_y.y * d->mini->size + 1, 0xFF0000);
             image_set_pixel(d->mini->img, vec_y.x * d->mini->size, vec_y.y * d->mini->size + 2, 0xFF0000);
@@ -44,8 +44,8 @@ void		radar(t_data *d)
             image_set_pixel(d->mini->img, vec_y.x * d->mini->size + 2, vec_y.y * d->mini->size + 1, 0xFF0000);
             image_set_pixel(d->mini->img, vec_y.x * d->mini->size + 2, vec_y.y * d->mini->size + 2, 0xFF0000);
             vec_x = calc_next_x(r);
-             printf(“vec X.x = %f\n”,vec_x.x);
-             printf(“vec X.y = %f\n”,vec_x.y);
+             printf("vec X.x = %f\n",vec_x.x);
+             printf("vec X.y = %f\n",vec_x.y);
              image_set_pixel(d->mini->img, vec_x.x * d->mini->size, vec_x.y * d->mini->size, 0x00FF00);
              image_set_pixel(d->mini->img, vec_x.x * d->mini->size, vec_x.y * d->mini->size, 0x00FF00);
             image_set_pixel(d->mini->img, vec_x.x * d->mini->size, vec_x.y * d->mini->size + 1, 0x00FF00);
@@ -66,12 +66,12 @@ void		radar(t_data *d)
                 r.x = vec_x.x;
                 r.y = vec_x.y;
             }
-            printf(“rx = %f\n”,r.x);
-            printf(“ry = %f\n”,r.y);
+            printf("rx = %f\n",r.x);
+            printf("ry = %f\n",r.y);
             //image_set_pixel(d->mini->img, r.x, r.y, 0x00FF00);
         //}
         r.dist = calc_dst_vector(d->p->vector, r.x, r.y);
-        printf(“dist = %f\n”, r.dist);
+        printf("dist = %f\n", r.dist);
 	//	r.alpha -= M_PI / 3 / d->texture->r[0];
 //	}
 }
@@ -80,6 +80,8 @@ t_vector       calc_next_y(t_radar r)
 {
     t_vector vec_y;
 
+    vec_y.x = r.x;
+ 	vec_y.y = r.y;
     if (sin(r.alpha) < 0)
         vec_y.y = ((int)vec_y.y);
     else
@@ -92,6 +94,8 @@ t_vector       calc_next_x(t_radar r)
 {
     t_vector vec_x;
      
+    vec_x.x = r.x;
+ 	vec_x.y = r.y;
     if (cos(r.alpha) > 0 )
         vec_x.x = ((int)vec_x.x + 1);
     else
