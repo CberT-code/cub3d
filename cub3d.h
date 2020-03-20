@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/20 20:15:58 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/20 20:45:35 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,11 +207,12 @@ t_image					*del_image(t_data *d, t_image *img);
 t_image					*new_image(t_data *d, int w, int h);
 void					image_set_pixel(t_image *image, int x, int y, int color);
 void					draw_circle(int color, t_image *img, t_vector pos, int radius);
-double						calc_dst_vector(t_vector *vector, int actual_x, int actual_y);
+double					calc_dst_vector(t_vector *vector, double actual_x, double actual_y);
  int					refresh_img(t_data *d);
  void					radar(t_data *d);
  void					init_radar(t_radar *r, t_data *d);
  t_vector				calc_next_y(t_radar r);
  t_vector				calc_next_x(t_radar r);
+ t_vector				next_block(double rx, double ry, t_vector *p);
 #endif
 

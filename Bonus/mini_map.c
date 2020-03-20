@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 12:46:15 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/20 20:20:11 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/20 20:31:47 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,6 @@ void		draw_square(t_vector pos, int size, int color, t_image *img)
         }
         y++;
 	}
-}
-
-
-double			calc_dst_vector(t_vector *vector, int actual_x, int actual_y)
-{
-	double dst;
-
-	dst = pow(vector->x - actual_x, 2) + pow(vector->y - actual_y, 2);
-	return (dst);
 }
 
 void		draw_circle(int color, t_image *img, t_vector pos, int radius)

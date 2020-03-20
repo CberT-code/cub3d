@@ -6,7 +6,7 @@
 #    By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 12:20:26 by cbertola          #+#    #+#              #
-#    Updated: 2020/03/20 18:39:48 by cyrillebert      ###   ########.fr        #
+#    Updated: 2020/03/20 20:33:05 by cyrillebert      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRCS		= main.c \
 			move/move_player.c \
 			Bonus/mini_map.c \
 			srcs/image.c \
-			srcs/raycasting.c
+			srcs/raycasting.c \
+			srcs/utils.c
 
 LIBFT		= libft/libft.a
 
