@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 12:46:15 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/20 20:19:40 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/20 20:20:11 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ double			calc_dst_vector(t_vector *vector, int actual_x, int actual_y)
 {
 	double dst;
 
-	dst = sqrt(pow(vector->x - actual_x, 2) + pow(vector->y - actual_y, 2));
+	dst = pow(vector->x - actual_x, 2) + pow(vector->y - actual_y, 2);
 	return (dst);
 }
 
