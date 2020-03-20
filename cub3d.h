@@ -105,11 +105,11 @@ typedef struct			s_player
 typedef struct			s_texture
 {
 	short				bit_texture;
-	t_image				*no_tex;
-	t_image				*so_tex;
-	t_image				*we_tex;
-	t_image				*ea_tex;
-	t_image				*sp_tex;
+	t_image				*no;
+	t_image				*so;
+	t_image				*we;
+	t_image				*ea;
+	t_image				*sp;
 	int					f[3];
 	int					c[3];
 }						t_texture;
@@ -156,7 +156,7 @@ int						num_p2(t_data *d, int j, int h);
 int						fill_int(int bit, char *str, int *tab, short *bit_texture);
 int						check_elem(char *str, t_texture *texture, t_data *d);
 void					full_map(t_map *map);
-void					fill_str(int bit, char *str, t_texture *texture);
+void					fill_str(int bit, char *str, t_texture *texture, t_image *tex);
 void					parsing_elem(char *str, t_data *d);
 void					init_struct(t_data *d);
 void					free_texture(t_data *d);
