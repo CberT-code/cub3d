@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 17:24:01 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/20 19:42:25 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/22 18:26:48 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,18 @@ int		destroy(t_data *d)
 {
 // 	mlx_destroy_image(d->ptr, d->img->image);
 // 	mlx_destroy_image(d->ptr, d->p->img->image);
+//radar_wall(d);
 if (d->mini->display == 0)
 	display_mini(d);
+
+// if (d->mini->display == 1)
+// 	mlx_destroy_image(d->ptr, d->mini->img->image);
  	return (0);
 }
 
 int	key_press(int key, t_data *d)
 {
+	printf("key = %d\n", key);
 	if (key == K_W)
 		move_fb(d, 1);
 	if (key == K_A)
@@ -75,6 +80,7 @@ int main(int argc, char **argv)
 	//	printf(“tab map = %s\n”, d.map->tab_map[i++]);
 	d.ptr = mlx_init();
 	d.win = mlx_new_window(d.ptr, d.r[0], d.r[1], "CUB3D");
+	d.img = new_image(&d, d.r[0], d.r[1]);
 	d.mini->img = new_image(&d, d.map->x_max * d.mini->size, d.map->y_max * d.mini->size);
 	refresh_img(&d);
 	mlx_loop_hook(d.ptr, loop_game, &d);

@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/20 20:45:35 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/24 13:54:08 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@
 #  define K_Q			259
 #  define K_MINUS		27
 #  define K_PLUS		24
+#  define WIDTH_MAX		1094
+#  define HEIGHT_MAX	1024
 
 # define ERROR_NOT_OPEN "Error\nPROGRAM COULD NOT OPEN THE FILE\n"
 # define ERROR_MAP_N_WALL "Error\nThe wall is open on the north side\n"
@@ -68,7 +70,9 @@
 # define ERROR_NO_FILE "Error\nNO FILE FOUND\n"
 # define ERROR_TEXTURE "Error\ntextureENT IS MISSING\n"
 # define ERROR_CALLOC "Error\ncalloc didn't go well\n"
-# define COLOR_PLAYER (int)0x318CE7
+# define SQUARE_EMPTY  		(int)0xFFFFFF
+# define SQUARE_FULL 		(int)0xCBC9C8
+# define COLOR_PLAYER	(int)0x318CE7
 
 typedef struct			s_key
 {
@@ -126,6 +130,7 @@ typedef struct			s_player
 	t_vector			*vector;
 	t_image				*img;
 	double				alpha;
+	int					height;
 	double				move;
 	double 				vitesse;
 	double				vitesse_rot;
@@ -166,13 +171,14 @@ typedef struct			s_data
 typedef struct			s_radar
 {
 	double				b;
-	double				y;
-	double				x;
 	double				t;
 	double				alpha;
 	double				width;
 	double				dist;
-	int					inc;
+	int					touch;
+	t_vector			vec;
+	t_vector			vec_x;
+	t_vector			vec_y;
 }						t_radar;
 
 /* 
@@ -180,6 +186,7 @@ typedef struct			s_radar
 ** 1 = N , 2 = E , 4 = S , 8 = W
 */
 
+ int					refresh_img(t_data *d);
 int						num_p(t_data *d, t_map *map);
 int						num_p2(t_data *d, int j, int h);
 int						fill_int(int bit, char *str, int *tab, short *bit_texture);
@@ -201,18 +208,20 @@ void					parsing(char *doc_map, t_data *d);
 void					move_fb(t_data *d, int i);
 void					move_lr(t_data *d, int i);
 void					draw_mini(t_data *d);
-void					draw_square(t_vector pos, int size, int color, t_image *img);
+void					draw_square_border(t_vector pos, int size, int color, t_image *img);
 void      				display_mini(t_data *d);
 t_image					*del_image(t_data *d, t_image *img);
 t_image					*new_image(t_data *d, int w, int h);
 void					image_set_pixel(t_image *image, int x, int y, int color);
 void					draw_circle(int color, t_image *img, t_vector pos, int radius);
-double					calc_dst_vector(t_vector *vector, double actual_x, double actual_y);
- int					refresh_img(t_data *d);
- void					radar(t_data *d);
  void					init_radar(t_radar *r, t_data *d);
+ void					radar(t_data *d);
+ void					radar_wall(t_data *d);
+ t_vector				next_block(double rx, double ry, t_vector *p);
+double					calc_dst_vector(t_vector *vector, double actual_x, double actual_y);
+ int    				compare_vec(t_vector *start, t_vector end1, t_vector end2, t_vector *recep);
  t_vector				calc_next_y(t_radar r);
  t_vector				calc_next_x(t_radar r);
- t_vector				next_block(double rx, double ry, t_vector *p);
+ void   			    display_wall(t_data *d, double vec, int i);
 #endif
 

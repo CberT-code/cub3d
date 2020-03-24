@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 12:46:15 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/20 20:31:47 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/22 17:58:52 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ void		draw_mini(t_data *d)
         while (pos.x < d->map->x_max)
         {
 	       if (d->map->tab_map[(int)pos.y][(int)pos.x] == '1')
-		        draw_square(pos, d->mini->size, (int)0xCBC9C8, d->mini->img);
+		        draw_square_border(pos, d->mini->size, SQUARE_FULL, d->mini->img);
 	       else
-		        draw_square(pos, d->mini->size, (int)0xFFFFFF, d->mini->img);
+		        draw_square_border(pos, d->mini->size, SQUARE_EMPTY, d->mini->img);
             pos.x += 1;
         }
         pos.y += 1;
     }
 }
 
-void		draw_square(t_vector pos, int size, int color, t_image *img)
+void		draw_square_border(t_vector pos, int size, int color, t_image *img)
 {
     int x;
     int y;

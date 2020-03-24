@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_texture.c                                     :+:      :+:    :+:   */
+/*   parsing_elem.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/19 21:43:13 by cbertola          #+#    #+#             */
-/*   Updated: 2020/02/19 01:30:20 by cbertola         ###   ########.fr       */
+/*   Created: 2020/03/24 13:57:56 by cyrillebert       #+#    #+#             */
+/*   Updated: 2020/03/24 13:58:06 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int			fill_int(int bit, char *str, int *tab, short *bit_texture)
 		if (*str == ',')
 			str++;
 	}
+	tab[0] = tab[0] <= WIDTH_MAX ? tab[0] : WIDTH_MAX ;
+	tab[1] = tab[1] <= HEIGHT_MAX ? tab[1] : HEIGHT_MAX ;
 	*bit_texture = *bit_texture | (1 << bit);
 	return (i);
 }
