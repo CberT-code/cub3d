@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/24 15:31:55 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/24 15:39:28 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void		radar(t_data *d)
 		{
             image_set_pixel(d->mini->img, r.vec.x * d->mini->size, r.vec.y * d->mini->size, (int)0xFF0000);
             if (r.alpha == M_PI_2)
-				r.vec.y = r.vec.y - sin(r.alpha);
+				r.vec.y = r.vec.y - (sin(r.alpha) / d->mini->size);
 			else
 			{
-				r.vec.x = r.vec.x + cos(r.alpha);
+				r.vec.x = r.vec.x + (cos(r.alpha) / d->mini->size);
 				r.vec.y = r.t * r.vec.x + r.b;
 			}
                 //printf("rx = %f, ry = %f\n",r.vec.x, r.vec.y);
