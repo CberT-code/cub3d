@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 12:46:15 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/20 15:53:28 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/24 19:05:33 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,11 @@ void	image_set_pixel(t_image *image, int x, int y, int color)
 {
 	if (!(x < 0 || y < 0 || x >= image->width || y >= image->height))
 		*(image->buffer + (x + y * image->width)) = color;
+}
+
+int		image_get_pixel(t_image *image, int x, int y)
+{
+	if (!(x < 0 || y < 0 || x >= image->width || y >= image->height))
+		return (*(image->buffer + (x + y * image->width)));
+	return (0);
 }

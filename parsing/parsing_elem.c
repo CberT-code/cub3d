@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 13:57:56 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/24 13:58:06 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/24 19:39:39 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,19 +62,27 @@ int			fill_int_rgb(int bit, char *str, unsigned int *rgb, short *bit_texture)
 	return (i);
 }
 
-void		fill_str(int bit, char *str, t_texture *texture, t_image *text)
+void		fill_str(int bit, char *str, t_data *d, t_image *text)
 {
 	int		i;
 	int		j;
 	char	*temp;
+	int fd;
 
 	i = 0;
 	j = 0;
 	while (str[i] == ' ')
 		i++;
-	temp = str + i;
-	//text->image = ;
-	texture->bit_texture = texture->bit_texture | (1 << bit);
+	temp = str + i + 2;
+	printf("temp = %s\n", ft_strjoin("./textures/", temp));
+		text = malloc(sizeof(t_image));
+	if ((fd = open("./textures/tropical.xpm", O_RDONLY)) == -1)
+	 	printf("eroor open\n");
+	 if ((text->image = mlx_xpm_file_to_image(d->ptr,"./textures/tropical.xpm", &text->width, &text->height)) == NULL)
+	 	printf("errooooor\n");
+	//text->buffer = (int *)mlx_get_data_addr(text->image, &text->bpp, &text->size_l, &text->endian);
+	printf("coucou\n");
+	d->texture->bit_texture = d->texture->bit_texture | (1 << bit);
 }
 
 void		parsing_elem(char *str, t_data *d)
@@ -82,15 +90,15 @@ void		parsing_elem(char *str, t_data *d)
 	while (*str == ' ')
 		str++;
 	if 	(!ft_strncmp("NO ", str, 3))
-		fill_str(0, str + 3, d->texture, d->texture->no);
+		fill_str(0, str + 3, d, d->texture->no);
 	if (!ft_strncmp("SO ", str, 3))
-		fill_str(1, str + 3, d->texture, d->texture->so);
+		fill_str(1, str + 3, d, d->texture->so);
 	if (!ft_strncmp("WE ", str, 3))
-		fill_str(2, str + 3, d->texture, d->texture->we);
+		fill_str(2, str + 3, d, d->texture->we);
 	if (!ft_strncmp("EA ", str, 3))
-		fill_str(3, str + 3, d->texture, d->texture->ea);
+		fill_str(3, str + 3, d, d->texture->ea);
 	if (!ft_strncmp("S ", str, 2))
-		fill_str(4, str + 2, d->texture, d->texture->sp);
+		fill_str(4, str + 2, d, d->texture->sp);
 	if (!ft_strncmp("F ", str, 2))
 		fill_int_rgb(5, str + 2, &d->texture->f, &(d->texture->bit_texture));
 	if (!ft_strncmp("C ", str, 2))

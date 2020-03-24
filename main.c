@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 17:24:01 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/24 16:24:05 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/24 19:36:37 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int		destroy(t_data *d)
 radar(d);
 if (d->mini->display == 0)
 	display_mini(d);
-
+//mlx_put_image_to_window(d->ptr, d->win, d->texture->no->image, 0, 0);
+//printf("img = %d\n", d->texture->no->width );
 // if (d->mini->display == 1)
 // 	mlx_destroy_image(d->ptr, d->mini->img->image);
  	return (0);
@@ -48,6 +49,10 @@ int	key_press(int key, t_data *d)
 		move_fb(d, -1);
 	if (key == K_D)
 		move_lr(d, -1);			//move_side
+	if (key == K_UP)
+		d->p->angle_visu += d->p->angle_visu < d->r[1] / 3 ? 10 : 0;			//move_side
+	if (key == K_DOWN)
+		d->p->angle_visu -= d->p->angle_visu > -d->r[1] / 3 ? 10 : 0;				//move_side
 	if (key == K_RIGHT)
 		d->p->alpha += d->p->vitesse_rot;
 	if (key == K_LEFT)
@@ -56,7 +61,7 @@ int	key_press(int key, t_data *d)
 		d->mini->display = !d->mini->display;
 	if (key == K_ESC)
 	 	destroy(d);
-	printf("player position : x %f, y %f, alpha %f\n", d->p->vector->x, d->p->vector->y, d->p->alpha);
+	//printf("player position : x %f, y %f, alpha %f\n", d->p->vector->x, d->p->vector->y, d->p->alpha);
 	refresh_img(d);//ici ca sera update_game
 	return (0);
 }
@@ -68,9 +73,12 @@ int		loop_game(t_data *d)
 	//mlx_hook(d->win, 3, 0, key_release, d);
 	return (0);
 }
+
 int main(int argc, char **argv)
 {
 	t_data			d;
+	int				fd;
+
 	if (argc < 2)
 		return (ft_printf("Error Missing Map\n"));
 	parsing(argv[1], &d);
@@ -81,6 +89,9 @@ int main(int argc, char **argv)
 	d.ptr = mlx_init();
 	d.win = mlx_new_window(d.ptr, d.r[0], d.r[1], "CUB3D");
 	d.img = new_image(&d, d.r[0], d.r[1]);
+
+
+	
 	d.mini->img = new_image(&d, d.map->x_max * d.mini->size, d.map->y_max * d.mini->size);
 	refresh_img(&d);
 	mlx_loop_hook(d.ptr, loop_game, &d);

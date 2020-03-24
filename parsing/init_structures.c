@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 19:39:31 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/24 16:38:49 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/24 18:26:39 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		init_struct(t_data *d)
 		ft_error(ERROR_CALLOC, NULL);
     
     d->p->vitesse = 0.2;
-    d->p->vitesse_rot = -M_PI / 6;
+    d->p->vitesse_rot = -M_PI_2 / 6;
     d->p->height = 0;
     d->mini->size = 10;
     d->mini->display = 0;

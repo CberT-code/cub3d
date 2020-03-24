@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/24 16:48:07 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/24 18:01:57 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,28 @@ void        display_wall(t_data *d, t_radar r, int i)
     int     y;
     int     color;
 
-	 y = 0;
+	y = d->p->angle_visu;
     wall = (d->r[1] / 1.5) / r.dist;
-	top = (d->r[1] - wall) / 2;
-	while (top > 0)
-	{
-        
+	top = ((d->r[1] - wall) / 2) + d->p->angle_visu;
+	while (top-- > 0)
         image_set_pixel(d->img, i, y++, 0x5555FF);
-	 	top--;
-    }
-	while (wall > 0)
+	while (wall-- > 0)
     {
-        if (r.touch == 0)
-            color = d->texture->c;
-        else
-            color = d->texture->f;
+        color = color_wall(r, d);
         image_set_pixel(d->img, i, y++, color);
-	 	wall--;
     }
 	while (y < d->r[1])
         image_set_pixel(d->img, i, y++, 0x005500);
-
 }
 
-double      calc_wall()
+int         color_wall(t_radar r, t_data *d)
 {
-    return (0);
+    if (r.touch == 0 && sin(r.alpha) > 0)
+            return (d->texture->c);
+        else if (r.touch == 0)
+            return (0x00FFFF);
+        else if (cos(r.alpha) > 0)
+            return (d->texture->f);
+        else
+            return (0xF0FF00);
 }

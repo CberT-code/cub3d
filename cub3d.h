@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/24 16:25:06 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/24 18:28:34 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@
 # define ERROR_NO_FILE "Error\nNO FILE FOUND\n"
 # define ERROR_TEXTURE "Error\ntextureENT IS MISSING\n"
 # define ERROR_CALLOC "Error\ncalloc didn't go well\n"
+# define FAIL_TEXTURE "Error\nTexture importation failed\n"
+# define ERROR_MALLOC "Error\nMalloc failed\n"
 # define SQUARE_EMPTY  		(int)0xFFFFFF
 # define SQUARE_FULL 		(int)0xCBC9C8
 # define COLOR_PLAYER	(int)0x318CE7
@@ -134,6 +136,7 @@ typedef struct			s_player
 	double				move;
 	double 				vitesse;
 	double				vitesse_rot;
+	int					angle_visu;
 }						t_p;
 
 typedef struct			s_texture
@@ -193,7 +196,7 @@ int						fill_int(int bit, char *str, int *tab, short *bit_texture);
 int						fill_int_rgb(int bit, char *str, unsigned int *rgb, short *bit_texture);
 int						check_elem(char *str, t_texture *texture, t_data *d);
 void					full_map(t_map *map);
-void					fill_str(int bit, char *str, t_texture *texture, t_image *tex);
+void					fill_str(int bit, char *str, t_data *d, t_image *tex);
 void					parsing_elem(char *str, t_data *d);
 void					init_struct(t_data *d);
 void					free_texture(t_data *d);
@@ -223,5 +226,7 @@ int    					compare_vec(t_vector *start, t_vector end1, t_vector end2, t_vector 
 t_vector				calc_next_y(t_radar r);
 t_vector				calc_next_x(t_radar r);
 void   			 		display_wall(t_data *d, t_radar r, int i);
+int       				color_wall(t_radar r, t_data *d);
+int						image_get_pixel(t_image *image, int x, int y);
 #endif
 
