@@ -6,35 +6,35 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/21 17:47:09 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/24 16:18:10 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void        display_wall(t_data *d, double vec, int i)
+void        display_wall(t_data *d, t_radar r, int i)
 {
 	int     top;
-	double 	op;
+	double 	wall;
 	int		height;
-     int     y;
+    int     y;
 
 	 y = 0;
-    op = (d->r[1] / 1.5) / (int)vec;
-    printf("vec = %f\n",vec);
-	top = d->r[1] - (op + d->p->height);
+    wall = (d->r[1] / 1.5) / (int)r.dist;
+    printf("vec = %f\n",r.dist);
+	top = d->r[1] - (wall + d->p->height);
     printf("r = %d\n",d->r[1]);
-    printf("op = %f\n",op);
+    printf("op = %f\n", wall);
     printf("top = %d\n",top);
 	while (top > 0)
 	{
         image_set_pixel(d->img, i, y++, 0x5555FF);
 	 	top--;
     }
-	while (op > 0)
+	while (wall > 0)
     {
         image_set_pixel(d->img, i, y++, 0xFF5500);
-	 	op--;
+	 	wall--;
     }
 	while (y < d->r[1])
         image_set_pixel(d->img, i, y++, 0x005500);
