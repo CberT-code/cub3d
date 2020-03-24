@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 17:24:01 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/24 19:59:20 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/24 21:17:00 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		destroy(t_data *d)
 radar(d);
 if (d->mini->display == 0)
 	display_mini(d);
-mlx_put_image_to_window(d->ptr, d->win, d->texture->ea->image, 0, 0);
+//mlx_put_image_to_window(d->ptr, d->win, d->texture->no->image, 0, 0);
 //printf("img = %d\n", d->texture->no->width );
 // if (d->mini->display == 1)
 // 	mlx_destroy_image(d->ptr, d->mini->img->image);
@@ -81,12 +81,12 @@ int main(int argc, char **argv)
 
 	if (argc < 2)
 		return (ft_printf("Error Missing Map\n"));
-	parsing(argv[1], &d);
 	// int i;
 	// i = 0;
 	//while (d.map->tab_map[i])
 	//	printf(“tab map = %s\n”, d.map->tab_map[i++]);
 	d.ptr = mlx_init();
+	parsing(argv[1], &d);
 	d.win = mlx_new_window(d.ptr, d.r[0], d.r[1], "CUB3D");
 	d.img = new_image(&d, d.r[0], d.r[1]);
 	d.mini->img = new_image(&d, d.map->x_max * d.mini->size, d.map->y_max * d.mini->size);
