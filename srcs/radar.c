@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/24 16:26:28 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/24 16:41:51 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void		radar(t_data *d)
             r.touch = compare_vec(d->p->vector, r.vec_y, r.vec_x, &r.vec);
             hit = next_block(r.vec.x, r.vec.y, d->p->vector);
         }
-        r.dist = calc_dst_vector(d->p->vector, r.vec.x, r.vec.y);
+        r.dist = sqrt(calc_dst_vector(d->p->vector, r.vec.x, r.vec.y));
         display_wall(d, r, i);
         i++;
 		r.alpha -= M_PI / 3 / d->r[0];
