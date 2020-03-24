@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 13:57:56 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/24 19:39:39 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/24 19:58:05 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,13 @@ void		fill_str(int bit, char *str, t_data *d, t_image *text)
 		i++;
 	temp = str + i + 2;
 	printf("temp = %s\n", ft_strjoin("./textures/", temp));
-		text = malloc(sizeof(t_image));
-	if ((fd = open("./textures/tropical.xpm", O_RDONLY)) == -1)
-	 	printf("eroor open\n");
-	 if ((text->image = mlx_xpm_file_to_image(d->ptr,"./textures/tropical.xpm", &text->width, &text->height)) == NULL)
-	 	printf("errooooor\n");
-	//text->buffer = (int *)mlx_get_data_addr(text->image, &text->bpp, &text->size_l, &text->endian);
-	printf("coucou\n");
+	printf("%d\n",text->height);
+	// if ((fd = open("./textures/tropical.xpm", O_RDONLY)) == -1)
+	//  	printf("eroor open\n");
+	// if ((text->image = mlx_xpm_file_to_image(d->ptr, "./textures/tropical.xpm", &text->width, &text->height)) == NULL)
+	//    	printf("errooooor\n");
+	// text->buffer = (int *)mlx_get_data_addr(text->image, &text->bpp, &text->size_l, &text->endian);
+	// printf("coucou\n");
 	d->texture->bit_texture = d->texture->bit_texture | (1 << bit);
 }
 

@@ -1,9 +1,9 @@
 R 800 400
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
-S ./path_to_the_sprite_texture
+NO ./tropical.xpm
+SO ./tropical.xpm
+WE ./tropical.xpm
+EA ./tropical.xpm
+S ./tropical.xpm
 F 255,100,0
 C 225,30,0
 
