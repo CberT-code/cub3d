@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 17:24:01 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/22 18:26:48 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/24 16:24:05 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		destroy(t_data *d)
 {
 // 	mlx_destroy_image(d->ptr, d->img->image);
 // 	mlx_destroy_image(d->ptr, d->p->img->image);
-//radar_wall(d);
+radar(d);
 if (d->mini->display == 0)
 	display_mini(d);
 

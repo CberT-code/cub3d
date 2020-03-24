@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/24 16:19:27 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/24 16:25:06 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,14 +214,14 @@ t_image					*del_image(t_data *d, t_image *img);
 t_image					*new_image(t_data *d, int w, int h);
 void					image_set_pixel(t_image *image, int x, int y, int color);
 void					draw_circle(int color, t_image *img, t_vector pos, int radius);
- void					init_radar(t_radar *r, t_data *d);
- void					radar(t_data *d);
- void					radar_wall(t_data *d);
- t_vector				next_block(double rx, double ry, t_vector *p);
+void					init_radar(t_radar *r, t_data *d);
+void					radar(t_data *d);
+void					radar_mini(t_data *d);
+t_vector				next_block(double rx, double ry, t_vector *p);
 double					calc_dst_vector(t_vector *vector, double actual_x, double actual_y);
- int    				compare_vec(t_vector *start, t_vector end1, t_vector end2, t_vector *recep);
- t_vector				calc_next_y(t_radar r);
- t_vector				calc_next_x(t_radar r);
- void   			    display_wall(t_data *d, t_radar r, int i);
+int    					compare_vec(t_vector *start, t_vector end1, t_vector end2, t_vector *recep);
+t_vector				calc_next_y(t_radar r);
+t_vector				calc_next_x(t_radar r);
+void   			 		display_wall(t_data *d, t_radar r, int i);
 #endif
 

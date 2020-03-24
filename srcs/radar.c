@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/24 16:17:22 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/24 16:26:28 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void		radar_mini(t_data *d)
 	r.alpha = d->p->alpha + M_PI / 6;
 	while (r.alpha > d->p->alpha - M_PI / 6)
 	{
-        printf("alpha = %f\n",r.alpha * 180 / M_PI);
 		init_radar(&r, d);
 		while (d->map->tab_map[(int)r.vec.y ][(int)r.vec.x] != '1' && r.width)
 		{   
@@ -67,8 +66,6 @@ void		radar(t_data *d)
             hit = next_block(r.vec.x, r.vec.y, d->p->vector);
         }
         r.dist = calc_dst_vector(d->p->vector, r.vec.x, r.vec.y);
-       
-        
         display_wall(d, r, i);
         i++;
 		r.alpha -= M_PI / 3 / d->r[0];
