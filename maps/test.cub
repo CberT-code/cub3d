@@ -1,9 +1,10 @@
 R 1000 1000
-NO ./tropical.xpm
-SO ./tropical.xpm
+
+NO ./pink2.xpm
+SO ./sky_text.xpm
 WE ./tropical.xpm
 EA ./tropical.xpm
-S ./tropical.xpm
+S ./pink2.xpm
 F 255,100,0
 C 225,30,0
 

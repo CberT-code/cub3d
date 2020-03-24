@@ -31,7 +31,7 @@ int		destroy(t_data *d)
 radar(d);
 if (d->mini->display == 0)
 	display_mini(d);
-mlx_put_image_to_window(d->ptr, d->win, d->texture->no->image, 0, 0);
+mlx_put_image_to_window(d->ptr, d->win, d->texture->ea->image, 0, 0);
 //printf("img = %d\n", d->texture->no->width );
 // if (d->mini->display == 1)
 // 	mlx_destroy_image(d->ptr, d->mini->img->image);
@@ -89,11 +89,6 @@ int main(int argc, char **argv)
 	d.ptr = mlx_init();
 	d.win = mlx_new_window(d.ptr, d.r[0], d.r[1], "CUB3D");
 	d.img = new_image(&d, d.r[0], d.r[1]);
-	if ((fd = open("./textures/tropical.xpm", O_RDONLY)) == -1)
-	 	printf("eroor open\n");
-	if ((d.texture->no->image = mlx_xpm_file_to_image(d.ptr, "./textures/tropical.xpm", &d.texture->no->width, &d.texture->no->height)) == NULL)
-	   	printf("errooooor\n");
-	d.texture->no->buffer = (int *)mlx_get_data_addr(d.texture->no->image, &d.texture->no->bpp, &d.texture->no->size_l, &d.texture->no->endian);
 	d.mini->img = new_image(&d, d.map->x_max * d.mini->size, d.map->y_max * d.mini->size);
 	refresh_img(&d);
 	mlx_loop_hook(d.ptr, loop_game, &d);
