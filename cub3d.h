@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/24 13:54:08 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/24 15:24:59 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@
 #  define K_Q			259
 #  define K_MINUS		27
 #  define K_PLUS		24
-#  define WIDTH_MAX		1094
-#  define HEIGHT_MAX	1024
+#  define WIDTH_MAX		3072
+#  define HEIGHT_MAX	1920
 
 # define ERROR_NOT_OPEN "Error\nPROGRAM COULD NOT OPEN THE FILE\n"
 # define ERROR_MAP_N_WALL "Error\nThe wall is open on the north side\n"
