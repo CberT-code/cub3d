@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/25 18:52:49 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/25 18:54:34 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int         color_wall(t_radar r, t_data *d, int i, int wall)
     {
         //color = 0xFF0000;
         //printf("x = %d, y = %d\n", (int)(r.vec.x * size_wall) % size_wall , i % size_wall);
-        color = image_get_pixel(d->texture->no, (int)(r.vec.x * size_wall) % size_wall, (i * 2) % d->texture->no->height);
+        color = image_get_pixel(d->texture->no, (int)(r.vec.x * size_wall) % size_wall, i % size_wall);
         // d->texture->vec.y = vec.y < d->texture->no->height ? vec.y + 1 : 0; 
     }
     else if (r.touch == 0)
