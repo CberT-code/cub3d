@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/24 16:41:51 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/25 17:45:32 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void		init_radar(t_radar *r, t_data *d)
 	r->t = (double)-tan(r->alpha);
 	r->b = r->vec.y - r->t * r->vec.x;
     r->width = d->mini->img->width;
+	r->touch = 0;
 }
 
 void		radar_mini(t_data *d)
@@ -46,6 +47,24 @@ void		radar_mini(t_data *d)
 	}
 }
 
+double		calcul_fisheye(t_data *d)
+{
+	t_radar	r;
+    t_vector hit;
+
+	r.alpha = d->p->alpha;
+	init_radar(&r, d);
+    hit = next_block(r.vec.x, r.vec.y, d->p->vector);
+	while (d->map->tab_map[(int)hit.y][(int)hit.x] != '1')
+		{
+            r.vec_y = calc_next_y(r);
+            r.vec_x = calc_next_x(r);
+            compare_vec(d->p->vector, r.vec_y, r.vec_x, &r.vec);
+            hit = next_block(r.vec.x, r.vec.y, d->p->vector);
+        }
+	return (sqrt(calc_dst_vector(d->p->vector, r.vec.x, r.vec.y))) ;
+}
+
 void		radar(t_data *d)
 {
 	t_radar	r;
@@ -62,11 +81,15 @@ void		radar(t_data *d)
 		{
             r.vec_y = calc_next_y(r);
             r.vec_x = calc_next_x(r);
-            r.touch = compare_vec(d->p->vector, r.vec_y, r.vec_x, &r.vec);
+            if (r.touch != (r.touch = compare_vec(d->p->vector, r.vec_y, r.vec_x, &r.vec)))
+			 {
+				  d->texture->vec.x = 0;
+				  d->texture->vec.y = 0;
+			 }
             hit = next_block(r.vec.x, r.vec.y, d->p->vector);
         }
         r.dist = sqrt(calc_dst_vector(d->p->vector, r.vec.x, r.vec.y));
-        display_wall(d, r, i);
+        display_wall(d, &r, i);
         i++;
 		r.alpha -= M_PI / 3 / d->r[0];
 	}
