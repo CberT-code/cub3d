@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/26 16:43:39 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/26 19:31:32 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 /*
 ** | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 ** |ind| r | c ls| f | S | EA| WE| SO| NO|
-** 0 -> 4 = char **check
+** 0 . 4 = char **check
 ** 5 = int *f
 ** 6 = int *c
 */
@@ -68,7 +68,7 @@
 # define ERROR_P_NO_POS "Error\nNO p POSITION FOUND\n"
 # define ERROR_P_EX_POS "Error\nTOO MANY p POSITION FOUND\n"
 # define ERROR_NO_FILE "Error\nNO FILE FOUND\n"
-# define ERROR_TEXTURE "Error\ntextureENT IS MISSING\n"
+# define ERROR_TEXTURE "Error\nTEXTURE IS MISSING\n"
 # define ERROR_CALLOC "Error\ncalloc didn't go well\n"
 # define FAIL_TEXTURE "Error\nTexture importation failed\n"
 # define ERROR_MALLOC "Error\nMalloc failed\n"
@@ -129,8 +129,8 @@ typedef struct			s_map
 
 typedef struct			s_player
 {
-	t_vector			*vector;
-	t_image				*img;
+	t_vector			vector;
+	t_image				img;
 	double				alpha;
 	int					height;
 	double				move;
@@ -142,11 +142,11 @@ typedef struct			s_player
 typedef struct			s_texture
 {
 	short				bit_texture;
-	t_image				*no;
-	t_image				*so;
-	t_image				*we;
-	t_image				*ea;
-	t_image				*sp;
+	t_image				no;
+	t_image				so;
+	t_image				we;
+	t_image				ea;
+	t_image				sp;
 	t_vector			vec;
 	unsigned int		f;
 	unsigned int		c;
@@ -154,7 +154,7 @@ typedef struct			s_texture
 
 typedef struct			s_mini
 {
-	t_image				*img;
+	t_image				img;
 	int					size;
 	int					display;
 }						t_mini;
@@ -164,12 +164,12 @@ typedef struct			s_data
 	void				*ptr;
 	void				*win;
 	int					r[2];
-	t_texture			*texture;
-	t_image				*img;
-	t_mini				*mini;
-	t_map				*map;
-	t_p					*p;
-	t_move				*m;
+	t_texture			texture;
+	t_image				img;
+	t_mini				mini;
+	t_map				map;
+	t_p					p;
+	t_move				m;
 }						t_data;
 
 typedef struct			s_radar
@@ -191,7 +191,7 @@ typedef struct			s_radar
 ** 1 = N , 2 = E , 4 = S , 8 = W
 */
 
- int					refresh_img(t_data *d);
+int						refresh_img(t_data *d);
 int						num_p(t_data *d, t_map *map);
 int						num_p2(t_data *d, int j, int h);
 int						fill_int(int bit, char *str, int *tab, short *bit_texture);
@@ -215,8 +215,8 @@ void					move_lr(t_data *d, int i);
 void					draw_mini(t_data *d);
 void					draw_square_border(t_vector pos, int size, int color, t_image *img);
 void      				display_mini(t_data *d);
-t_image					*del_image(t_data *d, t_image *img);
-t_image					*new_image(t_data *d, int w, int h);
+void					del_image(t_data *d, t_image *img);
+t_image					new_image(t_data *d, int w, int h);
 void					image_set_pixel(t_image *image, int x, int y, int color);
 void					draw_circle(int color, t_image *img, t_vector pos, int radius);
 void					init_radar(t_radar *r, t_data *d);

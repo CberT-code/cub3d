@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 12:46:15 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/24 16:21:56 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/26 20:27:56 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ void        display_mini(t_data *d)
 {
     t_vector    pos;
 	
-    pos.x = d->p->vector->x * d->mini->size;
-    pos.y = d->p->vector->y * d->mini->size;
+    pos.x = d->p.vector.x * d->mini.size;
+    pos.y = d->p.vector.y * d->mini.size;
     draw_mini(d);
-    draw_circle(COLOR_PLAYER, d->mini->img, pos, d->mini->size/3);
+    draw_circle(COLOR_PLAYER, &d->mini.img, pos, d->mini.size/3);
     radar_mini(d);
-    mlx_put_image_to_window(d->ptr, d->win, d->mini->img->image, 0, 0);
+    mlx_put_image_to_window(d->ptr, d->win, d->mini.img.image, 0, 0);
 }
 
 void		draw_mini(t_data *d)
@@ -29,15 +29,15 @@ void		draw_mini(t_data *d)
     t_vector    pos;
 	
     pos.y = 0;
-    while (pos.y < d->map->y_max)
+    while (pos.y < d->map.y_max)
     {
         pos.x = 0;
-        while (pos.x < d->map->x_max)
+        while (pos.x < d->map.x_max)
         {
-	       if (d->map->tab_map[(int)pos.y][(int)pos.x] == '1')
-		        draw_square_border(pos, d->mini->size, SQUARE_FULL, d->mini->img);
+	       if (d->map.tab_map[(int)pos.y][(int)pos.x] == '1')
+		        draw_square_border(pos, d->mini.size, SQUARE_FULL, &d->mini.img);
 	       else
-		        draw_square_border(pos, d->mini->size, SQUARE_EMPTY, d->mini->img);
+		        draw_square_border(pos, d->mini.size, SQUARE_EMPTY, &d->mini.img);
             pos.x += 1;
         }
         pos.y += 1;

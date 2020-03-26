@@ -1,4 +1,4 @@
-R 800 400
+R 1000 1000
 NO ./pink2.xpm
 SO ./sky_text.xpm
 WE ./tropical.xpm
