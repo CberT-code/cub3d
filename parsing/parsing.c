@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 19:39:31 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/20 13:00:41 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/26 14:52:50 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int			num_p2(t_data *d, int j, int h)
 			d->p->alpha = 0;
 		if (d->map->tab_map[j][h] == 'W')
 			d->p->alpha = M_PI;
+		d->map->tab_map[j][h] = '0';
 		return (1);
 	}
 	return (0);
@@ -78,7 +79,7 @@ int			check_elem(char *str, t_texture *texture, t_data *d)
 		parsing_elem(str, d);
 		return (1);
 	}
-	if (*str == '1')
+	if (*str == '1' || *str == ' ')
 	{
 		i = 1;
 		map_str(str, d->map);

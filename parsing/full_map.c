@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   full_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 19:44:07 by cbertola          #+#    #+#             */
-/*   Updated: 2020/02/18 23:47:03 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/03/26 12:33:40 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,12 @@ void		*check_map(t_data *d)
 
 void		map_str(char *str, t_map *map)
 {
-	int		i;
 	t_lmap	*line;
 	t_lmap	*mouv;
 
-	i = ft_strlen_no_ws(str);
 	line = malloc(sizeof(t_map));
-	line->str = ft_strsubstr(str, " ");
-	line->size = i;
+	line->str = ft_replace(str, ' ', '1');
+	line->size = ft_strlen(line->str);
 	map->tab_line++;
 	line->next = 0;
 	if (!map->line)

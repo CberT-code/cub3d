@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 13:57:56 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/24 21:08:42 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/26 14:51:47 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void		fill_str(int bit, char *str, t_data *d, t_image *text)
 	int		i;
 	int		j;
 	char	*temp;
-	int fd;
+	int		fd;
 
 	i = 0;
 	j = 0;

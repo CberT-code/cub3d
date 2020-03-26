@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/25 17:45:32 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/26 15:05:24 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,6 @@ void		radar_mini(t_data *d)
 	}
 }
 
-double		calcul_fisheye(t_data *d)
-{
-	t_radar	r;
-    t_vector hit;
-
-	r.alpha = d->p->alpha;
-	init_radar(&r, d);
-    hit = next_block(r.vec.x, r.vec.y, d->p->vector);
-	while (d->map->tab_map[(int)hit.y][(int)hit.x] != '1')
-		{
-            r.vec_y = calc_next_y(r);
-            r.vec_x = calc_next_x(r);
-            compare_vec(d->p->vector, r.vec_y, r.vec_x, &r.vec);
-            hit = next_block(r.vec.x, r.vec.y, d->p->vector);
-        }
-	return (sqrt(calc_dst_vector(d->p->vector, r.vec.x, r.vec.y))) ;
-}
-
 void		radar(t_data *d)
 {
 	t_radar	r;
@@ -75,6 +57,7 @@ void		radar(t_data *d)
 	r.alpha = d->p->alpha + M_PI / 6;
 	while (r.alpha > d->p->alpha - M_PI / 6)
 	{
+		r.sprite = 0;
 		init_radar(&r, d);
         hit = next_block(r.vec.x, r.vec.y, d->p->vector);
 		while (d->map->tab_map[(int)hit.y][(int)hit.x] != '1')
@@ -87,9 +70,13 @@ void		radar(t_data *d)
 				  d->texture->vec.y = 0;
 			 }
             hit = next_block(r.vec.x, r.vec.y, d->p->vector);
+			if (d->map->tab_map[(int)hit.y][(int)hit.x] != '1' && d->map->tab_map[(int)hit.y][(int)hit.x] != '0')
+				r.sprite = 1;
         }
         r.dist = sqrt(calc_dst_vector(d->p->vector, r.vec.x, r.vec.y));
         display_wall(d, &r, i);
+		if (r.sprite == 1)
+			sprite();
         i++;
 		r.alpha -= M_PI / 3 / d->r[0];
 	}

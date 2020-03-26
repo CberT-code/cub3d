@@ -1,14 +1,16 @@
 R 800 400
-NO ./tropical.xpm
-SO ./tropical.xpm
+NO ./pink2.xpm
+SO ./sky_text.xpm
 WE ./tropical.xpm
 EA ./tropical.xpm
-S ./tropical.xpm
+S ./virus.xpm
 F 255,100,0
 C 225,30,0
 
-1 1 1 1 1
-1 0 0 0 1
-1 0 S 0 1
-1 0 0 0 1
-1 1 1 1 1
+  11111
+1110001
+1100001
+1002001
+1000001
+100N001
+1111111

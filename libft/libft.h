@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 11:59:00 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/25 13:45:30 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/26 11:16:47 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ char					*ft_strmapi(char const *s,
 						char (*f)(unsigned int, char));
 char					*ft_strnstr(const char *haystack, const char *needle,
 						size_t len);
+char					*ft_replace(char *str, char out, char in);
 int						ft_isalpha(int c);
 int						ft_isdigit(int c);
 int						ft_isalnum(int c);
@@ -100,5 +101,6 @@ void					ft_putendl(char *s);
 void					ft_putnbr(int n);
 void					ft_del(t_list_gnl **lst_one);
 void					ft_new_lst(int fd, t_list_gnl **lst_one);
+
 
 #endif

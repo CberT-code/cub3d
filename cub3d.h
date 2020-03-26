@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/25 17:58:57 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/26 16:43:39 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,7 @@ typedef struct			s_radar
 	double				width;
 	double				dist;
 	int					touch;
+	int					sprite;
 	t_vector			vec;
 	t_vector			vec_x;
 	t_vector			vec_y;
@@ -227,7 +228,7 @@ int    					compare_vec(t_vector *start, t_vector end1, t_vector end2, t_vector 
 t_vector				calc_next_y(t_radar r);
 t_vector				calc_next_x(t_radar r);
 void   			 		display_wall(t_data *d, t_radar *r, int i);
-int       				color_wall(t_radar r, t_data *d, int i, int wall);
+int       				color_wall(t_radar r, t_data *d, double pixel, int wall);
 int						image_get_pixel(t_image *image, int x, int y);
 #endif
 

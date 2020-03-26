@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 17:24:01 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/24 21:17:00 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/26 11:07:28 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,9 @@ int		loop_game(t_data *d)
 int main(int argc, char **argv)
 {
 	t_data			d;
-	int				fd;
+	int				i;
 
+	i = 0;
 	if (argc < 2)
 		return (ft_printf("Error Missing Map\n"));
 	// int i;
@@ -87,6 +88,8 @@ int main(int argc, char **argv)
 	//	printf(“tab map = %s\n”, d.map->tab_map[i++]);
 	d.ptr = mlx_init();
 	parsing(argv[1], &d);
+	while (d.map->tab_map[i])
+		printf("%s\n", d.map->tab_map[i++]);
 	d.win = mlx_new_window(d.ptr, d.r[0], d.r[1], "CUB3D");
 	d.img = new_image(&d, d.r[0], d.r[1]);
 	d.mini->img = new_image(&d, d.map->x_max * d.mini->size, d.map->y_max * d.mini->size);
