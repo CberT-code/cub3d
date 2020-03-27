@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 19:44:07 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/26 20:29:45 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/27 13:37:44 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ void		map_str(char *str, t_map *map)
 		}
 		mouv->next = line;
 	}
-
-	
 }
 
 void		full_map(t_map *map)

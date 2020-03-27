@@ -6,19 +6,12 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 17:24:01 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/26 20:37:55 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/27 16:00:23 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// int		click_mouse(int key)
-// {
-// 	char  i;
-// 	i = key + ‘0’;
-// 	write(1, &i, 1);
-// 	return (0);
-// }
 int		destroy(t_data *d)
 {
 	ft_error_map("Exit\n", d, 3);

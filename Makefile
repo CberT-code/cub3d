@@ -6,7 +6,7 @@
 #    By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 12:20:26 by cbertola          #+#    #+#              #
-#    Updated: 2020/03/24 15:09:19 by cyrillebert      ###   ########.fr        #
+#    Updated: 2020/03/27 13:28:22 by cyrillebert      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,13 @@ SRCS		= main.c \
 			parsing/full_map.c \
 			parsing/error_free.c \
 			parsing/init_structures.c \
-			move/move_player.c \
-			Bonus/mini_map.c \
+			srcs/move_player.c \
 			srcs/image.c \
 			srcs/raycasting.c \
 			srcs/radar.c \
 			srcs/vector.c \
-			srcs/utils.c
+			srcs/utils.c \
+			Bonus/mini_map.c
 
 LIBFT		= libft/libft.a
 
