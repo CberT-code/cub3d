@@ -3,7 +3,7 @@ NO ./pink2.xpm
 SO ./sky_text.xpm
 WE ./tropical.xpm
 EA ./tropical.xpm
-S ./sky_text.xpm
+S ./virus.xpm
 F 255,100,0
 C 225,30,0
 
