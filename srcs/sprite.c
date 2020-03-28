@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 14:39:32 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/28 16:21:09 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/28 16:22:47 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,39 @@ void        init_sprite(t_data *d, char sprite, t_vector hit)
     d->texture.sprite.next = 0;
 }
 
+// void        display_sprite(t_data *d, t_radar *r, int i)
+// {
+//     int     y;
+// 	double 	sprite;
+//     double  j;
+//     double width;
+
+//     j = 0;
+// 	y = d->p.angle_visu;
+//     r->dist = fabs(d->texture.sprite.dist * cos(d->p.alpha - r->alpha));
+//     sprite = fabs((d->r[1]) / d->texture.sprite.dist);
+//     width = fabs((d->r[0]) / d->texture.sprite.diff);
+//     if (width * 2 <= d->texture.sp.width)
+//     {
+// 	    y = ((d->r[1] - sprite) / 2) + d->p.angle_visu;
+// 	    while (sprite-- > 0)
+//         image_set_pixel(&d->img, i, y++, color_sprite(*r, d, j++, fabs((d->r[1]) / r->dist))); 
+//     }
+// }
+
 void        display_sprite(t_data *d, t_radar *r, int i)
 {
-    int     y;
 	double 	sprite;
+    int     y;
     double  j;
     double width;
-
     j = 0;
-	y = d->p.angle_visu;
-    r->dist = fabs(d->texture.sprite.dist * cos(d->p.alpha - r->alpha));
-    sprite = fabs((d->r[1]) / d->texture.sprite.dist);
+    r->dist = fabs(d->texture.sprite.dist * cos(fabs(d->p.alpha - r->alpha)));
+    sprite = fabs((d->r[1]) / r->dist);
     width = fabs((d->r[0]) / d->texture.sprite.diff);
-    if (width * 2 <= d->texture.sp.width)
-    {
-	    y = ((d->r[1] - sprite) / 2) + d->p.angle_visu;
-	    while (sprite-- > 0)
-        image_set_pixel(&d->img, i, y++, color_sprite(*r, d, j++, fabs((d->r[1]) / r->dist))); 
-    }
+    y = ((d->r[1] - sprite) / 2) + d->p.angle_visu;
+    while (sprite-- > 0)
+        image_set_pixel(&d->img, i, y++, color_sprite(*r, d, j++, fabs((d->r[1]) / r->dist)));
 }
 
 int         color_sprite(t_radar r, t_data *d, double pixel, int sprite)
