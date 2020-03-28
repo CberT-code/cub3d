@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 14:39:32 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/28 16:19:32 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/28 16:21:09 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int         color_sprite(t_radar r, t_data *d, double pixel, int sprite)
     i = 0;
     if ((int)sprite > (int)d->r[1] / r.dist)
         i = (sprite - d->r[1]) / 2;
-  
-        color = image_get_pixel(&d->texture.sp, (d->texture.sprite.vec.x - (int)d->texture.sprite.vec.x) * d->texture.sp.width, ((pixel + i) / sprite) * d->texture.sp.height);
+    color = image_get_pixel(&d->texture.sp, (d->texture.sprite.vec.x - (int)d->texture.sprite.vec.x) * d->texture.sp.width, ((pixel + i) / sprite) * d->texture.sp.height);
     return (color);
 }
