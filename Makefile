@@ -6,7 +6,7 @@
 #    By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 12:20:26 by cbertola          #+#    #+#              #
-#    Updated: 2020/03/27 13:28:22 by cyrillebert      ###   ########.fr        #
+#    Updated: 2020/03/28 11:28:18 by cyrillebert      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS		= main.c \
 			srcs/radar.c \
 			srcs/vector.c \
 			srcs/utils.c \
+			srcs/sprite.c \
 			Bonus/mini_map.c
 
 LIBFT		= libft/libft.a

@@ -6,15 +6,15 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/26 17:07:27 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/28 12:44:00 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int    compare_vec(t_vector *start, t_vector end1, t_vector end2, t_vector *recep)
+int    compare_vec(t_vector start, t_vector end1, t_vector end2, t_vector *recep)
 {
-    if (calc_dst_vector(start, end1.x, end1.y) < calc_dst_vector(start, end2.x, end2.y))
+    if (calc_dst_vector(start, end1) < calc_dst_vector(start, end2))
     {
         recep->x = end1.x;
         recep->y = end1.y;

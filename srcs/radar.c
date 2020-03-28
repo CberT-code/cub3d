@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/26 20:27:01 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/28 15:00:34 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,23 @@ void		radar_mini(t_data *d)
 	}
 }
 
+t_vector	next_wall(t_data *d, t_radar *r)
+{
+	t_vector hit;
+
+			r->vec_y = calc_next_y(*r);
+            r->vec_x = calc_next_x(*r);
+            if (r->touch != (r->touch = compare_vec(d->p.vector, r->vec_y, r->vec_x, &r->vec)))
+			 {
+				  d->texture.vec.x = 0;
+				  d->texture.vec.y = 0;
+			 }
+			hit = next_block(r->vec.x, r->vec.y, &d->p.vector);
+			if (d->map.tab_map[(int)hit.y][(int)hit.x] == '2')
+				init_sprite(d, '2', hit);
+			return (hit);
+}
+
 void		radar(t_data *d)
 {
 	t_radar	r;
@@ -59,26 +76,19 @@ void		radar(t_data *d)
 	{
 		r.sprite = 0;
 		init_radar(&r, d);
+		ft_bzero(&d->texture.sprite, sizeof(t_sprite));
         hit = next_block(r.vec.x, r.vec.y, &d->p.vector);
 		while (d->map.tab_map[(int)hit.y][(int)hit.x] != '1')
 		{
-            r.vec_y = calc_next_y(r);
-            r.vec_x = calc_next_x(r);
-            if (r.touch != (r.touch = compare_vec(&d->p.vector, r.vec_y, r.vec_x, &r.vec)))
-			 {
-				  d->texture.vec.x = 0;
-				  d->texture.vec.y = 0;
-			 }
-            hit = next_block(r.vec.x, r.vec.y, &d->p.vector);
-			// if (d->map.tab_map[(int)hit.y][(int)hit.x] != '1' && d->map.tab_map[(int)hit.y][(int)hit.x] != '0')
-			// 	r.sprite = 1;
-        }
-        r.dist = sqrt(calc_dst_vector(&d->p.vector, r.vec.x, r.vec.y));
+			hit = next_wall(d, &r);
+
+		}
+		
+        r.dist = sqrt(calc_dst_vector(d->p.vector, r.vec));
         display_wall(d, &r, i);
-		// if (r.sprite == 1)
-		// 	sprite();
+		if (d->texture.sprite.vec_mid.x != 0)
+			display_sprite(d, &r, i);
         i++;
-		//printf("coucou %f\n", r.alpha);
 		r.alpha -= M_PI / 3 / d->r[0];
 	}
     mlx_put_image_to_window(d->ptr, d->win, d->img.image, 0, 0);

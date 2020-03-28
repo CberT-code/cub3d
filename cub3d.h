@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/27 13:37:24 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/28 15:28:53 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,16 @@ typedef struct			s_vector
 	double				dist;
 }						t_vector;
 
+typedef struct			s_sprite
+{
+	t_vector			vec;
+	t_vector			vec_mid;
+	double				dist;
+	double				diff;
+	char				number;
+	struct s_lmap		*next;
+}						t_sprite;
+
 typedef struct			s_image
 {
 	void				*image;
@@ -148,6 +158,7 @@ typedef struct			s_texture
 	t_image				ea;
 	t_image				sp;
 	t_vector			vec;
+	t_sprite			sprite;
 	unsigned int		f;
 	unsigned int		c;
 }						t_texture;
@@ -223,12 +234,15 @@ void					init_radar(t_radar *r, t_data *d);
 void					radar(t_data *d);
 void					radar_mini(t_data *d);
 t_vector				next_block(double rx, double ry, t_vector *p);
-double					calc_dst_vector(t_vector *vector, double actual_x, double actual_y);
-int    					compare_vec(t_vector *start, t_vector end1, t_vector end2, t_vector *recep);
+double					calc_dst_vector(t_vector vector, t_vector actual);
+int    					compare_vec(t_vector start, t_vector end1, t_vector end2, t_vector *recep);
 t_vector				calc_next_y(t_radar r);
 t_vector				calc_next_x(t_radar r);
 void   			 		display_wall(t_data *d, t_radar *r, int i);
 int       				color_wall(t_radar r, t_data *d, double pixel, int wall);
 int						image_get_pixel(t_image *image, int x, int y);
+void       				init_sprite(t_data *d, char sprite, t_vector hit);
+void        			display_sprite(t_data *d, t_radar *r, int i);
+int      				color_sprite(t_radar r, t_data *d, double pixel, int sprite);
 #endif
 

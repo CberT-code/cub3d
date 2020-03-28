@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 12:46:15 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/26 20:27:56 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/28 12:48:25 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,15 @@ void		draw_circle(int color, t_image *img, t_vector pos, int radius)
 	t_vector		target;
 	t_vector		actual;
 
-    pos.x = pos.x;
-    pos.y = pos.y;
-	target.x = pos.x + radius;
-	target.y = pos.y + radius;
-	actual.x = pos.x - radius;
+	target.x = (int)pos.x + radius;
+	target.y = (int)pos.y + radius;
+	actual.x = (int)pos.x - radius;
 	while (actual.x <= target.x)
 	{
-		actual.y = pos.y - radius;
+		actual.y = (int)pos.y - radius;
 		while (actual.y <= target.y)
 		{
-			if (calc_dst_vector(&pos, (int)actual.x, (int)actual.y) < radius * radius)
+			if (calc_dst_vector(pos, actual) < radius * radius)
                 image_set_pixel(img, actual.x, actual.y, color);
 			actual.y++;
 		}
