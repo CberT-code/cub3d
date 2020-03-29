@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/28 15:00:34 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/29 11:02:16 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void		radar(t_data *d)
 	{
 		r.sprite = 0;
 		init_radar(&r, d);
-		ft_bzero(&d->texture.sprite, sizeof(t_sprite));
+		ft_bzero(&d->sprite, sizeof(t_sprite));
         hit = next_block(r.vec.x, r.vec.y, &d->p.vector);
 		while (d->map.tab_map[(int)hit.y][(int)hit.x] != '1')
 		{
@@ -86,7 +86,7 @@ void		radar(t_data *d)
 		
         r.dist = sqrt(calc_dst_vector(d->p.vector, r.vec));
         display_wall(d, &r, i);
-		if (d->texture.sprite.vec_mid.x != 0)
+		if (d->sprite.vec_mid.x != 0)
 			display_sprite(d, &r, i);
         i++;
 		r.alpha -= M_PI / 3 / d->r[0];

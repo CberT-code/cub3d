@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/28 15:28:53 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/29 12:50:27 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ typedef struct			s_sprite
 	double				dist;
 	double				diff;
 	char				number;
+	double				a;
+	double				b;
 	struct s_lmap		*next;
 }						t_sprite;
 
@@ -158,7 +160,6 @@ typedef struct			s_texture
 	t_image				ea;
 	t_image				sp;
 	t_vector			vec;
-	t_sprite			sprite;
 	unsigned int		f;
 	unsigned int		c;
 }						t_texture;
@@ -181,6 +182,7 @@ typedef struct			s_data
 	t_map				map;
 	t_p					p;
 	t_move				m;
+	t_sprite			sprite;
 }						t_data;
 
 typedef struct			s_radar
