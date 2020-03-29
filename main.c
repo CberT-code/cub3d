@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 17:24:01 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/29 16:02:39 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/29 19:27:26 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		destroy(t_data *d)
 {
-	free_map("Exit\n", d, 3);
+	free_map("Exit\n", d);
 	return (0);
 }
  int		refresh_img(t_data *d)
@@ -74,10 +74,10 @@ int main(int argc, char **argv)
 	i = 0;
 	ft_bzero(&d, sizeof(t_data));
 	if (argc < 2)
-		return (ft_printf("Error Missing Map\n"));
+		return (write(2,"Error \nMissing Map\n", 20));
 	d.ptr = mlx_init();
 	parsing(argv[1], &d);
-	d.win = mlx_new_window(d.ptr, d.r[0], d.r[1], "CUB3D");
+	d.win = mlx_new_window(d.ptr, d.r[0], d.r[1], "CUB3D Coronavirus");
 	d.img = new_image(&d, d.r[0], d.r[1]);
 	d.mini.img = new_image(&d, d.map.x_max * d.mini.size, d.map.y_max * d.mini.size);
 	refresh_img(&d);

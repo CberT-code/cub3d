@@ -6,7 +6,7 @@
 #    By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 12:20:26 by cbertola          #+#    #+#              #
-#    Updated: 2020/03/28 11:28:18 by cyrillebert      ###   ########.fr        #
+#    Updated: 2020/03/29 19:23:31 by cyrillebert      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ re2:		clean
 
 re3:			clean
 			gcc $(CLFAGS) $(MLXFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
-			./$(NAME) maps/test3.cub
+			./$(NAME)
 
 
 .PHONY:		all clean fclean re re2 re3 libft

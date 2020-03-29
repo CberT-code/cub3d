@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 13:57:56 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/26 20:29:30 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/29 19:58:50 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int			fill_int_rgb(int bit, char *str, unsigned int *rgb, short *bit_texture)
 		if (ft_isdigit(*str) <= 255 && ft_isdigit(*str) >= 0)
 			tab[i] = ft_atoi(str);
 		else
-			ft_error(ERROR_COLOR, NULL);
+			ft_error(ERROR_COLOR, NULL, 0);
 		while (ft_isdigit(*str))
 			str++;
 		if (*str == ',')
@@ -75,12 +75,11 @@ void		fill_str(int bit, char *str, t_data *d, t_image *text)
 		i++;
 	temp = str + i + 2;
 	temp = ft_strjoin("./textures/", temp);
-	printf("temp = %s\n", temp);
 	if ((fd = open(temp, O_RDONLY)) == -1)
-	 	printf("eroor open\n");
+	 	ft_error("eroor open\n", d, 0);
 	close(fd);
 	if ((text->image = mlx_xpm_file_to_image(d->ptr, temp, &text->width, &text->height)) == NULL)
-	   	printf("errooooor\n");
+	   	ft_error("errooooor\n", d, 0);
 	text->buffer = (int *)mlx_get_data_addr(text->image, &text->bpp, &text->size_l, &text->endian);
 	d->texture.bit_texture = d->texture.bit_texture | (1 << bit);
 }

@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 19:44:07 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/29 19:01:53 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/29 22:05:09 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ void		check_map2(t_data *d, int j)
 	if (size == (ft_strlen(d->map.tab_map[j - 1]) - 1))
 	{
 		if (d->map.tab_map[j][size] != '1')
-			free_map(ERROR_MAP_E_WALL, d, 3);
+			free_map(ERROR_MAP_E_WALL, d);
 	}
 	else
 	{
 		while (size < (ft_strlen(d->map.tab_map[j - 1]) - 1))
 			if (d->map.tab_map[j - 1][size++] != '1')
-				free_map(ERROR_MAP_N_WALL, d, 3);
+				free_map(ERROR_MAP_N_WALL, d);
 		while (size > (ft_strlen(d->map.tab_map[j - 1]) - 1))
 			if (d->map.tab_map[j][size--] != '1')
-				free_map(ERROR_MAP_S_WALL, d, 3);
+				free_map(ERROR_MAP_S_WALL, d);
 	}
 }
 
@@ -41,25 +41,27 @@ void		*check_map(t_data *d)
 
 	j = 0;
 	if (!(is_tab_full(d->map.tab_map[j], '1')))
-		free_map(ERROR_MAP_N_WALL, d, 3);
+		free_map(ERROR_MAP_N_WALL, d);
 	while (++j < d->map.line_len)
 	{
 		if (d->map.tab_map[j][0] != '1')
-			free_map(ERROR_MAP_W_WALL, d, 3);
+			free_map(ERROR_MAP_W_WALL, d);
 		check_map2(d, j);
 	}
 	if (!(is_tab_full(d->map.tab_map[j], '1')))
-		free_map(ERROR_MAP_S_WALL, d, 3);
+		free_map(ERROR_MAP_S_WALL, d);
 	d->map.y_max = ++j;
 	return (&d->map);
 }
 
-void		map_str(char *str, t_map *map)
+void		map_str(char *str, t_map *map, t_data *d)
 {
 	t_lmap	*line;
 	t_lmap	*mouv;
 
-	line = malloc(sizeof(t_map));
+	if (!(line = malloc(sizeof(t_map))))
+		free_map("MALLOC DIDN'T GO WELL", d);
+
 	line->str = ft_replace(str, ' ', '1');
 	line->size = ft_strlen(line->str);
 	map->tab_line++;

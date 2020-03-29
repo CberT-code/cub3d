@@ -1,8 +1,8 @@
 R 1000 1000
-NO ./pink2.xpm
-SO ./sky_text.xpm
-WE ./tropical.xpm
-EA ./tropical.xpm
+NO ./murouest.xpm
+SO ./murest.xpm
+WE ./murouest.xpm
+EA ./murest.xpm
 S ./sky_text.xpm
 F 255,100,0
 C 225,30,0

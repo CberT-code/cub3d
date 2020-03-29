@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 19:39:31 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/29 15:59:39 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/29 22:05:37 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ int			num_p(t_data *d, t_map *map)
 		j++;
 	}
 	if (i < 1)
-		ft_error(ERROR_P_NO_POS, d);
+		ft_error(ERROR_P_NO_POS, d, 0);
 	if (i > 1)
-		ft_error(ERROR_P_EX_POS, d);
+		ft_error(ERROR_P_EX_POS, d, 0);
 	return (i);
 }
 
@@ -81,7 +81,7 @@ int			check_elem(char *str, t_texture *texture, t_data *d)
 	if (*str == '1' || *str == ' ')
 	{
 		i = 1;
-		map_str(str, &d->map);
+		map_str(str, &d->map, d);
 		return (1);
 	}
 	if (!i)
@@ -95,10 +95,10 @@ void		parsing(char *doc_map, t_data *d)
 	int			fd;
 
 	if (!doc_map || ft_strlen(doc_map) < 4 || ft_strcmp(doc_map + ft_strlen(doc_map) - 4, ".cub"))
-		ft_error(ERROR_NO_FILE, NULL);
+		ft_error(ERROR_NO_FILE, NULL, 0);
 	init_struct(d);
 	if (!(fd = open(doc_map, O_RDONLY)))
-		ft_error(ERROR_NOT_OPEN, NULL);
+		ft_error(ERROR_NOT_OPEN, NULL, 0);
 	while (get_next_line(fd, &line) != 0)
 	{
 		check_elem(line, &d->texture, d);
@@ -107,7 +107,7 @@ void		parsing(char *doc_map, t_data *d)
 	check_elem(line, &d->texture, d);
 	free(line);
 	if (d->texture.bit_texture < 255)
-		ft_error(ERROR_TEXTURE, d);
+		ft_error(ERROR_TEXTURE, d, 0);
 	full_map(&d->map);
 	clear_lstmap(d->map.line);
 	check_map(d);
