@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 19:46:22 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/29 22:17:10 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/29 22:21:57 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void		free_map(char *str, t_data *d)
 	j = 0;
 	while (d->map.tab_map[j])
 		free(d->map.tab_map[j++]);
-	clear_lstmap(d->map.line);
 	ft_error(str, d, 1);
 }
 
