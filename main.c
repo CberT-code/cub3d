@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 17:24:01 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/27 16:00:23 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/29 16:02:39 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		destroy(t_data *d)
 {
-	ft_error_map("Exit\n", d, 3);
+	free_map("Exit\n", d, 3);
 	return (0);
 }
  int		refresh_img(t_data *d)

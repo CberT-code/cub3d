@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/29 12:50:27 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/29 16:01:55 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ typedef struct			s_sprite
 	char				number;
 	double				a;
 	double				b;
-	struct s_lmap		*next;
+	struct s_sprite		*next;
 }						t_sprite;
 
 typedef struct			s_image
@@ -215,7 +215,7 @@ void					fill_str(int bit, char *str, t_data *d, t_image *tex);
 void					parsing_elem(char *str, t_data *d);
 void					init_struct(t_data *d);
 void					free_texture(t_data *d);
-void					*ft_error_map(char *str, t_data *d, int i);
+void					*free_map(char *str, t_data *d, int i);
 void					*ft_error(char *str, t_data *d);
 void					*check_map(t_data *d);
 void					map_str(char *str, t_map *map);
@@ -246,5 +246,6 @@ int						image_get_pixel(t_image *image, int x, int y);
 void       				init_sprite(t_data *d, char sprite, t_vector hit);
 void        			display_sprite(t_data *d, t_radar *r, int i);
 int      				color_sprite(t_radar r, t_data *d, double pixel, int sprite);
+void					clear_lstmap(t_lmap *map);
 #endif
 

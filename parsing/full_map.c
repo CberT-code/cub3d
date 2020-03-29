@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 19:44:07 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/27 13:37:44 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/29 19:01:53 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ void		check_map2(t_data *d, int j)
 	if (size == (ft_strlen(d->map.tab_map[j - 1]) - 1))
 	{
 		if (d->map.tab_map[j][size] != '1')
-			ft_error_map(ERROR_MAP_E_WALL, d, 3);
+			free_map(ERROR_MAP_E_WALL, d, 3);
 	}
 	else
 	{
 		while (size < (ft_strlen(d->map.tab_map[j - 1]) - 1))
 			if (d->map.tab_map[j - 1][size++] != '1')
-				ft_error_map(ERROR_MAP_N_WALL, d, 3);
+				free_map(ERROR_MAP_N_WALL, d, 3);
 		while (size > (ft_strlen(d->map.tab_map[j - 1]) - 1))
 			if (d->map.tab_map[j][size--] != '1')
-				ft_error_map(ERROR_MAP_S_WALL, d, 3);
+				free_map(ERROR_MAP_S_WALL, d, 3);
 	}
 }
 
@@ -41,15 +41,15 @@ void		*check_map(t_data *d)
 
 	j = 0;
 	if (!(is_tab_full(d->map.tab_map[j], '1')))
-		ft_error_map(ERROR_MAP_N_WALL, d, 3);
+		free_map(ERROR_MAP_N_WALL, d, 3);
 	while (++j < d->map.line_len)
 	{
 		if (d->map.tab_map[j][0] != '1')
-			ft_error_map(ERROR_MAP_W_WALL, d, 3);
+			free_map(ERROR_MAP_W_WALL, d, 3);
 		check_map2(d, j);
 	}
 	if (!(is_tab_full(d->map.tab_map[j], '1')))
-		ft_error_map(ERROR_MAP_S_WALL, d, 3);
+		free_map(ERROR_MAP_S_WALL, d, 3);
 	d->map.y_max = ++j;
 	return (&d->map);
 }

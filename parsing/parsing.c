@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 19:39:31 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/26 20:25:29 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/29 15:59:39 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void		parsing(char *doc_map, t_data *d)
 	if (d->texture.bit_texture < 255)
 		ft_error(ERROR_TEXTURE, d);
 	full_map(&d->map);
+	clear_lstmap(d->map.line);
 	check_map(d);
 	num_p(d, &d->map);
 }
