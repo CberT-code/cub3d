@@ -6,20 +6,11 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 19:39:31 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/29 22:05:37 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/30 10:44:09 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-static int	ft_strcmp(const char *s1, const char *s2)
-{
-	int	i;
-	i = 0;
-	while (s1[i] && s2[i] && (s1[i] == s2[i]))
-		i++;
-	return (s1[i] - s2[i]);
-}
 
 int			num_p2(t_data *d, int j, int h)
 {
@@ -108,7 +99,7 @@ void		parsing(char *doc_map, t_data *d)
 	free(line);
 	if (d->texture.bit_texture < 255)
 		ft_error(ERROR_TEXTURE, d, 0);
-	full_map(&d->map);
+	full_map(&d->map, d);
 	clear_lstmap(d->map.line);
 	check_map(d);
 	num_p(d, &d->map);

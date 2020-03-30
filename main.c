@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 17:24:01 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/29 19:27:26 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/29 23:39:11 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,18 @@
 
 int		destroy(t_data *d)
 {
-	free_map("Exit\n", d);
+	ft_error("Exit\n", d, 3);
 	return (0);
 }
  int		refresh_img(t_data *d)
 {
-// 	mlx_destroy_image(d.ptr, d.img.image);
-// 	mlx_destroy_image(d.ptr, d.p.img.image);
 	radar(d);
- if (d->mini.display == 0)
- 	display_mini(d);
-//mlx_put_image_to_window(d.ptr, d.win, d.texture.no.image, 0, 0);
-//printf("img = %d\n", d.texture.no.width );
-// if (d.mini.display == 1)
-// 	mlx_destroy_image(d.ptr, d.mini.img.image);
+	if (d->mini.display == 0)
+		display_mini(d);
+	//mlx_put_image_to_window(d.ptr, d.win, d.texture.no.image, 0, 0);
+	//printf("img = %d\n", d.texture.no.width );
+	// if (d.mini.display == 1)
+	// 	mlx_destroy_image(d.ptr, d.mini.img.image);
  	return (0);
 }
 
@@ -41,20 +39,20 @@ int	key_press(int key, t_data *d)
 	if (key == K_S)
 		move_fb(d, -1);
 	if (key == K_D)
-		move_lr(d, -1);			//move_side
+		move_lr(d, -1);
 	if (key == K_UP)
-		d->p.angle_visu += d->p.angle_visu < d->r[1] / 3 ? 10 : 0;			//move_side
+		d->p.angle_visu += d->p.angle_visu < d->r[1] / 3 ? 10 : 0;
 	if (key == K_DOWN)
-		d->p.angle_visu -= d->p.angle_visu > -d->r[1] / 3 ? 10 : 0;				//move_side
+		d->p.angle_visu -= d->p.angle_visu > -d->r[1] / 3 ? 10 : 0;
 	if (key == K_RIGHT)
 		d->p.alpha += d->p.vitesse_rot;
 	if (key == K_LEFT)
 		d->p.alpha -= d->p.vitesse_rot;
-	if (key == K_M)					//je sais pas ce que cest celui la (je lai pas dans ma liste)
+	if (key == K_M)
 		d->mini.display = !d->mini.display;
 	if (key == K_ESC)
 	 	destroy(d);
-	refresh_img(d);//ici ca sera update_game
+	refresh_img(d);
 	return (0);
 }
 
@@ -77,7 +75,8 @@ int main(int argc, char **argv)
 		return (write(2,"Error \nMissing Map\n", 20));
 	d.ptr = mlx_init();
 	parsing(argv[1], &d);
-	d.win = mlx_new_window(d.ptr, d.r[0], d.r[1], "CUB3D Coronavirus");
+	if ((d.win = mlx_new_window(d.ptr, d.r[0], d.r[1], "CUB3D Coronavirus")) == NULL)
+		ft_error("Error\n Window creation failed", &d, 2);
 	d.img = new_image(&d, d.r[0], d.r[1]);
 	d.mini.img = new_image(&d, d.map.x_max * d.mini.size, d.map.y_max * d.mini.size);
 	refresh_img(&d);

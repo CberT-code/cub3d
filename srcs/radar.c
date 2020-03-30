@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/29 11:02:16 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/30 11:13:10 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void		radar(t_data *d)
         i++;
 		r.alpha -= M_PI / 3 / d->r[0];
 	}
-    mlx_put_image_to_window(d->ptr, d->win, d->img.image, 0, 0);
+    if ((mlx_put_image_to_window(d->ptr, d->win, d->img.image, 0, 0)) == -1)
+		ft_error("Error\nIMage couldn't be display", d, 4);
 }
 

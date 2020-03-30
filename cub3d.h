@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/29 22:08:04 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/30 11:15:11 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,19 @@
 #  define WIDTH_MAX			3072
 #  define HEIGHT_MAX		1920
 
-# define ERROR_NOT_OPEN 	"Error\nPROGRAM COULD NOT OPEN THE FILE\n"
+# define ERROR_NOT_OPEN 	"Error\nProgramme cant open the file\n"
 # define ERROR_MAP_N_WALL 	"Error\nThe wall is open on the north side\n"
 # define ERROR_MAP_W_WALL 	"Error\nThe wall is open on the west side\n"
 # define ERROR_MAP_E_WALL 	"Error\nThe wall is open on the east side\n"
 # define ERROR_MAP_S_WALL 	"Error\nThe wall is open on the south side\n"
-# define ERROR_MAP_NO 		"Error\nNO MAP FOUND\n"
-# define ERROR_COLOR 		"Error\nCOLOR DOESNT\n"
-# define ERROR_MAP 			"Error\n MAP\n"
-# define ERROR_P_NO_POS 	"Error\nNO p POSITION FOUND\n"
-# define ERROR_P_EX_POS 	"Error\nTOO MANY p POSITION FOUND\n"
-# define ERROR_NO_FILE 		"Error\nNO FILE FOUND\n"
-# define ERROR_TEXTURE 		"Error\nTEXTURE IS MISSING\n"
-# define ERROR_CALLOC 		"Error\ncalloc didn't go well\n"
+# define ERROR_MAP_NO 		"Error\nNo map found\n"
+# define ERROR_COLOR 		"Error\nColor doesnt exist\n"
+# define ERROR_MAP 			"Error\nMAP\n"
+# define ERROR_P_NO_POS 	"Error\nNo player position found\n"
+# define ERROR_P_EX_POS 	"Error\nToo many positions for the player\n"
+# define ERROR_NO_FILE 		"Error\nNo file found\n"
+# define ERROR_TEXTURE 		"Error\nTexture is missing\n"
+# define ERROR_CALLOC 		"Error\nCalloc didn't go well\n"
 # define FAIL_TEXTURE 		"Error\nTexture importation failed\n"
 # define ERROR_MALLOC 		"Error\nMalloc failed\n"
 # define SQUARE_EMPTY  		(int)0xFFFFFF
@@ -210,25 +210,24 @@ int							num_p2(t_data *d, int j, int h);
 int							fill_int(int bit, char *str, int *tab, short *bit_texture);
 int							fill_int_rgb(int bit, char *str, unsigned int *rgb, short *bit_texture);
 int							check_elem(char *str, t_texture *texture, t_data *d);
-void						full_map(t_map *map);
-void						fill_str(int bit, char *str, t_data *d, t_image *tex);
+void						fill_str(int bit, char *str, t_data *d, t_image *img);
 void						parsing_elem(char *str, t_data *d);
 void						init_struct(t_data *d);
 void						free_texture(t_data *d);
-void						free_map(char *str, t_data *d);
+void						free_map(t_data *d);
 void						*ft_error(char *str, t_data *d, int i);
 void						*check_map(t_data *d);
 void						map_str(char *str, t_map *map, t_data *d);
 void						*check_map(t_data *d);
 void						check_map2(t_data *d, int j);
-void						full_map(t_map *map);
+void						full_map(t_map *map, t_data *d);
 void						parsing(char *doc_map, t_data *d);
 void						move_fb(t_data *d, int i);
 void						move_lr(t_data *d, int i);
 void						draw_mini(t_data *d);
 void						draw_square_border(t_vector pos, int size, int color, t_image *img);
 void    	  				display_mini(t_data *d);
-void						del_image(t_data *d, t_image *img);
+void						del_image(t_data *d, t_image img);
 t_image						new_image(t_data *d, int w, int h);
 void						image_set_pixel(t_image *image, int x, int y, int color);
 void						draw_circle(int color, t_image *img, t_vector pos, int radius);

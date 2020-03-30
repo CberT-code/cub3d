@@ -6,25 +6,48 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 19:46:22 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/29 22:21:57 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/30 11:09:06 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void		free_map(char *str, t_data *d)
+void		free_map(t_data *d)
 {
 	int j;
 
 	j = 0;
 	while (d->map.tab_map[j])
 		free(d->map.tab_map[j++]);
-	ft_error(str, d, 1);
+}
+
+void		free_texture(t_data *d)
+{
+	if (d->texture.bit_texture & (1 << 0))
+		mlx_destroy_image(d->ptr, d->texture.no.image);
+	if (d->texture.bit_texture & (1 << 1))
+	mlx_destroy_image(d->ptr, d->texture.so.image);
+	if (d->texture.bit_texture & (1 << 2))
+	mlx_destroy_image(d->ptr, d->texture.we.image);
+	if (d->texture.bit_texture & (1 << 3))
+	mlx_destroy_image(d->ptr, d->texture.ea.image);
+	if (d->texture.bit_texture & (1 << 4))
+	mlx_destroy_image(d->ptr, d->texture.sp.image);
 }
 
 void		*ft_error(char *str, t_data *d, int i)
 {
-	write(2, "error\n", 6);
+	if (i >= 5)
+		del_image(d, d->mini.img);
+	if (i >= 4)
+		del_image(d, d->img);
+	if (i >= 3)
+		mlx_destroy_image(d->ptr, d->img.image);
+	if (i >= 2)
+		mlx_destroy_window(d->ptr, d->win);
+	if (i >= 1)
+		free_map(d);
+	free_texture(d);
 	write(2, str, ft_strlen(str) + 1);
 	free(d->ptr);
 	exit(0);

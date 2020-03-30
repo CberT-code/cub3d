@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 13:57:56 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/29 19:58:50 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/30 11:09:30 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int			fill_int_rgb(int bit, char *str, unsigned int *rgb, short *bit_texture)
 	return (i);
 }
 
-void		fill_str(int bit, char *str, t_data *d, t_image *text)
+void		fill_str(int bit, char *str, t_data *d, t_image *img)
 {
 	int		i;
 	int		j;
@@ -74,13 +74,16 @@ void		fill_str(int bit, char *str, t_data *d, t_image *text)
 	while (str[i] == ' ')
 		i++;
 	temp = str + i + 2;
+	if (ft_strcmp(temp + ft_strlen(temp) - 4, ".xpm"))
+		ft_error("Error\nTexture is not an .xpm\n", d, 0);
 	temp = ft_strjoin("./textures/", temp);
 	if ((fd = open(temp, O_RDONLY)) == -1)
-	 	ft_error("eroor open\n", d, 0);
+	 	ft_error("Error\nTexture couldn't be find\n", d, 0);
 	close(fd);
-	if ((text->image = mlx_xpm_file_to_image(d->ptr, temp, &text->width, &text->height)) == NULL)
-	   	ft_error("errooooor\n", d, 0);
-	text->buffer = (int *)mlx_get_data_addr(text->image, &text->bpp, &text->size_l, &text->endian);
+	if ((img->image = mlx_xpm_file_to_image(d->ptr, temp, &img->width, &img->height)) == NULL)
+	   	ft_error("Error\nTexture to image didn't work\n", d, 0);
+	free(temp);
+	img->buffer = (int *)mlx_get_data_addr(img->image, &img->bpp, &img->size_l, &img->endian);
 	d->texture.bit_texture = d->texture.bit_texture | (1 << bit);
 }
 
