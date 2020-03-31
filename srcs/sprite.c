@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 14:39:32 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/29 13:59:57 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/03/30 11:40:22 by cyrillebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void        display_sprite(t_data *d, t_radar *r, int i)
     int color;
     j = 0;
     r->dist = fabs(d->sprite.dist * cos(d->p.alpha - r->alpha));
-    sprite = fabs((d->r[1]) / d->sprite.dist);
+    sprite = fabs(((d->r[1]) * 2) / d->sprite.dist);
     width = d->sprite.diff;
-    y = ((d->r[1] - sprite) / 2) + d->p.angle_visu;
+    y = ((d->r[1] - sprite / 2) / 2) + d->p.angle_visu;
     while (sprite-- > 0)
     {
         color = color_sprite(*r, d, j++, sprite);
@@ -55,13 +55,7 @@ int         color_sprite(t_radar r, t_data *d, double pixel, int sprite)
     double b;
 
     i = 0;
-    // if ((int)sprite > (int)d->r[1] / r.dist)
-    //     i = (sprite - d->r[1]) / 2;
 
-//printf("sin = %f \n cos = %f\n", sin(r.alpha), cos(r.alpha));
-    // if (sin(r.alpha) > 0 && cos(r.alpha) > 0 )
-    //     color = image_get_pixel(&d->texture.sp, (fabs(d->sprite.vec.x - (int)d->sprite.vec.x - 1)) * (d->texture.sp.width), ((pixel + i) / sprite) * d->texture.sp.height);
-    // else 
     if ( (a = d->sprite.vec.x - (int)d->sprite.vec.x) > d->sprite.a)
         d->sprite.a = a;
     if ((b = d->sprite.vec.y - (int)d->sprite.vec.y) > d->sprite.b)
