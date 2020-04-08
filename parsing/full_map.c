@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 19:44:07 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/29 23:32:27 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/04/08 19:16:41 by cyrillebe        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void		map_str(char *str, t_map *map, t_data *d)
 
 	if (!(line = malloc(sizeof(t_map))))
 		ft_error("Error\n MALLOC DIDN'T GO WELL", d, 0);
-
 	line->str = ft_replace(str, ' ', '1');
 	line->size = ft_strlen(line->str);
 	map->tab_line++;

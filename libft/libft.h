@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 11:59:00 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/30 10:46:13 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/04/08 20:03:57 by cyrillebe        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,4 @@ void					ft_putnbr(int n);
 void					ft_del(t_list_gnl **lst_one);
 void					ft_new_lst(int fd, t_list_gnl **lst_one);
 int						ft_strcmp(const char *s1, const char *s2);
-
-
 #endif

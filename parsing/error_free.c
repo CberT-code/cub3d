@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 19:46:22 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/30 11:09:06 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/04/08 19:17:06 by cyrillebe        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ void		free_texture(t_data *d)
 	if (d->texture.bit_texture & (1 << 0))
 		mlx_destroy_image(d->ptr, d->texture.no.image);
 	if (d->texture.bit_texture & (1 << 1))
-	mlx_destroy_image(d->ptr, d->texture.so.image);
+		mlx_destroy_image(d->ptr, d->texture.so.image);
 	if (d->texture.bit_texture & (1 << 2))
-	mlx_destroy_image(d->ptr, d->texture.we.image);
+		mlx_destroy_image(d->ptr, d->texture.we.image);
 	if (d->texture.bit_texture & (1 << 3))
-	mlx_destroy_image(d->ptr, d->texture.ea.image);
+		mlx_destroy_image(d->ptr, d->texture.ea.image);
 	if (d->texture.bit_texture & (1 << 4))
-	mlx_destroy_image(d->ptr, d->texture.sp.image);
+		mlx_destroy_image(d->ptr, d->texture.sp.image);
 }
 
 void		*ft_error(char *str, t_data *d, int i)

@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/03/30 11:15:11 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/04/08 20:05:17 by cyrillebe        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,35 +27,35 @@
 ** 6 = int *c
 */
 
-#  define K_ESC				53
-#  define K_COMM			12
-#  define K_NUM_MULT		67
-#  define K_NUM_DIV			75
-#  define K_NUM_PLUS		69
-#  define K_NUM_MINUS		78
-#  define K_NUM_ENTER		76
-#  define K_NUM_0			82
-#  define K_UP				126
-#  define K_DOWN			125
-#  define K_LEFT			123
-#  define K_RIGHT			124
-#  define K_DIGIT_0			29
-#  define K_DIGIT_1			18
-#  define K_DIGIT_7			26
-#  define K_DIGIT_8			28
-#  define K_DIGIT_9			25
-#  define K_A				0
-#  define K_S				1
-#  define K_D				2
-#  define K_W				13
-#  define K_E				14
-#  define K_L				37
-#  define K_M				46
-#  define K_Q				259
-#  define K_MINUS			27
-#  define K_PLUS			24
-#  define WIDTH_MAX			3072
-#  define HEIGHT_MAX		1920
+# define K_ESC				53
+# define K_COMM			12
+# define K_NUM_MULT		67
+# define K_NUM_DIV			75
+# define K_NUM_PLUS		69
+# define K_NUM_MINUS		78
+# define K_NUM_ENTER		76
+# define K_NUM_0			82
+# define K_UP				126
+# define K_DOWN			125
+# define K_LEFT			123
+# define K_RIGHT			124
+# define K_DIGIT_0			29
+# define K_DIGIT_1			18
+# define K_DIGIT_7			26
+# define K_DIGIT_8			28
+# define K_DIGIT_9			25
+# define K_A				0
+# define K_S				1
+# define K_D				2
+# define K_W				13
+# define K_E				14
+# define K_L				37
+# define K_M				46
+# define K_Q				259
+# define K_MINUS			27
+# define K_PLUS			24
+# define WIDTH_MAX			3072
+# define HEIGHT_MAX		1920
 
 # define ERROR_NOT_OPEN 	"Error\nProgramme cant open the file\n"
 # define ERROR_MAP_N_WALL 	"Error\nThe wall is open on the north side\n"
@@ -72,9 +72,9 @@
 # define ERROR_CALLOC 		"Error\nCalloc didn't go well\n"
 # define FAIL_TEXTURE 		"Error\nTexture importation failed\n"
 # define ERROR_MALLOC 		"Error\nMalloc failed\n"
-# define SQUARE_EMPTY  		(int)0xFFFFFF
-# define SQUARE_FULL 		(int)0xCBC9C8
-# define COLOR_PLAYER		(int)0x318CE7
+# define SQUARE_EMPTY		0xFFFFFF
+# define SQUARE_FULL		0xCBC9C8
+# define COLOR_PLAYER		0x318CE7
 
 typedef struct				s_key
 {
@@ -146,7 +146,7 @@ typedef struct				s_player
 	double					alpha;
 	int						height;
 	double					move;
-	double	 				vitesse;
+	double					vitesse;
 	double					vitesse_rot;
 	int						angle_visu;
 }							t_p;
@@ -199,7 +199,7 @@ typedef struct				s_radar
 	t_vector				vec_y;
 }							t_radar;
 
-/* 
+/*
 ** Position :
 ** 1 = N , 2 = E , 4 = S , 8 = W
 */
@@ -207,10 +207,14 @@ typedef struct				s_radar
 int							refresh_img(t_data *d);
 int							num_p(t_data *d, t_map *map);
 int							num_p2(t_data *d, int j, int h);
-int							fill_int(int bit, char *str, int *tab, short *bit_texture);
-int							fill_int_rgb(int bit, char *str, unsigned int *rgb, short *bit_texture);
-int							check_elem(char *str, t_texture *texture, t_data *d);
-void						fill_str(int bit, char *str, t_data *d, t_image *img);
+int							fill_int(int bit, char *str, int *tab,
+		short *bit_texture);
+int							fill_int_rgb(int bit, char *str, unsigned int *rgb,
+		short *bit_texture);
+int							check_elem(char *str, t_texture *texture,
+		t_data *d);
+void						fill_str(int bit, char *str, t_data *d,
+		t_image *img);
 void						parsing_elem(char *str, t_data *d);
 void						init_struct(t_data *d);
 void						free_texture(t_data *d);
@@ -225,26 +229,31 @@ void						parsing(char *doc_map, t_data *d);
 void						move_fb(t_data *d, int i);
 void						move_lr(t_data *d, int i);
 void						draw_mini(t_data *d);
-void						draw_square_border(t_vector pos, int size, int color, t_image *img);
-void    	  				display_mini(t_data *d);
+void						draw_square_border(t_vector pos, int size,
+		int color, t_image *img);
+void						display_mini(t_data *d);
 void						del_image(t_data *d, t_image img);
 t_image						new_image(t_data *d, int w, int h);
-void						image_set_pixel(t_image *image, int x, int y, int color);
-void						draw_circle(int color, t_image *img, t_vector pos, int radius);
+void						image_set_pixel(t_image *image, int x, int y,
+		int color);
+void						draw_circle(int color, t_image *img, t_vector pos,
+		int radius);
 void						init_radar(t_radar *r, t_data *d);
 void						radar(t_data *d);
 void						radar_mini(t_data *d);
 t_vector					next_block(double rx, double ry, t_vector *p);
 double						calc_dst_vector(t_vector vector, t_vector actual);
-int    						compare_vec(t_vector start, t_vector end1, t_vector end2, t_vector *recep);
+int							compare_vec(t_vector start, t_vector end1,
+		t_vector end2, t_vector *recep);
 t_vector					calc_next_y(t_radar r);
 t_vector					calc_next_x(t_radar r);
-void   				 		display_wall(t_data *d, t_radar *r, int i);
-int       					color_wall(t_radar r, t_data *d, double pixel, int wall);
+void						display_wall(t_data *d, t_radar *r, int i);
+int							color_wall(t_radar r, t_data *d, double pixel,
+		int wall);
 int							image_get_pixel(t_image *image, int x, int y);
-void	       				init_sprite(t_data *d, char sprite, t_vector hit);
-void    	    			display_sprite(t_data *d, t_radar *r, int i);
-int      					color_sprite(t_radar r, t_data *d, double pixel, int sprite);
+void						init_sprite(t_data *d, char sprite, t_vector hit);
+void						display_sprite(t_data *d, t_radar *r, int i);
+int							color_sprite(t_radar r, t_data *d, double pixel,
+		int sprite);
 void						clear_lstmap(t_lmap *map);
 #endif
-

@@ -6,7 +6,7 @@
 /*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 13:57:56 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/03/30 11:09:30 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/04/08 19:19:34 by cyrillebe        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,14 @@ int			fill_int(int bit, char *str, int *tab, short *bit_texture)
 		if (*str == ',')
 			str++;
 	}
-	tab[0] = tab[0] <= WIDTH_MAX ? tab[0] : WIDTH_MAX ;
-	tab[1] = tab[1] <= HEIGHT_MAX ? tab[1] : HEIGHT_MAX ;
+	tab[0] = tab[0] <= WIDTH_MAX ? tab[0] : WIDTH_MAX;
+	tab[1] = tab[1] <= HEIGHT_MAX ? tab[1] : HEIGHT_MAX;
 	*bit_texture = *bit_texture | (1 << bit);
 	return (i);
 }
 
-int			fill_int_rgb(int bit, char *str, unsigned int *rgb, short *bit_texture)
+int			fill_int_rgb(int bit, char *str,
+		unsigned int *rgb, short *bit_texture)
 {
 	int		tab[3];
 	int		i;
@@ -78,12 +79,14 @@ void		fill_str(int bit, char *str, t_data *d, t_image *img)
 		ft_error("Error\nTexture is not an .xpm\n", d, 0);
 	temp = ft_strjoin("./textures/", temp);
 	if ((fd = open(temp, O_RDONLY)) == -1)
-	 	ft_error("Error\nTexture couldn't be find\n", d, 0);
+		ft_error("Error\nTexture couldn't be find\n", d, 0);
 	close(fd);
-	if ((img->image = mlx_xpm_file_to_image(d->ptr, temp, &img->width, &img->height)) == NULL)
-	   	ft_error("Error\nTexture to image didn't work\n", d, 0);
+	if ((img->image = mlx_xpm_file_to_image(d->ptr, temp,
+					&img->width, &img->height)) == NULL)
+		ft_error("Error\nTexture to image didn't work\n", d, 0);
 	free(temp);
-	img->buffer = (int *)mlx_get_data_addr(img->image, &img->bpp, &img->size_l, &img->endian);
+	img->buffer = (int *)mlx_get_data_addr(img->image, &img->bpp,
+			&img->size_l, &img->endian);
 	d->texture.bit_texture = d->texture.bit_texture | (1 << bit);
 }
 
@@ -91,7 +94,7 @@ void		parsing_elem(char *str, t_data *d)
 {
 	while (*str == ' ')
 		str++;
-	if 	(!ft_strncmp("NO ", str, 3))
+	if (!ft_strncmp("NO ", str, 3))
 		fill_str(0, str + 3, d, &d->texture.no);
 	if (!ft_strncmp("SO ", str, 3))
 		fill_str(1, str + 3, d, &d->texture.so);
