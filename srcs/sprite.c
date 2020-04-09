@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprite.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
+/*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 14:39:32 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/04/08 19:26:59 by cyrillebe        ###   ########.fr       */
+/*   Updated: 2020/04/09 19:20:26 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,18 @@ int			color_sprite(t_radar r, t_data *d, double pixel, int sprite)
 	if ((b = d->sprite.vec.y - (int)d->sprite.vec.y) > d->sprite.b)
 		d->sprite.b = b;
 	if (sin(r.alpha) > 0)
-		color = image_get_pixel(&d->texture.sp, a * d->texture.sp.width,
+		color = image_get_pixel(&d->texture.sp, (pixel + i) / sprite * d->texture.sp.width,
 				((pixel + i) / sprite) * d->texture.sp.height);
 	else if (cos(r.alpha) > 0)
-		color = image_get_pixel(&d->texture.sp, b * d->texture.sp.width,
+		color = image_get_pixel(&d->texture.sp, (pixel + i) / sprite * d->texture.sp.width,
 				((pixel + i) / sprite) * d->texture.sp.height);
 	else if (cos(r.alpha) > sin(r.alpha))
 		color = image_get_pixel(&d->texture.sp,
-				fabs(d->sprite.a + d->sprite.b) * d->texture.sp.width,
+				(pixel + i) / sprite * d->texture.sp.width,
 				((pixel + i) / sprite) * d->texture.sp.height);
 	else
 		color = image_get_pixel(&d->texture.sp,
-				fabs(d->sprite.a - d->sprite.b) * d->texture.sp.width,
+				(pixel + i) / sprite * d->texture.sp.width,
 				((pixel + i) / sprite) * d->texture.sp.height);
 	if (color == -16777216)
 		color = 0;

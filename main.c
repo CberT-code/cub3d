@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
+/*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/13 17:24:01 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/08 19:05:18 by cyrillebe        ###   ########.fr       */
+/*   Created: 2020/04/09 15:20:15 by cbertola          #+#    #+#             */
+/*   Updated: 2020/04/09 15:20:24 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

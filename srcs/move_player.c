@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
+/*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:46:34 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/08 19:29:26 by cyrillebe        ###   ########.fr       */
+/*   Updated: 2020/04/09 16:39:13 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

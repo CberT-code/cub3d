@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_structures.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
+/*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 19:39:31 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/08 19:15:49 by cyrillebe        ###   ########.fr       */
+/*   Updated: 2020/04/09 16:41:43 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
