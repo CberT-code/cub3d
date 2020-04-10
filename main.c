@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 15:20:15 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/09 15:20:24 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/10 13:38:33 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,6 @@ int		main(int argc, char **argv)
 	d.mini.img = new_image(&d, d.map.x_max * d.mini.size,
 			d.map.y_max * d.mini.size);
 	refresh_img(&d);
-	mlx_loop_hook(d.ptr, loop_game, &d);
+	//mlx_loop_hook(d.ptr, loop_game, &d);
 	mlx_loop(d.ptr);
 }

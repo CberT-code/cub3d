@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   radar.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
+/*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/04/08 19:31:52 by cyrillebe        ###   ########.fr       */
+/*   Updated: 2020/04/09 22:01:22 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
