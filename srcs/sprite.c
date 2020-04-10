@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 14:39:32 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/04/10 16:27:27 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/10 16:35:09 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		init_sprite(t_data *d, char sprite, t_vector hit, t_radar *r)
 	d->sprite.alpha = r->alpha;
 }
 
-void		display_sprite(t_data *d, t_radar *r, int i)
+void		display_sprite(t_data *d, int i)
 {
 	double	sprite;
 	int		y;
@@ -35,12 +35,12 @@ void		display_sprite(t_data *d, t_radar *r, int i)
 
 	j = 0;
 
-	d->sprite.dist = fabs(d->sprite.dist * cos(d->p.alpha - r->alpha));
+	d->sprite.dist = fabs(d->sprite.dist * cos(d->p.alpha - d->sprite.alpha));
 	sprite = d->sprite.dist > 1 ? fabs((d->r[1]) / d->sprite.dist) : d->r[1]; //hauteur
 	y = ((d->r[1] - sprite) / 2) + d->p.angle_visu; // placement du sprite
 	while (sprite-- > 0)
 	{
-		color = color_sprite(*r, d, j++, sprite);
+		color = color_sprite(d, j++, sprite);
 		//color = 0xff00ff;
 
 			image_set_pixel(&d->img, i, y, color);
@@ -49,13 +49,13 @@ void		display_sprite(t_data *d, t_radar *r, int i)
 	d->sprite.col++;
 }
 
-int			color_sprite(t_radar r, t_data *d, double pixel, int sprite)
+int			color_sprite(t_data *d, double pixel, int sprite)
 {
 	int		color;
 
 	//printf("%f\n",d->sprite.col / sprite);
 	//printf("test 2 = %f\n",(pixel / sprite));
-	if (sin(r.alpha) > 0)
+	if (sin(d->sprite.alpha) > 0)
 		color = image_get_pixel(&d->texture.sp, (d->sprite.col / sprite) * d->texture.sp.width,
 				(pixel / sprite) * d->texture.sp.height);
 	// else if (cos(r.alpha) > 0)

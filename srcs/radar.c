@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/04/10 16:27:49 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/10 16:34:29 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void		radar(t_data *d)
 		r.dist = sqrt(calc_dst_vector(d->p.vector, r.vec));
 		display_wall(d, &r, i);
 		if (d->sprite.vec_mid.x != 0)
-			display_sprite(d, &r, i);
+			display_sprite(d, i);
 		i++;
 		r.alpha -= M_PI / 3 / d->r[0];
 	}

@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/10 16:27:38 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/10 16:33:54 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,8 +253,8 @@ int							color_wall(t_radar r, t_data *d, double pixel,
 		int wall);
 int							image_get_pixel(t_image *image, int x, int y);
 void						init_sprite(t_data *d, char sprite, t_vector hit, t_radar *r);
-void						display_sprite(t_data *d, t_radar *r, int i);
-int							color_sprite(t_radar r, t_data *d, double pixel,
+void						display_sprite(t_data *d, int i);
+int							color_sprite(t_data *d, double pixel,
 		int sprite);
 void						clear_lstmap(t_lmap *map);
 #endif

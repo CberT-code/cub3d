@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/04/10 12:43:21 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/10 16:31:27 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		display_wall(t_data *d, t_radar *r, int i)
 
 	j = 0;
 	y = d->p.angle_visu;
-	r->dist = fabs(r->dist * cos(fabs(d->p.alpha - r->alpha)));
+	r->dist = fabs(r->dist * cos(d->p.alpha - r->alpha));
 	wall = r->dist > 1 ? fabs((d->r[1]) / r->dist) : d->r[1];
 	top = wall > d->r[1] ? 0 : ((d->r[1] - wall) / 2) + d->p.angle_visu;
 	while (top-- > 0)
