@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/04/09 22:01:22 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/10 16:27:49 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_vector	next_wall(t_data *d, t_radar *r)
 	}
 	hit = next_block(r->vec.x, r->vec.y, &d->p.vector);
 	if (d->map.tab_map[(int)hit.y][(int)hit.x] == '2')
-		init_sprite(d, '2', hit);
+		init_sprite(d, '2', hit, r);
 	return (hit);
 }
 

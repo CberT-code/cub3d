@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/10 12:45:06 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/10 16:27:38 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,11 @@ typedef struct				s_sprite
 	t_vector				vec;
 	t_vector				vec_mid;
 	double					dist;
-	double					diff;
 	char					number;
-	double						col;
+	double					col;
 	double					a;
 	double					b;
+	double					alpha;
 	struct s_sprite			*next;
 }							t_sprite;
 
@@ -252,7 +252,7 @@ void						display_wall(t_data *d, t_radar *r, int i);
 int							color_wall(t_radar r, t_data *d, double pixel,
 		int wall);
 int							image_get_pixel(t_image *image, int x, int y);
-void						init_sprite(t_data *d, char sprite, t_vector hit);
+void						init_sprite(t_data *d, char sprite, t_vector hit, t_radar *r);
 void						display_sprite(t_data *d, t_radar *r, int i);
 int							color_sprite(t_radar r, t_data *d, double pixel,
 		int sprite);
