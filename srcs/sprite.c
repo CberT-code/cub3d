@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 14:39:32 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/04/10 16:35:09 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/10 16:36:23 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void		display_sprite(t_data *d, int i)
 	double	sprite;
 	int		y;
 	double	j;
-	double	width;
 	int		color;
 
 	j = 0;
