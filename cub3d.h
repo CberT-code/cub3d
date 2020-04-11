@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/10 16:33:54 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/10 17:52:19 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,12 @@ typedef struct				s_sprite
 	t_vector				vec;
 	t_vector				vec_mid;
 	double					dist;
-	char					number;
+	char					type;
 	double					col;
 	double					a;
 	double					b;
 	double					alpha;
+	double					touch;
 	struct s_sprite			*next;
 }							t_sprite;
 

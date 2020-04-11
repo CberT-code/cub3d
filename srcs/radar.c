@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/04/10 16:34:29 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/10 17:54:36 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,7 @@ t_vector	next_wall(t_data *d, t_radar *r)
 
 	r->vec_y = calc_next_y(*r);
 	r->vec_x = calc_next_x(*r);
-	if (r->touch != (r->touch = compare_vec(d->p.vector,
-					r->vec_y, r->vec_x, &r->vec)))
-	{
-		d->texture.vec.x = 0;
-		d->texture.vec.y = 0;
-	}
+	r->touch = compare_vec(d->p.vector, r->vec_y, r->vec_x, &r->vec);
 	hit = next_block(r->vec.x, r->vec.y, &d->p.vector);
 	if (d->map.tab_map[(int)hit.y][(int)hit.x] == '2')
 		init_sprite(d, '2', hit, r);
