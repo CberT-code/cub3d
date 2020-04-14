@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 14:39:32 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/04/14 14:30:09 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/14 14:40:19 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int			color_sprite(t_data *d, double pixel, int size)
 	if (d->sprite.touch == 0 && sin(d->sprite.alpha) > 0)
 	{
 	//	printf("%f\n", cos(beta));
-		color = image_get_pixel(&d->texture.sp, (sin(beta) + cos(beta) * diffx) *
+		color = image_get_pixel(&d->texture.sp, cos(beta) * diffx *
 				d->texture.sp.width, pixel / size * d->texture.sp.height);
 			//color = 0x55ff55;
 
