@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 15:20:15 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/10 15:41:51 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/14 18:56:14 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,17 @@ int		key_press(int key, t_data *d)
 	if (key == K_DOWN)
 		d->p.angle_visu -= d->p.angle_visu > -d->r[1] / 3 ? 10 : 0;
 	if (key == K_RIGHT)
+	{
 		d->p.alpha += d->p.vitesse_rot;
+		if (d->p.alpha > (M_PI * 2))
+				d->p.alpha -= M_PI * 2;	
+	}
 	if (key == K_LEFT)
+	{
 		d->p.alpha -= d->p.vitesse_rot;
+		if (d->p.alpha < 0)
+				d->p.alpha += M_PI * 2;	
+	}
 	if (key == K_M)
 		d->mini.display = !d->mini.display;
 	if (key == K_ESC)
