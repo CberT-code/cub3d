@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 14:39:32 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/04/14 14:40:19 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/14 15:25:36 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void		display_sprite(t_data *d, int i)
 	while (sprite-- > 0)
 	{
 		color = color_sprite(d, j++, d->r[1] / d->sprite.dist);
+		//if (color)
 			image_set_pixel(&d->img, i, y, color);
 		y++;
 	}
@@ -65,11 +66,11 @@ int			color_sprite(t_data *d, double pixel, int size)
 // 				d->texture.sp.width, pixel / size * d->texture.sp.height);
 
 
-
+	
 	if (d->sprite.touch == 0 && sin(d->sprite.alpha) > 0)
 	{
 	//	printf("%f\n", cos(beta));
-		color = image_get_pixel(&d->texture.sp, cos(beta) * diffx *
+		color = image_get_pixel(&d->texture.sp, (sin(beta) + cos(beta) * diffx) *
 				d->texture.sp.width, pixel / size * d->texture.sp.height);
 			//color = 0x55ff55;
 
@@ -85,7 +86,7 @@ int			color_sprite(t_data *d, double pixel, int size)
 		color = image_get_pixel(&d->texture.sp, diffy * sin(beta) *
 				d->texture.sp.width, pixel / size * d->texture.sp.height);
 	else
-		color = 0x0000ff;
+		color = 0x000000;
 	//	color = image_get_pixel(&d->texture.sp, diffy * 0 *
 	//			d->texture.sp.width, pixel / size * d->texture.sp.height);
 	return (color);
