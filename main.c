@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 15:20:15 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/14 18:56:14 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/19 13:21:15 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,15 @@ int		key_press(int key, t_data *d)
 	if (key == K_RIGHT)
 	{
 		d->p.alpha += d->p.vitesse_rot;
-		if (d->p.alpha > (M_PI * 2))
+		while (d->p.alpha >= (M_PI * 2))
 				d->p.alpha -= M_PI * 2;	
 	}
 	if (key == K_LEFT)
 	{
 		d->p.alpha -= d->p.vitesse_rot;
-		if (d->p.alpha < 0)
+		if (d->p.alpha <= 0)
 				d->p.alpha += M_PI * 2;	
+		printf("envoi + \n");
 	}
 	if (key == K_M)
 		d->mini.display = !d->mini.display;

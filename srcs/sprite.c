@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 14:39:32 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/04/14 19:37:58 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/19 14:49:17 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		display_sprite(t_data *d, int i)
 	while (sprite-- > 0)
 	{
 		color = color_sprite(d, j++, d->r[1] / d->sprite.dist);
-		if (color)
+		if (color > 0x000000 && color < 0xFFFFFF )
 			image_set_pixel(&d->img, i, y, color);
 		y++;
 	}
@@ -58,6 +58,18 @@ void		display_sprite(t_data *d, int i)
 // 	diffy = (d->sprite.vec.y - (int)d->sprite.vec.y);
 
 // 	beta = M_PI_2 - d->sprite.alpha;
+
+// // if (diffy > 1)
+// // 		color = image_get_pixel(&d->texture.sp, (sin(beta) + cos(beta) * diffx) *
+// // 				d->texture.sp.width, pixel / size * d->texture.sp.height);
+// // else if (diffx > 1)
+// // 		color = image_get_pixel(&d->texture.sp, (sin(beta) + cos(beta) * diffy) *
+// // 				d->texture.sp.width, pixel / size * d->texture.sp.height);
+// // else
+// // 		color = image_get_pixel(&d->texture.sp, diffy * sin(beta) *
+// // 				d->texture.sp.width, pixel / size * d->texture.sp.height);
+
+
 	
 // 	if (d->sprite.touch == 0 && sin(d->sprite.alpha) > 0)
 // 	{
@@ -101,5 +113,9 @@ int			color_sprite(t_data *d, double pixel, int size)
 	else
 		inter = (d->sprite.touch == 0 ? sin(d->sprite.alpha) * (diffx - 1) : -sin(d->sprite.alpha) + diffy * cos(d->sprite.alpha));
 	color = image_get_pixel(&d->texture.sp, inter * d->texture.sp.width, pixel / size * d->texture.sp.height);
+	// if (inter > 0.49 && inter < 0.51)
+	// 	printf("%f\n",inter);
+	// if (inter == 0)
+	// 	color = 0x55FF00;
 	return (color);
 }
