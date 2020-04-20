@@ -6,7 +6,7 @@
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/04/20 16:21:13 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/20 17:55:08 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ void		display_wall(t_data *d, t_radar *r, int i)
 	top = d->p.angle_visu + ((d->r[1] - wall) / 2);
 	y = top < 0 ? top : 0;
 	while (top-- > 0)
-		image_set_pixel(&d->img, i, y++, 0x5555FF);
+		image_set_pixel(&d->img, i, y++, d->texture.c);
 	while (wall-- > 0)
 		image_set_pixel(&d->img, i, y++,
 				color_wall(*r, d, j++, d->r[1] / r->dist));
 	while (y < d->r[1])
-		image_set_pixel(&d->img, i, y++, 0x005500);
+		image_set_pixel(&d->img, i, y++, d->texture.f);
 }
 
 int			color_wall(t_radar r, t_data *d, double pixel, int wall)
