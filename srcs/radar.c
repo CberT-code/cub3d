@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   radar.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
+/*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/04/20 13:49:11 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/20 16:20:12 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void		radar(t_data *d)
 {
 	t_radar		r;
 	t_vector	hit;
-	void 		*tab_s[10];
+	void		*tab_s[10];
 	int			i;
 
 	i = 0;
@@ -74,7 +74,6 @@ void		radar(t_data *d)
 	{
 		init_radar(&r, d);
 		ft_bzero(tab_s, sizeof(void *));
-		//ft_bzero(&d->sprite, sizeof(t_sprite));
 		hit = next_block(r.vec.x, r.vec.y, &d->p.vector);
 		while (d->map.tab_map[(int)hit.y][(int)hit.x] != '1')
 			hit = next_wall(d, &r);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
+/*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/20 15:51:15 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/20 16:32:23 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,10 +255,13 @@ void						display_wall(t_data *d, t_radar *r, int i);
 int							color_wall(t_radar r, t_data *d, double pixel,
 		int wall);
 int							image_get_pixel(t_image *image, int x, int y);
-void						init_sprite(t_data *d, char sprite, t_vector hit, t_radar *r);
+void						init_sprite(t_data *d, char sprite, t_vector hit,
+t_radar *r);
 void						display_sprite(t_data *d, int i);
 int							color_sprite(t_data *d, double pixel,
 	t_sprite sprite);
 void						clear_lstmap(t_lmap *map);
 void						display_life(t_data *d);
+void						draw_rect(t_vector pos, t_vector size, int color,
+t_image *img);
 #endif

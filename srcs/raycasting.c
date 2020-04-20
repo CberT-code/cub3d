@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
+/*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:06:06 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/04/10 17:55:24 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/20 16:21:13 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		display_wall(t_data *d, t_radar *r, int i)
 	double	wall;
 	int		y;
 	double	j;
-	
+
 	j = 0;
 	r->dist = fabs(r->dist * cos(d->p.alpha - r->alpha));
 	wall = d->r[1] / r->dist;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
+/*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 20:32:10 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/04/20 14:36:42 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/20 16:27:31 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-double			calc_dst_vector(t_vector vector, t_vector actual)
+double		calc_dst_vector(t_vector vector, t_vector actual)
 {
 	double	dst;
 
@@ -20,7 +20,7 @@ double			calc_dst_vector(t_vector vector, t_vector actual)
 	return (dst);
 }
 
-void		draw_rect_border(t_vector pos, t_vector size, int color, t_image *img)
+void		draw_rect(t_vector pos, t_vector size, int color, t_image *img)
 {
 	int	x;
 	int	y;
@@ -43,7 +43,7 @@ void		draw_rect_border(t_vector pos, t_vector size, int color, t_image *img)
 	}
 }
 
-void			display_life(t_data *d)
+void		display_life(t_data *d)
 {
 	t_vector	size;
 	t_vector	pos;
@@ -51,9 +51,8 @@ void			display_life(t_data *d)
 	size.x = d->r[0] / 3;
 	size.y = d->r[1] / 20;
 	pos.x = (d->r[0] / 2) - (size.x / 2);
-	pos.y =	d->r[1] / 8 * 7;
-	draw_rect_border(pos, size, 0xFFFFFF, &d->img);
+	pos.y = d->r[1] / 8 * 7;
+	draw_rect(pos, size, 0xFFFFFF, &d->img);
 	size.x = d->r[0] / 3 / NUMBERLIFE * d->p.life;
-	draw_rect_border(pos, size, 0xFF0000, &d->img);
-
+	draw_rect(pos, size, 0xFF0000, &d->img);
 }

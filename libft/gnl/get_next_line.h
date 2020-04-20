@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
+/*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:47:44 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/09 13:54:15 by cyrillebert      ###   ########.fr       */
+/*   Updated: 2020/04/20 16:38:29 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include	<stdlib.h>
-# include	<stdio.h>
-# include	<unistd.h>
-# define	BUFFER_SIZE 50
+# include <stdlib.h>
+# include <stdio.h>
+# include <unistd.h>
+# define BUFFER_SIZE 50
 
 typedef struct	s_gnl
 {

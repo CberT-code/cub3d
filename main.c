@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
+/*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/09 15:20:15 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/20 16:07:11 by cbertola         ###   ########.fr       */
+/*   Created: 2020/04/20 16:15:46 by cbertola          #+#    #+#             */
+/*   Updated: 2020/04/20 16:15:50 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int		destroy(t_data *d)
 int		refresh_img(t_data *d)
 {
 	while (d->p.alpha >= (M_PI * 2))
-				d->p.alpha -= M_PI * 2;
+		d->p.alpha -= M_PI * 2;
 	if (d->p.alpha <= 0)
-				d->p.alpha += M_PI * 2;	
+		d->p.alpha += M_PI * 2;
 	radar(d);
 	if (d->mini.display == 0)
 		display_mini(d);
