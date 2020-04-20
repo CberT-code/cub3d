@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+        */
+/*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 19:39:31 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/08 19:17:31 by cyrillebe        ###   ########.fr       */
+/*   Updated: 2020/04/20 15:53:16 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void		parsing(char *doc_map, t_data *d)
 	char		*line;
 	int			fd;
 
-	if (!doc_map || ft_strlen(doc_map) < 4 ||
+	if (!(d->file = doc_map) || ft_strlen(doc_map) < 4 ||
 			ft_strcmp(doc_map + ft_strlen(doc_map) - 4, ".cub"))
 		ft_error(ERROR_NO_FILE, NULL, 0);
 	init_struct(d);

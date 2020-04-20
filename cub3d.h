@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/20 13:36:51 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/20 15:51:15 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@
 # define SQUARE_EMPTY		0xFFFFFF
 # define SQUARE_FULL		0xCBC9C8
 # define COLOR_PLAYER		0x318CE7
+# define NUMBERLIFE			5
 
 typedef struct				s_key
 {
@@ -151,6 +152,7 @@ typedef struct				s_player
 	double					vitesse;
 	double					vitesse_rot;
 	int						angle_visu;
+	int						life;
 }							t_p;
 
 typedef struct				s_texture
@@ -178,6 +180,7 @@ typedef struct				s_data
 	void					*ptr;
 	void					*win;
 	int						r[2];
+	char					*file;
 	t_texture				texture;
 	t_image					img;
 	t_mini					mini;
@@ -257,4 +260,5 @@ void						display_sprite(t_data *d, int i);
 int							color_sprite(t_data *d, double pixel,
 	t_sprite sprite);
 void						clear_lstmap(t_lmap *map);
+void						display_life(t_data *d);
 #endif

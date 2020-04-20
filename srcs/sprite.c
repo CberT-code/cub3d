@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 14:39:32 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/04/20 12:46:32 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/20 13:45:45 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,6 @@ void		init_sprite(t_data *d, char type, t_vector hit, t_radar *r)
 	while(d->tab_s[i].dist != 0)
 		i++;
 	d->tab_s[i] = sprite;
-	printf("%f\n",sprite.dist);
-	printf("tab_s = %f\n",d->tab_s[i].dist);
-	printf("i = %d\n",i);
-	printf("%p\n",d->tab_s[i]);
-
-
 }
 void		display_sprite(t_data *d, int i)
 {
@@ -54,10 +48,9 @@ void		display_sprite(t_data *d, int i)
 		k++;
 	while (--k >= 0)
 	{
-		//printf("%d\n",k);
 		j = 0;
-		dist = d->r[1] / d->tab_s[k].dist; //hauteur
-		y = ((d->r[1] - dist) / 2) + d->p.angle_visu; // placement du sprite
+		dist = d->r[1] / d->tab_s[k].dist;
+		y = ((d->r[1] - dist) / 2) + d->p.angle_visu;
 		while (dist-- > 0)
 		{
 			color = color_sprite(d, j++, d->tab_s[k]);
@@ -68,63 +61,16 @@ void		display_sprite(t_data *d, int i)
 		d->tab_s[k].dist = 0;
 	}
 }
-// int			color_sprite(t_data *d, double pixel, int size)
-// {
-// 	int color;
-// 	double beta;
-// 	double diffx;
-// 	double diffy;
-
-// 	diffx = (sprite->vec.x - (int)d->sprite.vec.x);
-// 	diffy = (d->sprite.vec.y - (int)d->sprite.vec.y);
-
-// 	beta = M_PI_2 - d->sprite.alpha;
-
-// // if (diffy > 1)
-// // 		color = image_get_pixel(&d->texture.sp, (sin(beta) + cos(beta) * diffx) *
-// // 				d->texture.sp.width, pixel / size * d->texture.sp.height);
-// // else if (diffx > 1)
-// // 		color = image_get_pixel(&d->texture.sp, (sin(beta) + cos(beta) * diffy) *
-// // 				d->texture.sp.width, pixel / size * d->texture.sp.height);
-// // else
-// // 		color = image_get_pixel(&d->texture.sp, diffy * sin(beta) *
-// // 				d->texture.sp.width, pixel / size * d->texture.sp.height);
-
-
-	
-// 	if (d->sprite.touch == 0 && sin(d->sprite.alpha) > 0)
-// 	{
-// 	//	printf("%f\n", cos(beta));
-// 		color = image_get_pixel(&d->texture.sp, (sin(beta) + cos(beta) * diffx) *
-// 				d->texture.sp.width, pixel / size * d->texture.sp.height);
-// 			//color = 0x55ff55;
-
-// 	}
-// 	else if (d->sprite.touch == 0)
-// 	{
-// 		color = 0xff00ff;
-// 		//color = image_get_pixel(&d->texture.sp, diffx * 0 *
-// 		//		d->texture.sp.width, pixel / size * d->texture.sp.height);
-
-// 	}
-// 	else if (d->sprite.touch == 1 && cos(d->sprite.alpha) > 0)
-// 		color = image_get_pixel(&d->texture.sp, diffy * sin(beta) *
-// 				d->texture.sp.width, pixel / size * d->texture.sp.height);
-// 	else
-// 		color = 0x000000;
-// 	//	color = image_get_pixel(&d->texture.sp, diffy * 0 *
-// 	//			d->texture.sp.width, pixel / size * d->texture.sp.height);
-// 	return (color);
-// }
 
 int			color_sprite(t_data *d, double pixel, t_sprite sprite)
 {
 	int color;
 	double diffx;
 	double diffy;
+	float inter;
+	
 	diffx = (sprite.vec.x - (int)sprite.vec.x);
 	diffy = (sprite.vec.y - (int)sprite.vec.y);
-	float inter;
 	if (sprite.alpha <= M_PI_2)
 		inter = (sprite.touch == 0 ? cos(sprite.alpha) + diffx * sin(sprite.alpha) : diffy * cos(sprite.alpha));
 	else if (sprite.alpha > M_PI_2 && sprite.alpha <= M_PI)
@@ -134,9 +80,5 @@ int			color_sprite(t_data *d, double pixel, t_sprite sprite)
 	else
 		inter = (sprite.touch == 0 ? sin(sprite.alpha) * (diffx - 1) : -sin(sprite.alpha) + diffy * cos(sprite.alpha));
 	color = image_get_pixel(&d->texture.sp, inter * d->texture.sp.width, pixel / (d->r[1] / sprite.dist) * d->texture.sp.height);
-	// if (inter > 0.49 && inter < 0.51)
-	// 	printf("%f\n",inter);
-	// if (inter == 0)
-	// 	color = 0x55FF00;
 	return (color);
 }

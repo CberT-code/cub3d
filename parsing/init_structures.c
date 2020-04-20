@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 19:39:31 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/09 16:41:43 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/20 14:34:54 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@ void		init_struct(t_data *d)
 {
 	d->p.vitesse = 0.2;
 	d->p.vitesse_rot = -M_PI_2 / 6;
+	d->p.life = NUMBERLIFE;
 	d->mini.size = 10;
 }

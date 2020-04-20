@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:46:34 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/09 20:47:37 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/20 16:00:57 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@ void		move_fb(t_data *d, int i)
 		d->p.vector.x = vec.x;
 		d->p.vector.y = vec.y;
 	}
+	if (d->map.tab_map[(int)vec.y][(int)vec.x] == '2')
+	{
+		d->p.vector.x = vec.x;
+		d->p.vector.y = vec.y;
+		d->p.life -= 1;
+		d->map.tab_map[(int)vec.y][(int)vec.x] = 0;
+	}
 }
 
 void		move_lr(t_data *d, int i)
@@ -39,5 +46,12 @@ void		move_lr(t_data *d, int i)
 	{
 		d->p.vector.x = vec.x;
 		d->p.vector.y = vec.y;
+	}
+	if (d->map.tab_map[(int)vec.y][(int)vec.x] == '2')
+	{
+		d->p.vector.x = vec.x;
+		d->p.vector.y = vec.y;
+		d->p.life -= 1;
+		d->map.tab_map[(int)vec.y][(int)vec.x] = 0;
 	}
 }

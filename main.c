@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 15:20:15 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/19 13:21:15 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/20 15:54:51 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int		key_press(int key, t_data *d)
 		d->p.alpha -= d->p.vitesse_rot;
 		if (d->p.alpha <= 0)
 				d->p.alpha += M_PI * 2;	
-		printf("envoi + \n");
 	}
 	if (key == K_M)
 		d->mini.display = !d->mini.display;
@@ -66,7 +65,6 @@ int		loop_game(t_data *d)
 {
 	mlx_hook(d->win, 17, 0, destroy, d);
 	mlx_hook(d->win, 2, 0, key_press, d);
-	//mlx_hook(d.win, 3, 0, key_release, d);
 	return (0);
 }
 
