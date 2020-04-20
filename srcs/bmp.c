@@ -6,7 +6,7 @@
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 10:20:16 by thgermai          #+#    #+#             */
-/*   Updated: 2020/04/20 17:17:01 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/20 18:12:12 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,35 +20,35 @@ void	moving_bits(unsigned char *str, int value)
 	str[3] = (unsigned char)(value >> 24);
 }
 
-void	get_file_header(t_data *d, int fd)
+void	header(t_data *d, int fd)
 {
-	unsigned char		file_header[14];
+	unsigned char		header[14];
 	int					size;
 
 	size = 3 * (d->r[0] * d->r[1]);
-	ft_memset(&file_header, 0, 14);
-	file_header[0] = 'B';
-	file_header[1] = 'M';
-	moving_bits(&file_header[2], size + 54);
-	file_header[10] = 54;
-	write(fd, file_header, 14);
+	ft_memset(&header, 0, 14);
+	header[0] = 'B';
+	header[1] = 'M';
+	moving_bits(&header[2], size + 54);
+	header[10] = 54;
+	write(fd, header, 14);
 }
 
-void	get_image_header(t_data *d, int fd)
+void	image_header(t_data *d, int fd)
 {
-	unsigned char	image_header[40];
+	unsigned char	header[40];
 
-	ft_memset(&image_header, 0, 40);
-	image_header[0] = 40;
-	moving_bits(&image_header[4], d->r[0]);
-	moving_bits(&image_header[8], d->r[1]);
-	image_header[12] = 1;
-	image_header[14] = 24;
-	image_header[20] = 3 * (d->r[0] * d->r[1]);
-	write(fd, image_header, 40);
+	ft_memset(&header, 0, 40);
+	header[0] = 40;
+	moving_bits(&header[4], d->r[0]);
+	moving_bits(&header[8], d->r[1]);
+	header[12] = 1;
+	header[14] = 24;
+	header[20] = 3 * (d->r[0] * d->r[1]);
+	write(fd, header, 40);
 }
 
-void	get_image_mapping(t_data *d, int fd)
+void	image(t_data *d, int fd)
 {
 	int					j;
 	int					i;
@@ -80,8 +80,8 @@ void	get_image(t_data *d)
 
 	if ((fd = open("image.bmp", O_RDWR | O_CREAT, S_IRWXU)) == -1)
         ft_error("Error can't be print", d, 1);
-	get_file_header(d, fd);
-	get_image_header(d, fd);
-	get_image_mapping(d, fd);
+	header(d, fd);
+	image_header(d, fd);
+	image(d, fd);
 	close(fd);
 }
