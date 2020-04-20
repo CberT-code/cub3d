@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/10 17:52:19 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/20 13:36:51 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,7 @@ typedef struct				s_data
 	t_map					map;
 	t_p						p;
 	t_move					m;
-	t_sprite				sprite;
+	t_sprite				tab_s[20];
 }							t_data;
 
 typedef struct				s_radar
@@ -195,7 +195,6 @@ typedef struct				s_radar
 	double					width;
 	double					dist;
 	int						touch;
-	int						sprite;
 	t_vector				vec;
 	t_vector				vec_x;
 	t_vector				vec_y;
@@ -256,6 +255,6 @@ int							image_get_pixel(t_image *image, int x, int y);
 void						init_sprite(t_data *d, char sprite, t_vector hit, t_radar *r);
 void						display_sprite(t_data *d, int i);
 int							color_sprite(t_data *d, double pixel,
-		int sprite);
+	t_sprite sprite);
 void						clear_lstmap(t_lmap *map);
 #endif

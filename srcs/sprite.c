@@ -6,7 +6,7 @@
 /*   By: cbertola <cyrille.bertola@student.42.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 14:39:32 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/04/19 14:49:17 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/20 12:46:32 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,58 @@
 
 void		init_sprite(t_data *d, char type, t_vector hit, t_radar *r)
 {
-	d->sprite.vec.x = hit.x;
-	d->sprite.vec.y = hit.y;
-	d->sprite.vec_mid.x = (int)hit.x + 0.5;
-	d->sprite.vec_mid.y = (int)hit.y + 0.5;
-	d->sprite.dist = sqrt(calc_dst_vector(d->sprite.vec_mid, d->p.vector));
-	d->sprite.type = type;
-	d->sprite.next = 0;
-	d->sprite.alpha = r->alpha;
-	if (d->sprite.alpha > (M_PI * 2))
-				d->sprite.alpha -= M_PI * 2;	
-	if (d->sprite.alpha < 0)
-				d->sprite.alpha += M_PI * 2;	
-	d->sprite.touch = r->touch;
+	t_sprite 	sprite;
+	int			i;
+
+	i = 0;
+	sprite.vec.x = hit.x;
+	sprite.vec.y = hit.y;
+	sprite.vec_mid.x = (int)hit.x + 0.5;
+	sprite.vec_mid.y = (int)hit.y + 0.5;
+	sprite.dist = sqrt(calc_dst_vector(sprite.vec_mid, d->p.vector));
+	sprite.type = type;
+	sprite.next = 0;
+	sprite.alpha = r->alpha;
+	if (sprite.alpha > (M_PI * 2))
+				sprite.alpha -= M_PI * 2;	
+	if (sprite.alpha < 0)
+				sprite.alpha += M_PI * 2;	
+	sprite.touch = r->touch;
+	while(d->tab_s[i].dist != 0)
+		i++;
+	d->tab_s[i] = sprite;
+	printf("%f\n",sprite.dist);
+	printf("tab_s = %f\n",d->tab_s[i].dist);
+	printf("i = %d\n",i);
+	printf("%p\n",d->tab_s[i]);
+
+
 }
 void		display_sprite(t_data *d, int i)
 {
-	double	sprite;
+	int		k;
 	int		y;
 	double	j;
 	int		color;
+	double dist;
 
-	j = 0;
-	
-	sprite = d->r[1] / d->sprite.dist; //hauteur
-	y = ((d->r[1] - sprite) / 2) + d->p.angle_visu; // placement du sprite
-	while (sprite-- > 0)
+	k = 0;
+	while (d->tab_s[k].dist != 0)
+		k++;
+	while (--k >= 0)
 	{
-		color = color_sprite(d, j++, d->r[1] / d->sprite.dist);
-		if (color > 0x000000 && color < 0xFFFFFF )
-			image_set_pixel(&d->img, i, y, color);
-		y++;
+		//printf("%d\n",k);
+		j = 0;
+		dist = d->r[1] / d->tab_s[k].dist; //hauteur
+		y = ((d->r[1] - dist) / 2) + d->p.angle_visu; // placement du sprite
+		while (dist-- > 0)
+		{
+			color = color_sprite(d, j++, d->tab_s[k]);
+			if (color > 0x000000 && color < 0xFFFFFF )
+				image_set_pixel(&d->img, i, y, color);
+			y++;
+		}
+		d->tab_s[k].dist = 0;
 	}
 }
 // int			color_sprite(t_data *d, double pixel, int size)
@@ -54,7 +75,7 @@ void		display_sprite(t_data *d, int i)
 // 	double diffx;
 // 	double diffy;
 
-// 	diffx = (d->sprite.vec.x - (int)d->sprite.vec.x);
+// 	diffx = (sprite->vec.x - (int)d->sprite.vec.x);
 // 	diffy = (d->sprite.vec.y - (int)d->sprite.vec.y);
 
 // 	beta = M_PI_2 - d->sprite.alpha;
@@ -96,23 +117,23 @@ void		display_sprite(t_data *d, int i)
 // 	return (color);
 // }
 
-int			color_sprite(t_data *d, double pixel, int size)
+int			color_sprite(t_data *d, double pixel, t_sprite sprite)
 {
 	int color;
 	double diffx;
 	double diffy;
-	diffx = (d->sprite.vec.x - (int)d->sprite.vec.x);
-	diffy = (d->sprite.vec.y - (int)d->sprite.vec.y);
+	diffx = (sprite.vec.x - (int)sprite.vec.x);
+	diffy = (sprite.vec.y - (int)sprite.vec.y);
 	float inter;
-	if (d->sprite.alpha <= M_PI_2)
-		inter = (d->sprite.touch == 0 ? cos(d->sprite.alpha) + diffx * sin(d->sprite.alpha) : diffy * cos(d->sprite.alpha));
-	else if (d->sprite.alpha > M_PI_2 && d->sprite.alpha <= M_PI)
-		inter =  (d->sprite.touch == 0 ? sin(d->sprite.alpha) * diffx : sin(d->sprite.alpha) - (1 - diffy) * cos(d->sprite.alpha));
-	else if (d->sprite.alpha > M_PI && d->sprite.alpha <= 3 * M_PI_2)
-		inter = (d->sprite.touch == 0 ? 1 + sin(d->sprite.alpha) * diffx : 1 + (sin(d->sprite.alpha) + diffy * cos(d->sprite.alpha)));
+	if (sprite.alpha <= M_PI_2)
+		inter = (sprite.touch == 0 ? cos(sprite.alpha) + diffx * sin(sprite.alpha) : diffy * cos(sprite.alpha));
+	else if (sprite.alpha > M_PI_2 && sprite.alpha <= M_PI)
+		inter =  (sprite.touch == 0 ? sin(sprite.alpha) * diffx : sin(sprite.alpha) - (1 - diffy) * cos(sprite.alpha));
+	else if (sprite.alpha > M_PI && sprite.alpha <= 3 * M_PI_2)
+		inter = (sprite.touch == 0 ? 1 + sin(sprite.alpha) * diffx : 1 + (sin(sprite.alpha) + diffy * cos(sprite.alpha)));
 	else
-		inter = (d->sprite.touch == 0 ? sin(d->sprite.alpha) * (diffx - 1) : -sin(d->sprite.alpha) + diffy * cos(d->sprite.alpha));
-	color = image_get_pixel(&d->texture.sp, inter * d->texture.sp.width, pixel / size * d->texture.sp.height);
+		inter = (sprite.touch == 0 ? sin(sprite.alpha) * (diffx - 1) : -sin(sprite.alpha) + diffy * cos(sprite.alpha));
+	color = image_get_pixel(&d->texture.sp, inter * d->texture.sp.width, pixel / (d->r[1] / sprite.dist) * d->texture.sp.height);
 	// if (inter > 0.49 && inter < 0.51)
 	// 	printf("%f\n",inter);
 	// if (inter == 0)
