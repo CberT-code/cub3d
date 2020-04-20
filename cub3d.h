@@ -6,7 +6,7 @@
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/20 16:32:23 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/20 17:45:10 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,7 @@
 # define HEIGHT_MAX		1920
 
 # define ERROR_NOT_OPEN 	"Error\nProgramme cant open the file\n"
-# define ERROR_MAP_N_WALL 	"Error\nThe wall is open on the north side\n"
-# define ERROR_MAP_W_WALL 	"Error\nThe wall is open on the west side\n"
-# define ERROR_MAP_E_WALL 	"Error\nThe wall is open on the east side\n"
-# define ERROR_MAP_S_WALL 	"Error\nThe wall is open on the south side\n"
+# define ERROR_MAP_WALL 	"Error\nThe wall is open\n"
 # define ERROR_MAP_NO 		"Error\nNo map found\n"
 # define ERROR_COLOR 		"Error\nColor doesnt exist\n"
 # define ERROR_MAP 			"Error\nMAP\n"
@@ -264,4 +261,5 @@ void						clear_lstmap(t_lmap *map);
 void						display_life(t_data *d);
 void						draw_rect(t_vector pos, t_vector size, int color,
 t_image *img);
+void						get_image(t_data *d);
 #endif

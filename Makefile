@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cyrillebertola <cyrillebertola@student.    +#+  +:+       +#+         #
+#    By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 12:20:26 by cbertola          #+#    #+#              #
-#    Updated: 2020/03/29 19:23:31 by cyrillebert      ###   ########.fr        #
+#    Updated: 2020/04/20 17:48:53 by cbertola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS		= main.c \
 			srcs/vector.c \
 			srcs/utils.c \
 			srcs/sprite.c \
+			srcs/bmp.c \
 			Bonus/mini_map.c
 
 LIBFT		= libft/libft.a
@@ -74,9 +75,9 @@ re2:		clean
 			gcc $(CLFAGS) $(MLXFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
 			./$(NAME) maps/test2.cub
 
-re3:			clean
+re3:		clean
 			gcc $(CLFAGS) $(MLXFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
-			./$(NAME)
+			./$(NAME) maps/test3.cub
 
 
 .PHONY:		all clean fclean re re2 re3 libft

@@ -6,7 +6,7 @@
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 19:44:07 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/20 16:16:33 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/20 17:45:45 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ void		check_map2(t_data *d, int j)
 	if (size == (ft_strlen(d->map.tab_map[j - 1]) - 1))
 	{
 		if (d->map.tab_map[j][size] != '1')
-			ft_error(ERROR_MAP_E_WALL, d, 1);
+			ft_error(ERROR_MAP_WALL, d, 1);
 	}
 	else
 	{
 		while (size < (ft_strlen(d->map.tab_map[j - 1]) - 1))
 			if (d->map.tab_map[j - 1][size++] != '1')
-				ft_error(ERROR_MAP_N_WALL, d, 1);
+				ft_error(ERROR_MAP_WALL, d, 1);
 		while (size > (ft_strlen(d->map.tab_map[j - 1]) - 1))
 			if (d->map.tab_map[j][size--] != '1')
-				ft_error(ERROR_MAP_S_WALL, d, 1);
+				ft_error(ERROR_MAP_WALL, d, 1);
 	}
 }
 
@@ -41,15 +41,15 @@ void		*check_map(t_data *d)
 
 	j = 0;
 	if (!(is_tab_full(d->map.tab_map[j], '1')))
-		ft_error(ERROR_MAP_N_WALL, d, 1);
+		ft_error(ERROR_MAP_WALL, d, 1);
 	while (++j < d->map.line_len)
 	{
 		if (d->map.tab_map[j][0] != '1')
-			ft_error(ERROR_MAP_W_WALL, d, 1);
+			ft_error(ERROR_MAP_WALL, d, 1);
 		check_map2(d, j);
 	}
 	if (!(is_tab_full(d->map.tab_map[j], '1')))
-		ft_error(ERROR_MAP_S_WALL, d, 1);
+		ft_error(ERROR_MAP_WALL, d, 1);
 	d->map.y_max = ++j;
 	return (&d->map);
 }

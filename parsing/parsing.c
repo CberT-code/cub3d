@@ -6,7 +6,7 @@
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 19:39:31 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/20 16:16:09 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/20 16:55:37 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,5 @@ void		parsing(char *doc_map, t_data *d)
 	clear_lstmap(d->map.line);
 	check_map(d);
 	num_p(d, &d->map);
+	close(fd);
 }
