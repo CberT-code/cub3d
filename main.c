@@ -6,7 +6,7 @@
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 16:15:46 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/20 16:15:50 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/20 16:40:57 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int		refresh_img(t_data *d)
 
 int		key_press(int key, t_data *d)
 {
-	printf("key = %d\n", key);
 	if (key == K_W)
 		move_fb(d, 1);
 	if (key == K_A)
