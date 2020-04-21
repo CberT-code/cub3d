@@ -6,12 +6,11 @@
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 15:47:22 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/20 16:36:51 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/21 08:38:23 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <libc.h>
 
 static int		ft_find(char c, char const *set)
 {
