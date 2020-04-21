@@ -6,7 +6,7 @@
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 16:15:46 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/20 17:26:33 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/21 08:17:30 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int		main(int argc, char **argv)
 		return (write(2, "Error \nMissing Map\n", 20));
 	d.ptr = mlx_init();
 	parsing(argv[1], &d);
-	if ((d.win = mlx_new_window(d.ptr, d.r[0], d.r[1], "Corona3d")) == NULL)
+	if ((d.win = mlx_new_window(d.ptr, d.r[0], d.r[1], "Cub3d")) == NULL)
 		ft_error("Error\n Window creation failed", &d, 2);
 	d.img = new_image(&d, d.r[0], d.r[1]);
 	d.mini.img = new_image(&d, d.map.x_max * d.mini.size,
