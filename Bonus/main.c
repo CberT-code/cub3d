@@ -6,7 +6,7 @@
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 16:15:46 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/20 19:06:12 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/20 17:26:33 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int		refresh_img(t_data *d)
 	if (d->p.alpha <= 0)
 		d->p.alpha += M_PI * 2;
 	radar(d);
+	if (d->mini.display == 0)
+		display_mini(d);
 	return (0);
 }
 
@@ -38,10 +40,16 @@ int		key_press(int key, t_data *d)
 		move_fb(d, -1);
 	if (key == K_D)
 		move_lr(d, -1);
+	if (key == K_UP)
+		d->p.angle_visu += d->p.angle_visu < d->r[1] / 3 ? 10 : 0;
+	if (key == K_DOWN)
+		d->p.angle_visu -= d->p.angle_visu > -d->r[1] / 3 ? 10 : 0;
 	if (key == K_RIGHT)
 		d->p.alpha += d->p.vitesse_rot;
 	if (key == K_LEFT)
 		d->p.alpha -= d->p.vitesse_rot;
+	if (key == K_M)
+		d->mini.display = !d->mini.display;
 	if (key == K_ESC)
 		destroy(d);
 	refresh_img(d);

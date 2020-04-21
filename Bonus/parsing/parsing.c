@@ -6,7 +6,7 @@
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 19:39:31 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/21 08:05:49 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/21 08:10:44 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void		parsing(char *doc_map, t_data *d)
 	char		*line;
 	int			fd;
 
-	if (!doc_map || ft_strlen(doc_map) < 4 ||
+	if (!(d->file = doc_map) || ft_strlen(doc_map) < 4 ||
 			ft_strcmp(doc_map + ft_strlen(doc_map) - 4, ".cub"))
 		ft_error(ERROR_NO_FILE, NULL, 0);
 	init_struct(d);
@@ -104,4 +104,5 @@ void		parsing(char *doc_map, t_data *d)
 	clear_lstmap(d->map.line);
 	check_map(d);
 	num_p(d);
+	close(fd);
 }

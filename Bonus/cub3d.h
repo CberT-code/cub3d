@@ -6,15 +6,15 @@
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/21 08:06:06 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/21 08:08:46 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "libft/libft.h"
-# include "mlx.h"
+# include "../libft/libft.h"
+# include "../mlx.h"
 # include <math.h>
 # include <stdlib.h>
 # define CHECKER 255

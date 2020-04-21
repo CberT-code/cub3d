@@ -6,7 +6,7 @@
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 19:46:22 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/21 08:06:17 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/21 08:07:45 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void		free_texture(t_data *d)
 
 void		*ft_error(char *str, t_data *d, int i)
 {
+	if (i >= 5)
+		del_image(d, d->mini.img);
 	if (i >= 4)
 		del_image(d, d->img);
 	if (i >= 3)

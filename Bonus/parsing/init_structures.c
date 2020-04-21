@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   init_structures.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/20 20:32:10 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/04/20 19:06:00 by cbertola         ###   ########.fr       */
+/*   Created: 2020/01/21 19:39:31 by cbertola          #+#    #+#             */
+/*   Updated: 2020/04/20 16:16:13 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-double			calc_dst_vector(t_vector vector, t_vector actual)
+void		init_struct(t_data *d)
 {
-	double	dst;
-
-	dst = pow(vector.x - actual.x, 2) + pow(vector.y - actual.y, 2);
-	return (dst);
+	d->p.vitesse = 0.2;
+	d->p.vitesse_rot = -M_PI_2 / 6;
+	d->p.life = NUMBERLIFE;
+	d->mini.size = 10;
 }
