@@ -6,7 +6,7 @@
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/25 14:51:20 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/26 11:42:57 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define K_W				119
 # define WIDTH_MAX			3072
 # define HEIGHT_MAX			1920
-# define ERROR_NOT_OPEN 	"Error\nProgramme cant open the file\n"
+# define ERROR_NOT_OPEN 	"Error\nProgram can not open the file\n"
 # define ERROR_MAP_WALL 	"Error\nThe wall is open\n"
 # define ERROR_MAP_NO 		"Error\nNo map found\n"
 # define ERROR_COLOR 		"Error\nColor doesnt exist\n"
