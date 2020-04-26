@@ -6,7 +6,7 @@
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 13:57:56 by cyrillebert       #+#    #+#             */
-/*   Updated: 2020/04/20 19:05:49 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/26 12:19:37 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 int			fill_int(int bit, char *str, t_data *d, short *bit_texture)
 {
 	int		i;
-	int		x;
-	int		y;
 
 	i = -1;
-	mlx_get_screen_size(d->ptr, &x, &y);
+
 	while (i++ < 1)
 	{
 		while (*str == ' ')
@@ -31,8 +29,8 @@ int			fill_int(int bit, char *str, t_data *d, short *bit_texture)
 		while (ft_isdigit(*str))
 			str++;
 	}
-	d->r[0] = d->r[0] <= x ? d->r[0] : x;
-	d->r[1] = d->r[1] <= y ? d->r[1] : y;
+	d->r[0] = d->r[0] <= WIDTH_MAX? d->r[0] : WIDTH_MAX;
+	d->r[1] = d->r[1] <= HEIGHT_MAX ? d->r[1] : HEIGHT_MAX;
 	d->r[0] = d->r[0] >= 400 ? d->r[0] : 400;
 	d->r[1] = d->r[1] >= 400 ? d->r[1] : 400;
 	*bit_texture = *bit_texture | (1 << bit);

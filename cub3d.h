@@ -6,7 +6,7 @@
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/26 12:02:13 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/26 12:21:34 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUB3D_H
 
 # include "libft/libft.h"
-# include "minilibx_linux/mlx.h"
+# include "./mlx.h"
 # include <math.h>
 # include <stdlib.h>
 # define CHECKER 255
@@ -27,17 +27,17 @@
 ** 6 = int *c
 */
 
-# define K_ESC				65307
-# define K_UP				65362
-# define K_DOWN				65364
-# define K_LEFT				65361
-# define K_RIGHT			65363
-# define K_A				97
-# define K_S				115
-# define K_D				100
-# define K_W				119
-# define WIDTH_MAX			3072
-# define HEIGHT_MAX			1920
+# define K_ESC				53
+# define K_UP				126
+# define K_DOWN				125
+# define K_LEFT				123
+# define K_RIGHT			124
+# define K_A				0
+# define K_S				1
+# define K_D				2
+# define K_W				13
+# define WIDTH_MAX			1980
+# define HEIGHT_MAX			1024
 # define ERROR_NOT_OPEN 	"Error\nProgramme cant open the file\n"
 # define ERROR_MAP_WALL 	"Error\nThe wall is open\n"
 # define ERROR_MAP_NO 		"Error\nNo map found\n"
