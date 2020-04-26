@@ -6,7 +6,7 @@
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/25 14:51:20 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/26 12:02:13 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "minilibx_linux/mlx.h"
 # include <math.h>
 # include <stdlib.h>
-# include <X11/X.h>
 # define CHECKER 255
 
 /*

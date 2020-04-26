@@ -6,7 +6,7 @@
 #    By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 12:20:26 by cbertola          #+#    #+#              #
-#    Updated: 2020/04/25 12:47:44 by cbertola         ###   ########.fr        #
+#    Updated: 2020/04/26 12:04:12 by cbertola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,6 @@ clean:
 
 fclean:		
 			make fclean -C libft
-			make clean -C minilibx_linux
 			rm -f ${NAME}
 			rm -f $(NAME)_bonus
 			rm -f image.bmp
