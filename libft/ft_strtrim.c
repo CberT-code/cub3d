@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <libc.h>
 
 static int		ft_find(char c, char const *set)
 {

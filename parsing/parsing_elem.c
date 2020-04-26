@@ -12,32 +12,35 @@
 
 #include "../cub3d.h"
 
-int			fill_int(int bit, char *str, int *tab, short *bit_texture)
+int			fill_int(int bit, char *str, t_data *d, short *bit_texture)
 {
 	int		i;
+	int		x;
+	int		y;
 
 	i = -1;
+	mlx_get_screen_size(d->ptr, &x, &y);
 	while (i++ < 1)
 	{
 		while (*str == ' ')
 			str++;
 		if (ft_isdigit(*str))
-			tab[i] = ft_atoi(str);
+			d->r[i] = ft_atoi(str);
 		else
-			return (-1);
+			ft_error("ERROR\nResolution", d, 0);
 		while (ft_isdigit(*str))
 			str++;
-		if (*str == ',')
-			str++;
 	}
-	tab[0] = tab[0] <= WIDTH_MAX ? tab[0] : WIDTH_MAX;
-	tab[1] = tab[1] <= HEIGHT_MAX ? tab[1] : HEIGHT_MAX;
+	d->r[0] = d->r[0] <= x ? d->r[0] : x;
+	d->r[1] = d->r[1] <= y ? d->r[1] : y;
+	d->r[0] = d->r[0] >= 400 ? d->r[0] : 400;
+	d->r[1] = d->r[1] >= 400 ? d->r[1] : 400;
 	*bit_texture = *bit_texture | (1 << bit);
 	return (i);
 }
 
 int			fill_int_rgb(int bit, char *str,
-		unsigned int *rgb, short *bit_texture)
+		unsigned int *rgb, t_data *d)
 {
 	int		tab[3];
 	int		i;
@@ -47,11 +50,11 @@ int			fill_int_rgb(int bit, char *str,
 	{
 		while (*str == ' ')
 			str++;
-		if (ft_isdigit(*str) <= 255 && ft_isdigit(*str) >= 0)
+		if (ft_atoi(str) <= 255 && ft_atoi(str) >= 0 && ft_isdigit(*str))
 			tab[i] = ft_atoi(str);
 		else
-			ft_error(ERROR_COLOR, NULL, 0);
-		while (ft_isdigit(*str))
+			ft_error(ERROR_COLOR, d, 0);
+		while (ft_isdigit(*str) || *str == ' ')
 			str++;
 		if (*str == ',')
 			str++;
@@ -59,19 +62,17 @@ int			fill_int_rgb(int bit, char *str,
 	tab[0] = (int)pow(256, 2) * tab[0];
 	tab[1] = 256 * tab[1];
 	*rgb = tab[0] + tab[1] + tab[2];
-	*bit_texture = *bit_texture | (1 << bit);
+	d->texture.bit_texture = d->texture.bit_texture | (1 << bit);
 	return (i);
 }
 
 void		fill_str(int bit, char *str, t_data *d, t_image *img)
 {
 	int		i;
-	int		j;
 	char	*temp;
 	int		fd;
 
 	i = 0;
-	j = 0;
 	while (str[i] == ' ')
 		i++;
 	temp = str + i + 2;
@@ -94,20 +95,20 @@ void		parsing_elem(char *str, t_data *d)
 {
 	while (*str == ' ')
 		str++;
-	if (!ft_strncmp("NO ", str, 3))
+	if (!ft_strncmp("NO ", str, 3) && !(d->texture.bit_texture & (1 << 0)))
 		fill_str(0, str + 3, d, &d->texture.no);
-	if (!ft_strncmp("SO ", str, 3))
+	if (!ft_strncmp("SO ", str, 3) && !(d->texture.bit_texture & (1 << 1)))
 		fill_str(1, str + 3, d, &d->texture.so);
-	if (!ft_strncmp("WE ", str, 3))
+	if (!ft_strncmp("WE ", str, 3) && !(d->texture.bit_texture & (1 << 2)))
 		fill_str(2, str + 3, d, &d->texture.we);
-	if (!ft_strncmp("EA ", str, 3))
+	if (!ft_strncmp("EA ", str, 3) && !(d->texture.bit_texture & (1 << 3)))
 		fill_str(3, str + 3, d, &d->texture.ea);
-	if (!ft_strncmp("S ", str, 2))
+	if (!ft_strncmp("S ", str, 2) && !(d->texture.bit_texture & (1 << 4)))
 		fill_str(4, str + 2, d, &d->texture.sp);
-	if (!ft_strncmp("F ", str, 2))
-		fill_int_rgb(5, str + 2, &d->texture.f, &(d->texture.bit_texture));
-	if (!ft_strncmp("C ", str, 2))
-		fill_int_rgb(6, str + 2, &d->texture.c, &(d->texture.bit_texture));
-	if (!ft_strncmp("R ", str, 2))
-		fill_int(7, str + 2, d->r, &(d->texture.bit_texture));
+	if (!ft_strncmp("F ", str, 2) && !(d->texture.bit_texture & (1 << 5)))
+		fill_int_rgb(5, str + 2, &d->texture.f, d);
+	if (!ft_strncmp("C ", str, 2) && !(d->texture.bit_texture & (1 << 6)))
+		fill_int_rgb(6, str + 2, &d->texture.c, d);
+	if (!ft_strncmp("R ", str, 2) && !(d->texture.bit_texture & (1 << 7)))
+		fill_int(7, str + 2, d, &(d->texture.bit_texture));
 }

@@ -6,7 +6,7 @@
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 11:59:00 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/20 16:36:27 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/25 10:16:09 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include "gnl/get_next_line.h"
-# include "printf/srcs/ft_printf.h"
 
 typedef struct	s_list
 {

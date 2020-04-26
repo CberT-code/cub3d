@@ -6,7 +6,7 @@
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 19:39:31 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/21 08:05:49 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/25 12:33:09 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,17 @@ int			num_p(t_data *d)
 
 int			check_elem(char *str, t_texture *texture, t_data *d)
 {
-	int		i;
-
-	i = 0;
 	if (texture->bit_texture < 255)
 	{
 		parsing_elem(str, d);
 		return (1);
 	}
-	if (*str == '1' || *str == ' ')
+	if (*str == '1' || *str == ' ' || d->texture.bit_texture & (1 << 8))
 	{
-		i = 1;
+		d->texture.bit_texture = d->texture.bit_texture | (1 << 8);
 		map_str(str, &d->map, d);
 		return (1);
 	}
-	if (!i)
-		return (1);
 	return (0);
 }
 
@@ -87,10 +82,10 @@ void		parsing(char *doc_map, t_data *d)
 
 	if (!doc_map || ft_strlen(doc_map) < 4 ||
 			ft_strcmp(doc_map + ft_strlen(doc_map) - 4, ".cub"))
-		ft_error(ERROR_NO_FILE, NULL, 0);
+		ft_error(ERROR_NO_FILE, d, 0);
 	init_struct(d);
 	if (!(fd = open(doc_map, O_RDONLY)))
-		ft_error(ERROR_NOT_OPEN, NULL, 0);
+		ft_error(ERROR_NOT_OPEN, d, 0);
 	while (get_next_line(fd, &line) != 0)
 	{
 		check_elem(line, &d->texture, d);

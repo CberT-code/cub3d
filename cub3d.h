@@ -6,7 +6,7 @@
 /*   By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 12:51:45 by cbertola          #+#    #+#             */
-/*   Updated: 2020/04/21 08:06:06 by cbertola         ###   ########.fr       */
+/*   Updated: 2020/04/25 14:51:20 by cbertola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 # define CUB3D_H
 
 # include "libft/libft.h"
-# include "mlx.h"
+# include "minilibx_linux/mlx.h"
 # include <math.h>
 # include <stdlib.h>
+# include <X11/X.h>
 # define CHECKER 255
 
 /*
@@ -27,41 +28,23 @@
 ** 6 = int *c
 */
 
-# define K_ESC				53
-# define K_COMM			12
-# define K_NUM_MULT		67
-# define K_NUM_DIV			75
-# define K_NUM_PLUS		69
-# define K_NUM_MINUS		78
-# define K_NUM_ENTER		76
-# define K_NUM_0			82
-# define K_UP				126
-# define K_DOWN			125
-# define K_LEFT			123
-# define K_RIGHT			124
-# define K_DIGIT_0			29
-# define K_DIGIT_1			18
-# define K_DIGIT_7			26
-# define K_DIGIT_8			28
-# define K_DIGIT_9			25
-# define K_A				0
-# define K_S				1
-# define K_D				2
-# define K_W				13
-# define K_E				14
-# define K_L				37
-# define K_M				46
-# define K_Q				259
-# define K_MINUS			27
-# define K_PLUS			24
+# define K_ESC				65307
+# define K_UP				65362
+# define K_DOWN				65364
+# define K_LEFT				65361
+# define K_RIGHT			65363
+# define K_A				97
+# define K_S				115
+# define K_D				100
+# define K_W				119
 # define WIDTH_MAX			3072
-# define HEIGHT_MAX		1920
-
+# define HEIGHT_MAX			1920
 # define ERROR_NOT_OPEN 	"Error\nProgramme cant open the file\n"
 # define ERROR_MAP_WALL 	"Error\nThe wall is open\n"
 # define ERROR_MAP_NO 		"Error\nNo map found\n"
 # define ERROR_COLOR 		"Error\nColor doesnt exist\n"
 # define ERROR_MAP 			"Error\nMAP\n"
+# define ERROR_MAP_SMALL 	"Error\nMAP is too small\n"
 # define ERROR_P_NO_POS 	"Error\nNo player position found\n"
 # define ERROR_P_EX_POS 	"Error\nToo many positions for the player\n"
 # define ERROR_NO_FILE 		"Error\nNo file found\n"
@@ -184,7 +167,7 @@ typedef struct				s_data
 	t_map					map;
 	t_p						p;
 	t_move					m;
-	t_sprite				tab_s[20];
+	t_sprite				tab_s[40];
 }							t_data;
 
 typedef struct				s_radar
@@ -208,10 +191,10 @@ typedef struct				s_radar
 int							refresh_img(t_data *d);
 int							num_p(t_data *d);
 int							num_p2(t_data *d, int j, int h);
-int							fill_int(int bit, char *str, int *tab,
+int							fill_int(int bit, char *str, t_data *d,
 		short *bit_texture);
 int							fill_int_rgb(int bit, char *str, unsigned int *rgb,
-		short *bit_texture);
+		t_data *d);
 int							check_elem(char *str, t_texture *texture,
 		t_data *d);
 void						fill_str(int bit, char *str, t_data *d,
@@ -262,4 +245,5 @@ void						display_life(t_data *d);
 void						draw_rect(t_vector pos, t_vector size, int color,
 t_image *img);
 void						get_image(t_data *d);
+int							ft_checkline(char *str, char *str2);
 #endif

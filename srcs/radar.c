@@ -32,8 +32,6 @@ void		radar_mini(t_data *d)
 		init_radar(&r, d);
 		while (d->map.tab_map[(int)r.vec.y][(int)r.vec.x] != '1' && r.width)
 		{
-			image_set_pixel(&d->mini.img, r.vec.x * d->mini.size,
-					r.vec.y * d->mini.size, (int)0xFF0000);
 			if (r.alpha == M_PI_2)
 				r.vec.y = r.vec.y - (sin(r.alpha) / d->mini.size);
 			else

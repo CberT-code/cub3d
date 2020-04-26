@@ -78,7 +78,7 @@ void	get_image(t_data *d)
 	int		fd;
 
 	if ((fd = open("image.bmp", O_RDWR | O_CREAT, S_IRWXU)) == -1)
-		ft_error("Error can't be print", d, 1);
+		ft_error("Error\ncan't be print", d, 1);
 	header(d, fd);
 	image_header(d, fd);
 	image(d, fd);

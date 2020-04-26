@@ -1,32 +1,16 @@
-R 1920 1080
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
-S ./path_to_the_sprite_texture
-F 255,100,0
+R 1000 1000
+NO ./murouest.xpm
+SO ./murest.xpm
+WE ./murouest.xpm
+EA ./murest.xpm
+S ./virus.xpm
+F 25   ,   100,0
 C 225,30,0
 
-1 1 1 1 1
-1 1 1 1 1
-1 0 0 1 1
-1 0 0 1 1
-1 0 0 1 1
-1 0 0 1 1
-1 0 0 1 1
-1 0 0 1 1
-1 0 0 1 1
-1 0 0 1 1
-1 0 0 1 1
-1 0 0 1 1
-1 0 0 1 1
-1 0 0 1 1
-1 0 0 1 1
-1 0 0 1 1
-1 0 0 0 1
-1 1 1 1 1
-1 0 1 0 1
-1 0 0 0 1
-1 0 N 0 1
-1 0 0 0 1
-1 1 1 1 1
+  11111
+1110001
+1100201
+1002001
+1000001
+1E00001
+1111111

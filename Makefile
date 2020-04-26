@@ -6,7 +6,7 @@
 #    By: cbertola <cbertola@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 12:20:26 by cbertola          #+#    #+#              #
-#    Updated: 2020/04/21 08:05:03 by cbertola         ###   ########.fr        #
+#    Updated: 2020/04/25 12:47:44 by cbertola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,53 +26,50 @@ SRCS		= main.c \
 			srcs/bmp.c \
 			srcs/sprite.c
 
-BONUS		= Bonus/main.c \
-			Bonus/parsing/parsing.c \
-			Bonus/parsing/parsing_elem.c \
-			Bonus/parsing/full_map.c \
-			Bonus/parsing/error_free.c \
-			Bonus/parsing/init_structures.c \
-			Bonus/srcs/move_player.c \
-			Bonus/srcs/image.c \
-			Bonus/srcs/raycasting.c \
-			Bonus/srcs/radar.c \
-			Bonus/srcs/vector.c \
-			Bonus/srcs/utils.c \
-			Bonus/srcs/bmp.c \
-			Bonus/srcs/sprite.c \
-			Bonus/srcs/mini_map.c
+BONUS		= Bonus/main_bonus.c \
+			Bonus/parsing/parsing_bonus.c \
+			Bonus/parsing/parsing_elem_bonus.c \
+			Bonus/parsing/full_map_bonus.c \
+			Bonus/parsing/error_free_bonus.c \
+			Bonus/parsing/init_structures_bonus.c \
+			Bonus/srcs/move_player_bonus.c \
+			Bonus/srcs/image_bonus.c \
+			Bonus/srcs/raycasting_bonus.c \
+			Bonus/srcs/radar_bonus.c \
+			Bonus/srcs/vector_bonus.c \
+			Bonus/srcs/utils_bonus.c \
+			Bonus/srcs/bmp_bonus.c \
+			Bonus/srcs/sprite_bonus.c \
+			Bonus/srcs/mini_map_bonus.c
 
-LIBFT		= libft/libft.a
+NAME = 		Cub3D
 
-NAME		= cub3d
+FLAGS =		-Wall -Werror -Wextra
 
-RM			= rm -f
+INC =		./minilibx_linux/
 
-CC			= gcc
+LIB =		./minilibx_linux/
 
-CFLAGS		= -Wall -Werror -Wextra
+GFX_FLAGS =	-framework OpenGL -framework AppKit
 
-MLXFLAGS	= -L ./ -lmlx -framework OpenGL -framework Appkit 
+LIB_FLAGS =	-lX11 -lXext -lm -lbsd
 
 LOGFILE		= $(LOGPATH) `date +'%y.%m.%d %H:%M:%S'`
 
-${NAME}:	
+all: 		$(NAME)
+
+$(NAME):	
 			make -C libft
-			make clean -C libft
-			gcc $(CFLAGS) $(MLXFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
-			./$(NAME) maps/test.cub
+			make -C minilibx_linux
+			clang $(FLAGS) $(SRCS) libft/libft.a minilibx_linux/libmlx_Linux.a $(LIB_FLAGS) -o $(NAME)
+			./Cub3D maps/test.cub --save
 
 libft:
 			make re -C libft
 			make clean -C libft
 
-clean:      
-			make clean -C libft
-			rm -f $(NAME)
-
-fclean:
-			make fclean -C libft
-			rm -f ${NAME}
+minilibx_linux:
+			make re -C minilibx_linux
 
 git:		fclean
 			git add -A
@@ -80,14 +77,33 @@ git:		fclean
 			git commit -u -m "$(LOGFILE) $(MSG)"
 			git push
 
-all:		${NAME}
+clean:
+			make clean -C libft
+			rm -f $(NAME)
+			rm -f $(NAME)_bonus
+			rm -f image.bmp
 
-re:			clean
-			gcc $(CFLAGS) $(MLXFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
-			./$(NAME) maps/test.cub
+fclean:		
+			make fclean -C libft
+			make clean -C minilibx_linux
+			rm -f ${NAME}
+			rm -f $(NAME)_bonus
+			rm -f image.bmp
+
+re: 		clean
+			clang $(FLAGS) $(SRCS) libft/libft.a minilibx_linux/libmlx_Linux.a $(LIB_FLAGS) -o $(NAME) 
+			./Cub3D maps/test2.cub
 
 bonus:		clean
-			gcc $(CFLAGS) $(MLXFLAGS) $(BONUS) $(LIBFT) -o $(NAME)
-			./$(NAME) maps/test2.cub
+			clang $(FLAGS) $(BONUS) libft/libft.a minilibx_linux/libmlx_Linux.a  $(LIB_FLAGS) -o $(NAME)_bonus
+			./Cub3D_bonus maps/test3.cub
 
-.PHONY:		all clean fclean re libft bonus
+norm:
+			~/.norminette/norminette.rb main.c
+			~/.norminette/norminette.rb cub3d.h
+			~/.norminette/norminette.rb parsing
+			~/.norminette/norminette.rb srcs
+			~/.norminette/norminette.rb libft
+			~/.norminette/norminette.rb Bonus
+
+.PHONY:		all clean fclean re bonus libft git minilibx_linux norm

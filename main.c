@@ -48,32 +48,22 @@ int		key_press(int key, t_data *d)
 	return (0);
 }
 
-int		loop_game(t_data *d)
-{
-	mlx_hook(d->win, 17, 0, destroy, d);
-	mlx_hook(d->win, 2, 0, key_press, d);
-	return (0);
-}
-
 int		main(int argc, char **argv)
 {
 	t_data			d;
-	int				i;
 
-	i = 0;
 	ft_bzero(&d, sizeof(t_data));
 	if (argc < 2)
 		return (write(2, "Error \nMissing Map\n", 20));
 	d.ptr = mlx_init();
 	parsing(argv[1], &d);
-	if ((d.win = mlx_new_window(d.ptr, d.r[0], d.r[1], "Corona3d")) == NULL)
+	if ((d.win = mlx_new_window(d.ptr, d.r[0], d.r[1], "Cub3d")) == NULL)
 		ft_error("Error\n Window creation failed", &d, 2);
 	d.img = new_image(&d, d.r[0], d.r[1]);
-	d.mini.img = new_image(&d, d.map.x_max * d.mini.size,
-			d.map.y_max * d.mini.size);
 	refresh_img(&d);
 	if (argv[2] && !ft_strcmp(argv[2], "--save"))
 		get_image(&d);
-	mlx_loop_hook(d.ptr, loop_game, &d);
+	mlx_hook(d.win, 17, 1L << 17, destroy, &d);
+	mlx_hook(d.win, 2, 1L << 0, key_press, &d);
 	mlx_loop(d.ptr);
 }
